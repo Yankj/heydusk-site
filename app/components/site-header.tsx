@@ -16,21 +16,26 @@ export function SiteHeader() {
         <span>HeyDusk</span>
       </Link>
 
-      <nav className="primary-nav" aria-label="Primary navigation">
-        {navigation.map((item) => (
-          <Link key={item.href} href={item.href}>
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+      <div className="header-actions">
+        <nav className="primary-nav" aria-label="Primary navigation">
+          {navigation.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-      <Link className="header-contact" href="/about#contact">
-        Let&apos;s talk
-        <span aria-hidden="true">↗</span>
-      </Link>
+        <Link className="header-contact" href="/about#contact">
+          <span>Let&apos;s talk</span>
+          <span className="contact-arrow" aria-hidden="true">↗</span>
+        </Link>
+      </div>
 
       <details className="mobile-menu">
-        <summary>Menu</summary>
+        <summary>
+          <span>Menu</span>
+          <span className="menu-glyph" aria-hidden="true" />
+        </summary>
         <nav aria-label="Mobile navigation">
           {navigation.map((item) => (
             <Link key={item.href} href={item.href}>
