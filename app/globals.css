@@ -80,6 +80,35 @@ a {
   gap: 0.65rem;
 }
 
+.language-switch {
+  display: inline-grid;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.72rem;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.language-switch:hover,
+.language-switch:focus-visible {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 24%, transparent);
+  background: color-mix(in srgb, var(--ink) 5%, var(--surface));
+}
+
+.mobile-header-actions {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 .primary-nav {
   display: flex;
   align-items: center;
@@ -323,6 +352,10 @@ a:focus-visible {
     display: none;
   }
 
+  .mobile-header-actions {
+    display: flex;
+  }
+
   .hero {
     min-height: calc(100svh - 5.75rem);
     padding-top: clamp(4.25rem, 9vh, 6rem);
@@ -497,6 +530,36 @@ a:focus-visible {
 
 .mobile-menu {
   display: none;
+}
+
+main[lang="zh-CN"] {
+  font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    ui-sans-serif, sans-serif;
+}
+
+main[lang="zh-CN"] h1,
+main[lang="zh-CN"] h2,
+main[lang="zh-CN"] h3,
+main[lang="zh-CN"] blockquote {
+  letter-spacing: -0.035em;
+}
+
+main[lang="zh-CN"] h1 {
+  max-width: 16ch;
+  line-height: 1.04;
+}
+
+main[lang="zh-CN"] .page-hero h1 {
+  max-width: 13ch;
+  line-height: 1.02;
+}
+
+main[lang="zh-CN"] .eyebrow,
+main[lang="zh-CN"] .section-index,
+main[lang="zh-CN"] .footer-label,
+main[lang="zh-CN"] .line-kicker,
+main[lang="zh-CN"] .card-meta {
+  letter-spacing: 0.14em;
 }
 
 .section,
@@ -1353,6 +1416,11 @@ a:focus-visible {
     justify-self: end;
   }
 
+  main[lang="zh-CN"] h1 {
+    max-width: 12ch;
+    line-height: 1.06;
+  }
+
   .mobile-menu summary {
     display: inline-grid;
     min-width: 44px;
@@ -1516,6 +1584,15 @@ a:focus-visible {
 }
 
 @media (max-width: 520px) {
+  .language-switch {
+    padding: 0 0.6rem;
+  }
+
+  main[lang="zh-CN"] h1 {
+    max-width: 10.5ch;
+    font-size: clamp(3rem, 13vw, 4.2rem);
+  }
+
   .section,
   .page-section {
     padding-top: 6rem;
