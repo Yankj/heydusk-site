@@ -39,12 +39,23 @@ export default function Home() {
       <SiteHeader />
 
       <section className="hero" aria-labelledby="hero-title">
+        <div className="hero-art" aria-hidden="true">
+          <Image
+            className="hero-art-image"
+            src="/dusk-field-v2.webp"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 820px) 100vw, 72vw"
+          />
+          <span className="hero-art-caption">Dusk Field / 01</span>
+        </div>
+
         <div className="hero-copy">
           <p className="eyebrow">Independent product studio</p>
           <h1 id="hero-title">
-            Thoughtful products
-            <br />
-            for what comes next.
+            <span>Thoughtful products</span>
+            <span>for what comes next.</span>
           </h1>
           <p className="hero-summary">
             HeyDusk builds focused digital products across AI, software, and
@@ -58,17 +69,6 @@ export default function Home() {
               Our point of view <span aria-hidden="true">→</span>
             </Link>
           </div>
-        </div>
-
-        <div className="hero-mark" aria-hidden="true">
-          <Image
-            src="/heydusk-mark.svg"
-            alt=""
-            width={512}
-            height={512}
-            priority
-            unoptimized
-          />
         </div>
 
         <div className="hero-index" aria-label="Studio disciplines">
