@@ -34,6 +34,7 @@ test("server-renders the HeyDusk homepage", async () => {
   assert.match(html, /Selected|Products/);
   assert.match(html, /href="\/zh"/);
   assert.match(html, /切换至简体中文/);
+  assert.match(html, /<a class="language-switch" href="\/zh" hrefLang="zh-CN"/);
   assert.match(html, /heydusk-mark\.svg/);
   assert.match(html, /og\.png/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
@@ -67,6 +68,7 @@ test("server-renders the Simplified Chinese homepage and localized navigation", 
   assert.match(html, /lang="zh-CN"/);
   assert.match(html, /href="\/zh\/products"/);
   assert.match(html, /Switch to English/);
+  assert.match(html, /<a class="language-switch" href="\/" hrefLang="en"/);
   assert.match(html, /<link rel="alternate"[^>]+hreflang="en"/i);
 });
 
