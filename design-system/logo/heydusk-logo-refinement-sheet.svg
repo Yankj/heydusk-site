@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1420" viewBox="0 0 1600 1420" role="img" aria-labelledby="title desc">
+  <title id="title">HeyDusk refined identity master sheet</title>
+  <desc id="desc">Refined HeyDusk logo system showing the continuous afterlight ribbon, monochrome master, inverse lockup, scale tests and color specification.</desc>
+  <defs>
+    <path id="outer-d" d="M15 12h37c32 0 51 17.5 51 44s-19 44-51 44H15V12Z"/>
+    <path id="d-form" fill-rule="evenodd" d="M15 12h37c32 0 51 17.5 51 44s-19 44-51 44H15V12Zm24 22v44h12.5c18 0 28-8.5 28-22s-10-22-28-22H39Z"/>
+    <path id="ribbon" d="M-4 43.5C34 46 73 55 124 71V81.5C74 67 35 57-4 54.5Z"/>
+    <clipPath id="outer-clip"><use href="#outer-d"/></clipPath>
+    <mask id="mono-cut">
+      <rect width="120" height="112" fill="white"/>
+      <use href="#ribbon" fill="black"/>
+    </mask>
+    <linearGradient id="afterlight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6569BC"/>
+      <stop offset="0.38" stop-color="#8D648F"/>
+      <stop offset="0.72" stop-color="#D47B60"/>
+      <stop offset="1" stop-color="#EDB067"/>
+    </linearGradient>
+    <linearGradient id="afterlight-inverse" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7477D0"/>
+      <stop offset="0.38" stop-color="#A16F9D"/>
+      <stop offset="0.72" stop-color="#E48668"/>
+      <stop offset="1" stop-color="#F4BD72"/>
+    </linearGradient>
+    <style>
+      .type { font-family: Avenir Next, Helvetica Neue, Arial, sans-serif; }
+      .ink { fill: #111318; }
+      .muted { fill: #777980; }
+      .paper { fill: #F7F6F2; }
+      .rule { stroke: #DFDED8; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1420" class="paper"/>
+
+  <g transform="translate(88 72)">
+    <text class="type ink" font-size="50" font-weight="600" letter-spacing="-1.9">HeyDusk</text>
+    <text y="50" class="type muted" font-size="15" font-weight="600" letter-spacing="1.7">IDENTITY REFINEMENT · MASTER 01</text>
+    <text x="1424" y="12" text-anchor="end" class="type muted" font-size="15">Last Light, optically refined.</text>
+  </g>
+  <line x1="88" y1="166" x2="1512" y2="166" class="rule"/>
+
+  <!-- Hero -->
+  <g transform="translate(88 220)">
+    <rect width="716" height="520" fill="#FDFDFC" stroke="#DFDED8"/>
+    <text x="40" y="48" class="type muted" font-size="14" font-weight="600" letter-spacing="1.4">DIGITAL PRIMARY</text>
+    <g transform="translate(235 92) scale(2.25)">
+      <use href="#d-form" fill="#111318"/>
+      <use href="#ribbon" fill="url(#afterlight)" clip-path="url(#outer-clip)"/>
+    </g>
+    <text x="358" y="426" text-anchor="middle" class="type ink" font-size="61" font-weight="600" letter-spacing="-2.6">HeyDusk</text>
+    <text x="358" y="466" text-anchor="middle" class="type muted" font-size="16">Thoughtful products for what comes next.</text>
+  </g>
+
+  <g transform="translate(864 220)">
+    <text class="type muted" font-size="14" font-weight="600" letter-spacing="1.4">OPTICAL DECISIONS</text>
+    <text y="63" class="type ink" font-size="39" font-weight="600" letter-spacing="-1.3">One continuous afterlight.</text>
+    <text y="108" class="type ink" font-size="39" font-weight="600" letter-spacing="-1.3">No mechanical gap.</text>
+
+    <text y="164" class="type muted" font-size="16">The ribbon now travels through the counter of the “D”.</text>
+    <text y="192" class="type muted" font-size="16">This continuity gives the mark direction, confidence and</text>
+    <text y="220" class="type muted" font-size="16">a recognizable dusk moment without adding a sunset icon.</text>
+
+    <line x1="0" y1="262" x2="648" y2="262" class="rule"/>
+    <text y="302" class="type ink" font-size="16" font-weight="600">01 · D proportion</text>
+    <text x="210" y="302" class="type muted" font-size="15">Wider counter, calmer outer curve</text>
+    <text y="340" class="type ink" font-size="16" font-weight="600">02 · Ribbon</text>
+    <text x="210" y="340" class="type muted" font-size="15">11 → 10.5 units, soft downward sweep</text>
+    <text y="378" class="type ink" font-size="16" font-weight="600">03 · Color</text>
+    <text x="210" y="378" class="type muted" font-size="15">Muted twilight to restrained afterglow</text>
+    <text y="416" class="type ink" font-size="16" font-weight="600">04 · Wordmark</text>
+    <text x="210" y="416" class="type muted" font-size="15">Humanist geometric sans, compact spacing</text>
+    <text y="454" class="type ink" font-size="16" font-weight="600">05 · Effects</text>
+    <text x="210" y="454" class="type muted" font-size="15">No blur, shadow, outline or 3D treatment</text>
+  </g>
+
+  <!-- Applications -->
+  <text x="88" y="808" class="type muted" font-size="14" font-weight="600" letter-spacing="1.4">CORE APPLICATIONS</text>
+
+  <g transform="translate(88 842)">
+    <rect width="438" height="250" fill="#FDFDFC" stroke="#DFDED8"/>
+    <text x="28" y="40" class="type muted" font-size="13" font-weight="600" letter-spacing="1.2">MONO MASTER</text>
+    <g transform="translate(151 63) scale(1.25)">
+      <use href="#d-form" fill="#111318" mask="url(#mono-cut)"/>
+    </g>
+    <text x="219" y="224" text-anchor="middle" class="type muted" font-size="13">Print · Legal · Favicon · Emboss</text>
+  </g>
+
+  <g transform="translate(555 842)">
+    <rect width="438" height="250" fill="#101116"/>
+    <text x="28" y="40" fill="#9B9CA4" class="type" font-size="13" font-weight="600" letter-spacing="1.2">INVERSE LOCKUP</text>
+    <g transform="translate(28 70) scale(.88)">
+      <use href="#d-form" fill="#F7F6F2"/>
+      <use href="#ribbon" fill="url(#afterlight-inverse)" clip-path="url(#outer-clip)"/>
+    </g>
+    <text x="154" y="153" fill="#F7F6F2" class="type" font-size="42" font-weight="600" letter-spacing="-1.7">HeyDusk</text>
+    <text x="156" y="183" fill="#9B9CA4" class="type" font-size="13">Dark surfaces</text>
+  </g>
+
+  <g transform="translate(1022 842)">
+    <rect width="490" height="250" fill="#FDFDFC" stroke="#DFDED8"/>
+    <text x="28" y="40" class="type muted" font-size="13" font-weight="600" letter-spacing="1.2">PRODUCT ENDORSEMENT</text>
+    <text x="28" y="115" class="type ink" font-size="29" font-weight="600" letter-spacing="-.8">PRODUCT NAME</text>
+    <line x1="28" y1="139" x2="462" y2="139" class="rule"/>
+    <g transform="translate(28 161) scale(.31)">
+      <use href="#d-form" fill="#111318"/>
+      <use href="#ribbon" fill="url(#afterlight)" clip-path="url(#outer-clip)"/>
+    </g>
+    <text x="78" y="194" class="type muted" font-size="13">A HeyDusk product</text>
+  </g>
+
+  <!-- System -->
+  <g transform="translate(88 1162)">
+    <text class="type muted" font-size="13" font-weight="600" letter-spacing="1.2">REDUCTION</text>
+    <g transform="translate(120 -31) scale(.62)">
+      <use href="#d-form" fill="#111318" mask="url(#mono-cut)"/>
+    </g>
+    <text x="195" y="28" class="type muted" font-size="12">64</text>
+    <g transform="translate(235 -7) scale(.38)">
+      <use href="#d-form" fill="#111318" mask="url(#mono-cut)"/>
+    </g>
+    <text x="282" y="28" class="type muted" font-size="12">32</text>
+    <g transform="translate(328 6) scale(.22)">
+      <use href="#d-form" fill="#111318" mask="url(#mono-cut)"/>
+    </g>
+    <text x="356" y="28" class="type muted" font-size="12">16</text>
+
+    <text x="520" class="type muted" font-size="13" font-weight="600" letter-spacing="1.2">COLOR</text>
+    <circle cx="602" cy="4" r="9" fill="#111318"/>
+    <text x="620" y="9" class="type muted" font-size="12">Ink</text>
+    <circle cx="682" cy="4" r="9" fill="#6569BC"/>
+    <text x="700" y="9" class="type muted" font-size="12">Twilight</text>
+    <circle cx="793" cy="4" r="9" fill="#D47B60"/>
+    <text x="811" y="9" class="type muted" font-size="12">Ember</text>
+    <circle cx="886" cy="4" r="9" fill="#EDB067"/>
+    <text x="904" y="9" class="type muted" font-size="12">Afterglow</text>
+
+    <text x="1120" class="type muted" font-size="13" font-weight="600" letter-spacing="1.2">MINIMUM</text>
+    <text x="1220" y="5" class="type ink" font-size="14" font-weight="600">16px symbol · 96px lockup</text>
+  </g>
+
+  <line x1="88" y1="1290" x2="1512" y2="1290" class="rule"/>
+  <text x="88" y="1334" class="type muted" font-size="13">Core rule: monochrome is the identity; afterlight is the digital signature. Never add an external glow or background gradient.</text>
+  <text x="88" y="1385" class="type muted" font-size="12">Refined concept master · Trademark and visual-similarity clearance remain required before public launch.</text>
+</svg>

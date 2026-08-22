@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 660 176" role="img" aria-labelledby="title desc">
+  <title id="title">HeyDusk refined inverse logo</title>
+  <desc id="desc">The refined Last Light symbol and HeyDusk wordmark on a dark ground.</desc>
+  <defs>
+    <path id="outer-d" d="M15 12h37c32 0 51 17.5 51 44s-19 44-51 44H15V12Z"/>
+    <path id="d-form" fill-rule="evenodd" d="M15 12h37c32 0 51 17.5 51 44s-19 44-51 44H15V12Zm24 22v44h12.5c18 0 28-8.5 28-22s-10-22-28-22H39Z"/>
+    <clipPath id="outer-clip"><use href="#outer-d"/></clipPath>
+    <linearGradient id="afterlight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7477D0"/>
+      <stop offset="0.38" stop-color="#A16F9D"/>
+      <stop offset="0.72" stop-color="#E48668"/>
+      <stop offset="1" stop-color="#F4BD72"/>
+    </linearGradient>
+  </defs>
+  <rect width="660" height="176" fill="#101116"/>
+  <g transform="translate(22 32) scale(1.02)">
+    <use href="#d-form" fill="#F7F6F2"/>
+    <path d="M-4 43.5C34 46 73 55 124 71V81.5C74 67 35 57-4 54.5Z" fill="url(#afterlight)" clip-path="url(#outer-clip)"/>
+  </g>
+  <text x="164" y="111" fill="#F7F6F2" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="72" font-weight="600" letter-spacing="-2.8">HeyDusk</text>
+</svg>

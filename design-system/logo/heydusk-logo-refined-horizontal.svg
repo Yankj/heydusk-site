@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 660 176" role="img" aria-labelledby="title desc">
+  <title id="title">HeyDusk refined horizontal logo</title>
+  <desc id="desc">The refined Last Light symbol paired with the HeyDusk wordmark.</desc>
+  <defs>
+    <path id="outer-d" d="M15 12h37c32 0 51 17.5 51 44s-19 44-51 44H15V12Z"/>
+    <path id="d-form" fill-rule="evenodd" d="M15 12h37c32 0 51 17.5 51 44s-19 44-51 44H15V12Zm24 22v44h12.5c18 0 28-8.5 28-22s-10-22-28-22H39Z"/>
+    <clipPath id="outer-clip"><use href="#outer-d"/></clipPath>
+    <linearGradient id="afterlight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6569BC"/>
+      <stop offset="0.38" stop-color="#8D648F"/>
+      <stop offset="0.72" stop-color="#D47B60"/>
+      <stop offset="1" stop-color="#EDB067"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(22 32) scale(1.02)">
+    <use href="#d-form" fill="#111318"/>
+    <path d="M-4 43.5C34 46 73 55 124 71V81.5C74 67 35 57-4 54.5Z" fill="url(#afterlight)" clip-path="url(#outer-clip)"/>
+  </g>
+  <text x="164" y="111" fill="#111318" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="72" font-weight="600" letter-spacing="-2.8">HeyDusk</text>
+</svg>
