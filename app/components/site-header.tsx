@@ -65,14 +65,14 @@ export function SiteHeader({ locale = "en", currentPath = "/" }: SiteHeaderProps
           ))}
         </nav>
 
-        <Link
+        <a
           className="language-switch"
           href={languageHref}
           hrefLang={otherLocale === "zh" ? "zh-CN" : "en"}
           aria-label={copy.switchLanguage}
         >
           {copy.switchLabel}
-        </Link>
+        </a>
 
         <Link className="header-contact" href={contactHref}>
           <span>{copy.contact}</span>
@@ -81,14 +81,14 @@ export function SiteHeader({ locale = "en", currentPath = "/" }: SiteHeaderProps
       </div>
 
       <div className="mobile-header-actions">
-        <Link
+        <a
           className="language-switch"
           href={languageHref}
           hrefLang={otherLocale === "zh" ? "zh-CN" : "en"}
           aria-label={copy.switchLanguage}
         >
           {copy.switchLabel}
-        </Link>
+        </a>
 
         <details className="mobile-menu">
           <summary>
