@@ -32,9 +32,10 @@ test("server-renders the HeyDusk homepage", async () => {
   assert.match(html, /for what comes next/);
   assert.match(html, /Independent product studio/);
   assert.match(html, /Selected|Products/);
-  assert.match(html, /href="\/zh"/);
+  assert.match(html, /action="\/zh"/);
   assert.match(html, /切换至简体中文/);
-  assert.match(html, /<a class="language-switch" href="\/zh" hrefLang="zh-CN"/);
+  assert.match(html, /<form[^>]+action="\/zh"[^>]+method="get"/);
+  assert.match(html, /class="theme-toggle"/);
   assert.match(html, /heydusk-mark\.svg/);
   assert.match(html, /og\.png/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
@@ -68,7 +69,8 @@ test("server-renders the Simplified Chinese homepage and localized navigation", 
   assert.match(html, /lang="zh-CN"/);
   assert.match(html, /href="\/zh\/products"/);
   assert.match(html, /Switch to English/);
-  assert.match(html, /<a class="language-switch" href="\/" hrefLang="en"/);
+  assert.match(html, /<form[^>]+action="\/"[^>]+method="get"/);
+  assert.match(html, /切换至日间模式/);
   assert.match(html, /<link rel="alternate"[^>]+hreflang="en"/i);
 });
 
@@ -85,6 +87,6 @@ for (const [pathname, title, visibleCopy] of [
     assert.match(html, new RegExp(`<title>${title}<\\/title>`, "i"));
     assert.match(html, new RegExp(visibleCopy, "i"));
     assert.match(html, /lang="zh-CN"/);
-    assert.match(html, /href="\/products"|href="\/projects"|href="\/brand"|href="\/about"/);
+    assert.match(html, /href="\/(?:zh\/)?(?:products|projects|brand|about)/);
   });
 }

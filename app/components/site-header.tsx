@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { localizedPath, type Locale } from "../i18n";
+import { ThemeToggle } from "./theme-toggle";
 
 const navigation = {
   en: [
@@ -65,15 +66,20 @@ export function SiteHeader({ locale = "en", currentPath = "/" }: SiteHeaderProps
           ))}
         </nav>
 
-        <a
-          className="language-switch"
-          href={languageHref}
-          hrefLang={otherLocale === "zh" ? "zh-CN" : "en"}
-          aria-label={copy.switchLanguage}
-        >
-          {copy.switchLabel}
-        </a>
+        <form className="language-form" action={languageHref} method="get">
+          <button
+            className="language-switch"
+            type="submit"
+            aria-label={copy.switchLanguage}
+          >
+            {copy.switchLabel}
+          </button>
+        </form>
 
+        <ThemeToggle locale={locale} />
+
+        {/* Keep this contact action as a Link; the language form intentionally
+            uses native navigation to avoid Vinext's broken RSC click handler. */}
         <Link className="header-contact" href={contactHref}>
           <span>{copy.contact}</span>
           <span className="contact-arrow" aria-hidden="true">↗</span>
@@ -81,14 +87,17 @@ export function SiteHeader({ locale = "en", currentPath = "/" }: SiteHeaderProps
       </div>
 
       <div className="mobile-header-actions">
-        <a
-          className="language-switch"
-          href={languageHref}
-          hrefLang={otherLocale === "zh" ? "zh-CN" : "en"}
-          aria-label={copy.switchLanguage}
-        >
-          {copy.switchLabel}
-        </a>
+        <form className="language-form" action={languageHref} method="get">
+          <button
+            className="language-switch"
+            type="submit"
+            aria-label={copy.switchLanguage}
+          >
+            {copy.switchLabel}
+          </button>
+        </form>
+
+        <ThemeToggle locale={locale} />
 
         <details className="mobile-menu">
           <summary>
