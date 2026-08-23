@@ -9,12 +9,14 @@ const navigation = {
     { href: "/projects", label: "Projects" },
     { href: "/brand", label: "Brand" },
     { href: "/about", label: "About" },
+    { href: "https://blog.heydusk.com/", label: "Notes" },
   ],
   zh: [
     { href: "/products", label: "产品" },
     { href: "/projects", label: "项目" },
     { href: "/brand", label: "品牌" },
     { href: "/about", label: "关于" },
+    { href: "https://blog.heydusk.com/", label: "知识库" },
   ],
 };
 
@@ -59,11 +61,15 @@ export function SiteHeader({ locale = "en", currentPath = "/" }: SiteHeaderProps
 
       <div className="header-actions">
         <nav className="primary-nav" aria-label={copy.navigation}>
-          {navigation[locale].map((item) => (
-            <Link key={item.href} href={localizedPath(locale, item.href)}>
-              {item.label}
-            </Link>
-          ))}
+          {navigation[locale].map((item) =>
+            item.href.startsWith("https://") ? (
+              <a key={item.href} href={item.href}>{item.label}</a>
+            ) : (
+              <Link key={item.href} href={localizedPath(locale, item.href)}>
+                {item.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <form className="language-form" action={languageHref} method="get">
@@ -105,12 +111,19 @@ export function SiteHeader({ locale = "en", currentPath = "/" }: SiteHeaderProps
             <span className="menu-glyph" aria-hidden="true" />
           </summary>
           <nav aria-label={copy.mobileNavigation}>
-            {navigation[locale].map((item) => (
-              <Link key={item.href} href={localizedPath(locale, item.href)}>
-                {item.label}
-                <span aria-hidden="true">↗</span>
-              </Link>
-            ))}
+            {navigation[locale].map((item) =>
+              item.href.startsWith("https://") ? (
+                <a key={item.href} href={item.href}>
+                  {item.label}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ) : (
+                <Link key={item.href} href={localizedPath(locale, item.href)}>
+                  {item.label}
+                  <span aria-hidden="true">↗</span>
+                </Link>
+              ),
+            )}
             <Link href={contactHref}>
               {copy.contact}
               <span aria-hidden="true">↗</span>
