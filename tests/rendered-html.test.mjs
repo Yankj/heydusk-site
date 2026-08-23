@@ -36,6 +36,8 @@ test("server-renders the HeyDusk homepage", async () => {
   assert.match(html, /切换至简体中文/);
   assert.match(html, /<form[^>]+action="\/zh"[^>]+method="get"/);
   assert.match(html, /class="theme-toggle"/);
+  assert.match(html, /src="\/dusk-field-v2\.webp"/);
+  assert.doesNotMatch(html, /\/_next\/image/);
   assert.match(html, /heydusk-mark\.svg/);
   assert.match(html, /og\.png/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
@@ -70,7 +72,7 @@ test("server-renders the Simplified Chinese homepage and localized navigation", 
   assert.match(html, /href="\/zh\/products"/);
   assert.match(html, /Switch to English/);
   assert.match(html, /<form[^>]+action="\/"[^>]+method="get"/);
-  assert.match(html, /切换至日间模式/);
+  assert.match(html, /切换至夜间模式/);
   assert.match(html, /<link rel="alternate"[^>]+hreflang="en"/i);
 });
 

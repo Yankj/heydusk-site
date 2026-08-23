@@ -149,6 +149,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
             alt=""
             fill
             priority
+            unoptimized
             sizes="(max-width: 820px) 100vw, 72vw"
           />
           <span className="hero-art-caption">{copy.artCaption}</span>

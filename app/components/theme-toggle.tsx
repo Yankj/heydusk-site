@@ -11,12 +11,12 @@ const themeListeners = new Set<() => void>();
 
 const copy = {
   en: {
-    light: "Switch to night mode",
-    dark: "Switch to day mode",
+    light: "Switch to day mode",
+    dark: "Switch to night mode",
   },
   zh: {
-    light: "切换至夜间模式",
-    dark: "切换至日间模式",
+    light: "切换至日间模式",
+    dark: "切换至夜间模式",
   },
 };
 
