@@ -934,6 +934,12 @@ main[lang="zh-CN"] .card-meta {
   line-height: 1.72;
 }
 
+.personal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.75rem;
+}
+
 .contact-band {
   padding: clamp(7rem, 12vw, 12rem) var(--page-padding);
   color: #f7f6f2;

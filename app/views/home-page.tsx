@@ -66,6 +66,7 @@ const content = {
     personalCopy:
       "HeyDusk has a formal public face and a human one behind it. The personal space collects the ideas, field notes, side projects, and conversations that shape the work.",
     personalLink: "Meet the person behind HeyDusk",
+    notesLink: "Read the notes",
     contactIndex: "A conversation can be a beginning.",
     contactTitle: "Have something worth building?",
   },
@@ -129,6 +130,7 @@ const content = {
     personalCopy:
       "HeyDusk 有正式的品牌外观，也有背后的个人视角。个人空间收集塑造这些作品的想法、现场笔记、支线项目与持续对话。",
     personalLink: "认识 HeyDusk 背后的人",
+    notesLink: "浏览精选知识库",
     contactIndex: "一次对话，也许就是开始。",
     contactTitle: "有值得构建的东西吗？",
   },
@@ -248,9 +250,14 @@ export function HomePageView({ locale }: { locale: Locale }) {
         </div>
         <div className="personal-copy">
           <p>{copy.personalCopy}</p>
-          <Link className="section-link" href={localizedPath(locale, "/about")}>
-            {copy.personalLink} <span aria-hidden="true">↗</span>
-          </Link>
+          <div className="personal-actions">
+            <Link className="section-link" href={localizedPath(locale, "/about")}>
+              {copy.personalLink} <span aria-hidden="true">↗</span>
+            </Link>
+            <a className="section-link" href="https://blog.heydusk.com/">
+              {copy.notesLink} <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
       </section>
 

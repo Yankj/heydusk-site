@@ -62,7 +62,7 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
         <div>
           <p className="footer-label">{copy.personal}</p>
           <Link href={localizedPath(locale, "/about")}>{copy.about}</Link>
-          <Link href={localizedPath(locale, "/about#notes")}>{copy.notes}</Link>
+          <a href="https://blog.heydusk.com/">{copy.notes}</a>
           <a href="https://github.com/Yankj" target="_blank" rel="noreferrer">
             GitHub
           </a>
