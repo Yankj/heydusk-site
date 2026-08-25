@@ -15,6 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = "HeyDusk — Thoughtful products for what comes next";
   const description =
     "HeyDusk is an independent product studio working across AI, software, and design.";
+  const faviconUrl = "/favicon.ico?v=2";
+  const faviconSvgUrl = "/favicon.svg?v=2";
 
   return {
     metadataBase: new URL(origin),
@@ -25,10 +27,11 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     icons: {
       icon: [
-        { url: "/favicon.ico", type: "image/x-icon" },
-        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: faviconUrl, sizes: "32x32", type: "image/x-icon" },
+        { url: faviconSvgUrl, sizes: "any", type: "image/svg+xml" },
       ],
-      shortcut: "/favicon.ico",
+      shortcut: faviconUrl,
+      apple: faviconUrl,
     },
     openGraph: {
       type: "website",

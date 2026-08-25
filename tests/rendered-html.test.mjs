@@ -38,7 +38,7 @@ test("server-renders the HeyDusk homepage", async () => {
   assert.match(html, /class="theme-toggle"/);
   assert.match(html, /src="\/dusk-field-v2\.webp"/);
   assert.doesNotMatch(html, /\/_next\/image/);
-  assert.match(html, /<link rel="(?:shortcut )?icon" href="\/favicon\.ico"/);
+  assert.match(html, /<link rel="(?:shortcut )?icon" href="\/favicon\.ico\?v=2"/);
   assert.match(html, /heydusk-mark\.svg/);
   assert.match(html, /og\.png/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
