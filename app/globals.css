@@ -19,7 +19,7 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --label-size: 0.75rem;
   --label-size-compact: 0.72rem;
-  --display-tracking: -0.04em;
+  --display-tracking: -0.02em;
   color-scheme: light dark;
 }
 
