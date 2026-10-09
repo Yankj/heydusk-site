@@ -230,7 +230,13 @@ export function HomePageView({ locale }: { locale: Locale }) {
       <section className="section brand-preview" aria-labelledby="brand-title">
         <div className="brand-statement">
           <p className="section-index">{copy.brandIndex}</p>
-          <h2 id="brand-title">{copy.brandTitle}</h2>
+          <h2 id="brand-title">
+            {locale === "zh" ? (
+              ["暮色不是黑暗，", "而是一个状态", "走向另一个状态的时刻。"].map((phrase) => (
+                <span className="title-phrase" key={phrase}>{phrase}</span>
+              ))
+            ) : copy.brandTitle}
+          </h2>
         </div>
         <div className="brand-detail">
           <Image src="/heydusk-mark.svg" alt={copy.markAlt} width={512} height={512} unoptimized />
