@@ -16,7 +16,7 @@ const footerCopy = {
     legal: "Legal",
     privacy: "Privacy Policy (draft)",
     terms: "Terms of Service (draft)",
-    note: "Company registration in progress.",
+    note: "company registration in progress",
   },
   zh: {
     home: "HeyDusk 首页",
@@ -31,7 +31,7 @@ const footerCopy = {
     legal: "法律",
     privacy: "隐私政策（草案）",
     terms: "服务条款（草案）",
-    note: "公司注册办理中。",
+    note: "公司注册办理中",
   },
 };
 
@@ -68,8 +68,8 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
       </div>
 
       <div className="footer-meta">
-        <span>© 2026 理想三旬 / HeyDusk</span>
-        <span>{copy.note}</span>
+        <span>© 2026 理想三旬 / HeyDusk · {copy.note}</span>
+        <a href="mailto:hello@heydusk.com">hello@heydusk.com</a>
       </div>
     </footer>
   );
