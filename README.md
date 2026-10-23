@@ -1,16 +1,16 @@
-# HeyDusk
+# HeyDusk · 理想三旬
 
-The official site for **HeyDusk**, an independent product studio working across AI, software, and design.
+Official company site for **理想三旬 / HeyDusk**, a small product company building calm, trustworthy AI software for families.
 
-> Thoughtful products for what comes next.
+## Site structure (en + /zh)
 
-## Site structure
-
-- `/` — brand home and portfolio overview
-- `/products` — core product system
-- `/projects` — useful projects and experiments
-- `/brand` — brand idea, principles, and Last Light identity
-- `/about` — personal introduction, notes, social links, and collaboration
+- `/` — company home: mission, principles, featured product
+- `/products` — product list
+- `/products/cat` — cat, family-affairs assistant (closed beta, iOS)
+- `/about` — company
+- `/contact` — contact (email in `app/content-docs.ts`, `CONTACT_EMAIL`)
+- `/privacy`, `/terms` — DRAFT legal placeholders, not in effect
+- `/brand`, `/projects` — legacy pages, not in main navigation
 
 ## Local development
 
