@@ -6,46 +6,45 @@ const footerCopy = {
   en: {
     home: "HeyDusk home",
     navigation: "Footer navigation",
-    statement: "Thoughtful products for what comes next.",
-    explore: "Explore",
-    products: "Products",
-    projects: "Projects",
-    brand: "Brand",
-    personal: "Personal",
+    statement: "理想三旬 (HeyDusk) builds calm, trustworthy software for families.",
+    company: "Company",
     about: "About",
-    notes: "Notes",
     contact: "Contact",
-    collaborate: "Collaborate",
-    signature: "Independent by design.",
+    brand: "Brand",
+    products: "Products",
+    cat: "cat — family assistant",
+    allProducts: "All products",
+    legal: "Legal",
+    privacy: "Privacy Policy (draft)",
+    terms: "Terms of Service (draft)",
+    note: "Company registration in progress.",
   },
   zh: {
     home: "HeyDusk 首页",
     navigation: "页脚导航",
-    statement: "为下一阶段，构建值得长期使用的产品。",
-    explore: "探索",
-    products: "产品",
-    projects: "项目",
+    statement: "理想三旬（HeyDusk）为家庭打造安静、可信赖的软件。",
+    company: "公司",
+    about: "关于我们",
+    contact: "联系我们",
     brand: "品牌",
-    personal: "个人",
-    about: "关于",
-    notes: "随笔",
-    contact: "联系",
-    collaborate: "合作",
-    signature: "独立，是一种设计选择。",
+    products: "产品",
+    cat: "cat · 家庭事务助理",
+    allProducts: "全部产品",
+    legal: "法律",
+    privacy: "隐私政策（草案）",
+    terms: "服务条款（草案）",
+    note: "公司注册办理中。",
   },
 };
 
 export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
   const copy = footerCopy[locale];
+  const l = (path: string) => localizedPath(locale, path);
 
   return (
     <footer className="site-footer">
       <div className="footer-lead">
-        <Link
-          className="brand footer-brand"
-          href={localizedPath(locale, "/")}
-          aria-label={copy.home}
-        >
+        <Link className="brand footer-brand" href={l("/")} aria-label={copy.home}>
           <Image src="/heydusk-mark.svg" alt="" width={32} height={30} unoptimized />
           <span>HeyDusk</span>
         </Link>
@@ -54,29 +53,26 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
 
       <div className="footer-nav" aria-label={copy.navigation}>
         <div>
-          <p className="footer-label">{copy.explore}</p>
-          <Link href={localizedPath(locale, "/products")}>{copy.products}</Link>
-          <Link href={localizedPath(locale, "/projects")}>{copy.projects}</Link>
-          <Link href={localizedPath(locale, "/brand")}>{copy.brand}</Link>
+          <p className="footer-label">{copy.products}</p>
+          <Link href={l("/products/cat")}>{copy.cat}</Link>
+          <Link href={l("/products")}>{copy.allProducts}</Link>
         </div>
         <div>
-          <p className="footer-label">{copy.personal}</p>
-          <Link href={localizedPath(locale, "/about")}>{copy.about}</Link>
-          <a href="https://blog.heydusk.com/">{copy.notes}</a>
-          <a href="https://github.com/Yankj" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
+          <p className="footer-label">{copy.company}</p>
+          <Link href={l("/about")}>{copy.about}</Link>
+          <Link href={l("/brand")}>{copy.brand}</Link>
+          <Link href={l("/contact")}>{copy.contact}</Link>
         </div>
         <div>
-          <p className="footer-label">{copy.contact}</p>
-          <a href="mailto:hello@heydusk.com">hello@heydusk.com</a>
-          <Link href={localizedPath(locale, "/about#contact")}>{copy.collaborate}</Link>
+          <p className="footer-label">{copy.legal}</p>
+          <Link href={l("/privacy")}>{copy.privacy}</Link>
+          <Link href={l("/terms")}>{copy.terms}</Link>
         </div>
       </div>
 
       <div className="footer-meta">
-        <span>© {new Date().getFullYear()} HeyDusk</span>
-        <span>{copy.signature}</span>
+        <span>© 2026 理想三旬 / HeyDusk</span>
+        <span>{copy.note}</span>
       </div>
     </footer>
   );
