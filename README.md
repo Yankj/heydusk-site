@@ -9,6 +9,18 @@ One repo, two sites:
 
 Company and product brands stay visually distinct. Shared tooling is only the monorepo layout and Vercel pointing at different root directories.
 
+## Positioning (keep them different)
+
+| | Company · heydusk.com | Product · mimi.heydusk.com |
+|---|---|---|
+| Whose site | 理想三旬 / HeyDusk **company** | **mimi / 小咪** product |
+| Tone | Editorial / company catalog | Full product marketing |
+| Logo | HeyDusk mark | Orange-cream cat series |
+| Primary CTA | Contact / products list | Apply for beta (email) |
+| Cross-link | Card → mimi.heydusk.com | Badge → heydusk.com 「理想三旬出品」 |
+
+A visitor should never wonder which site they are on.
+
 ## Local development
 
 Requires Node.js `>=22.13.0` for the company site; Node.js `>=20` for mimi.
