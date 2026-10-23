@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { localeLanguageTag, localizedPath, type Locale } from "../i18n";
+import { localeLanguageTag, type Locale } from "../i18n";
 
 const content = {
   en: {
@@ -10,10 +9,10 @@ const content = {
     title: "Products with a clear job to do.",
     intro: "We ship few products and take each one seriously. Here is what HeyDusk is building today.",
     catKicker: "Family assistant · iOS",
-    catTitle: "cat",
-    catCopy: "A family-affairs brain that remembers everything about your kids and never lets anything slip. Capture by photo, voice, or text; confirm; done.",
+    catTitle: "mimi",
+    catCopy: "mimi is a family-affairs brain that remembers everything about your kids and never lets anything slip. Capture by photo, voice, or text; confirm; done.",
     status: "Closed beta",
-    catLink: "View product page",
+    catLink: "Visit mimi.heydusk.com",
     nextKicker: "In exploration",
     nextTitle: "More to come",
     nextCopy: "Future products will be announced here only when they are ready to be useful.",
@@ -23,10 +22,10 @@ const content = {
     title: "为一个清晰的任务而生。",
     intro: "我们做的产品不多，但每一款都认真对待。以下是理想三旬目前在做的产品。",
     catKicker: "家庭事务助理 · iOS",
-    catTitle: "cat",
-    catCopy: "一个家庭事务大脑：记住孩子的一切，一件不落。拍照、语音或文字记录，确认后自动排进日程。",
+    catTitle: "mimi",
+    catCopy: "小咪是一个家庭事务大脑：记住孩子的一切，一件不落。拍照、语音或文字记录，确认后自动排进日程。",
     status: "内测中",
-    catLink: "查看产品页",
+    catLink: "访问 mimi.heydusk.com",
     nextKicker: "探索中",
     nextTitle: "更多产品",
     nextCopy: "新产品只会在真正有用时，才在这里发布。",
@@ -45,7 +44,7 @@ export function ProductsPageView({ locale }: { locale: Locale }) {
       </section>
       <section className="page-section product-lines">
         <article className="product-line">
-          <span className="line-number"><Image src="/cat/cat-front.webp" alt="" width={72} height={72} unoptimized /></span>
+          <span className="line-number"><Image src="/mimi/mimi-icon.png" alt="" width={72} height={72} unoptimized /></span>
           <div>
             <p className="line-kicker">{copy.catKicker}</p>
             <h2>{copy.catTitle}</h2>
@@ -53,7 +52,7 @@ export function ProductsPageView({ locale }: { locale: Locale }) {
           <div className="line-copy">
             <p>{copy.catCopy}</p>
             <ul><li>{copy.status}</li></ul>
-            <Link className="section-link" href={localizedPath(locale, "/products/cat")}>{copy.catLink} <span aria-hidden="true">↗</span></Link>
+            <a className="section-link" href="https://mimi.heydusk.com">{copy.catLink} <span aria-hidden="true">↗</span></a>
           </div>
         </article>
         <article className="product-line">

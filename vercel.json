@@ -1,3 +1,13 @@
 {
-  "buildCommand": "npm run build:vercel"
+  "buildCommand": "npm run build:vercel",
+  "redirects": [
+    { "source": "/products/cat", "destination": "https://mimi.heydusk.com", "permanent": false },
+    { "source": "/zh/products/cat", "destination": "https://mimi.heydusk.com", "permanent": false },
+    { "source": "/products/mimi", "destination": "https://mimi.heydusk.com", "permanent": false },
+    { "source": "/zh/products/mimi", "destination": "https://mimi.heydusk.com", "permanent": false },
+    { "source": "/brand", "destination": "/about", "permanent": false },
+    { "source": "/zh/brand", "destination": "/zh/about", "permanent": false },
+    { "source": "/projects", "destination": "/products", "permanent": false },
+    { "source": "/zh/projects", "destination": "/zh/products", "permanent": false }
+  ]
 }

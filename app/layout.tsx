@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = `${protocol}://${host}`;
   const title = "HeyDusk (理想三旬) — Calm software for families";
   const description =
-    "HeyDusk (理想三旬) builds calm, trustworthy AI software for family life. Our first product is cat.";
+    "HeyDusk (理想三旬) builds calm, trustworthy AI software for family life. Our first product is mimi.";
 
   return {
     metadataBase: new URL(origin),

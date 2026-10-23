@@ -10,9 +10,8 @@ const footerCopy = {
     company: "Company",
     about: "About",
     contact: "Contact",
-    brand: "Brand",
     products: "Products",
-    cat: "cat — family assistant",
+    mimi: "mimi — family assistant ↗",
     allProducts: "All products",
     legal: "Legal",
     privacy: "Privacy Policy (draft)",
@@ -26,9 +25,8 @@ const footerCopy = {
     company: "公司",
     about: "关于我们",
     contact: "联系我们",
-    brand: "品牌",
     products: "产品",
-    cat: "cat · 家庭事务助理",
+    mimi: "小咪 mimi · 家庭事务助理 ↗",
     allProducts: "全部产品",
     legal: "法律",
     privacy: "隐私政策（草案）",
@@ -54,13 +52,12 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
       <div className="footer-nav" aria-label={copy.navigation}>
         <div>
           <p className="footer-label">{copy.products}</p>
-          <Link href={l("/products/cat")}>{copy.cat}</Link>
+          <a href="https://mimi.heydusk.com">{copy.mimi}</a>
           <Link href={l("/products")}>{copy.allProducts}</Link>
         </div>
         <div>
           <p className="footer-label">{copy.company}</p>
           <Link href={l("/about")}>{copy.about}</Link>
-          <Link href={l("/brand")}>{copy.brand}</Link>
           <Link href={l("/contact")}>{copy.contact}</Link>
         </div>
         <div>
