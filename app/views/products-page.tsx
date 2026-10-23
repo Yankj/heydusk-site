@@ -10,7 +10,7 @@ const content = {
     intro: "We ship few products and take each one seriously. Here is what HeyDusk is building today.",
     catKicker: "Family assistant · iOS",
     catTitle: "mimi",
-    catCopy: "mimi is a family-affairs brain that remembers everything about your kids and never lets anything slip. Capture by photo, voice, or text; confirm; done.",
+    catCopy: "A family-affairs brain. Capture by photo, voice, or text — “let mimi remember that.” Nothing changes until you confirm.",
     status: "Closed beta",
     catLink: "Visit mimi.heydusk.com",
     nextKicker: "In exploration",
@@ -23,7 +23,7 @@ const content = {
     intro: "我们做的产品不多，但每一款都认真对待。以下是理想三旬目前在做的产品。",
     catKicker: "家庭事务助理 · iOS",
     catTitle: "mimi",
-    catCopy: "小咪是一个家庭事务大脑：记住孩子的一切，一件不落。拍照、语音或文字记录，确认后自动排进日程。",
+    catCopy: "家庭事务大脑。拍照、语音或文字交给小咪，「让小咪记一下」「看看小咪的计划」。你确认之前，什么都不改。",
     status: "内测中",
     catLink: "访问 mimi.heydusk.com",
     nextKicker: "探索中",
@@ -44,7 +44,7 @@ export function ProductsPageView({ locale }: { locale: Locale }) {
       </section>
       <section className="page-section product-lines">
         <article className="product-line">
-          <span className="line-number"><Image src="/mimi/mimi-icon.png" alt="" width={72} height={72} unoptimized /></span>
+          <span className="line-number"><Image src="/mimi/mimi-icon.png" alt="" width={72} height={72} unoptimized style={{ borderRadius: 16 }} /></span>
           <div>
             <p className="line-kicker">{copy.catKicker}</p>
             <h2>{copy.catTitle}</h2>

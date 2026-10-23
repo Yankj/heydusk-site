@@ -28,7 +28,7 @@ const content = {
     productIndex: "02 / Products",
     productTitle: "mimi — a family-affairs brain.",
     productCopy:
-      "Snap a school notice, say a sentence, or type a note. mimi turns it into a card you confirm, then keeps your family’s day in order. Currently in closed beta on iOS.",
+      "“Let mimi remember that.” Snap a notice, say a sentence, or type a note — mimi turns it into a card you confirm. Nothing changes until you say yes. Closed beta on iOS.",
     productLink: "Visit mimi.heydusk.com",
     status: "Closed beta · iOS",
     contactIndex: "Partnerships, press, and beta access",
@@ -58,7 +58,7 @@ const content = {
     productIndex: "02 / 产品",
     productTitle: "小咪，记住孩子的一切，一件不落。",
     productCopy:
-      "拍一张通知、说一句话或打几个字，小咪会整理成一张确认卡，确认后排进孩子的日程。iOS 版正在小范围内测。",
+      "「让小咪记一下」——拍一张通知、说一句话或打几个字，整理成待你确认的卡片。确认之前，什么都不改。iOS 版正在小范围内测。",
     productLink: "访问 mimi.heydusk.com",
     status: "内测中 · iOS",
     contactIndex: "合作、媒体与内测申请",
@@ -121,7 +121,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
             <a className="section-link section-link-light" href="https://mimi.heydusk.com">{copy.productLink} <span aria-hidden="true">↗</span></a>
           </div>
           <div className="feature-product-art">
-            <Image src="/mimi/mimi-mascot.svg" alt="小咪 mimi" width={360} height={360} unoptimized />
+            <Image src="/mimi/mimi-app-icon.png" alt="小咪 mimi" width={280} height={280} unoptimized />
           </div>
         </div>
       </section>
