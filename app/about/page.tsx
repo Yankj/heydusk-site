@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
+import { docs } from "../content-docs";
 import { localeAlternates } from "../i18n";
-import { AboutPageView } from "../views/about-page";
+import { DocPageView } from "../views/doc-page";
+
+const doc = docs.about.en;
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "The person, notes, and collaboration paths behind the independent product studio HeyDusk.",
+  description: doc.intro,
   alternates: localeAlternates("en", "/about"),
-  openGraph: {
-    title: "About — HeyDusk",
-    description:
-      "The person, notes, and collaboration paths behind the independent product studio HeyDusk.",
-    images: [],
-  },
-  twitter: {
-    title: "About — HeyDusk",
-    description:
-      "The person, notes, and collaboration paths behind the independent product studio HeyDusk.",
-    images: [],
-  },
+  openGraph: { title: "About — HeyDusk", description: doc.intro, images: [] },
+  twitter: { title: "About — HeyDusk", description: doc.intro, images: [] },
 };
 
-export default function AboutPage() {
-  return <AboutPageView locale="en" />;
+export default function Page() {
+  return <DocPageView locale="en" path="/about" doc={doc} />;
 }

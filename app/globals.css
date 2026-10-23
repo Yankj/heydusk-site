@@ -1915,3 +1915,32 @@ main[lang="zh-CN"] .footer-lead p {
 .title-phrase {
   display: inline-block;
 }
+
+/* Company site additions */
+.status-pill {
+  display: inline-block;
+  margin: 1rem 0 1.25rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: var(--label-size);
+  opacity: 0.8;
+}
+.feature-product { align-items: center; }
+.feature-product-art { display: flex; justify-content: center; }
+.feature-product-art img { width: min(100%, 320px); height: auto; border-radius: 2rem; }
+.cat-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; align-items: center; }
+.cat-hero-art { width: clamp(160px, 24vw, 320px); height: auto; border-radius: 2rem; }
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.feature-card img { width: 72px; height: 72px; border-radius: 1rem; margin-bottom: 1rem; }
+.doc-lead { max-width: 44rem; color: var(--ink-soft); line-height: 1.7; }
+.doc-body { max-width: 52rem; }
+.doc-section { padding: 1.5rem 0; border-top: 1px solid var(--rule); }
+.doc-section h2 { margin: 0 0 0.75rem; font-size: 1.25rem; }
+.doc-section p { margin: 0.4rem 0; color: var(--ink-soft); line-height: 1.75; }
+.doc-notice { padding: 0.9rem 1.1rem; border-left: 3px solid var(--ember); background: rgba(212, 123, 96, 0.08); font-weight: 600; }
+.product-line .line-number img { border-radius: 1rem; }
+@media (max-width: 820px) {
+  .cat-hero { grid-template-columns: 1fr; }
+  .cat-hero-art { order: -1; }
+}
