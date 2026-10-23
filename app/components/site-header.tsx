@@ -5,18 +5,18 @@ import { ThemeToggle } from "./theme-toggle";
 
 const navigation = {
   en: [
+    { href: "/", label: "Home" },
     { href: "/products", label: "Products" },
-    { href: "/projects", label: "Projects" },
-    { href: "/brand", label: "Brand" },
+    { href: "/products/cat", label: "cat" },
     { href: "/about", label: "About" },
-    { href: "https://blog.heydusk.com/", label: "Notes" },
+    { href: "/contact", label: "Contact" },
   ],
   zh: [
+    { href: "/", label: "首页" },
     { href: "/products", label: "产品" },
-    { href: "/projects", label: "项目" },
-    { href: "/brand", label: "品牌" },
-    { href: "/about", label: "关于" },
-    { href: "https://blog.heydusk.com/", label: "知识库" },
+    { href: "/products/cat", label: "cat" },
+    { href: "/about", label: "关于我们" },
+    { href: "/contact", label: "联系我们" },
   ],
 };
 
@@ -26,7 +26,7 @@ const labels = {
     navigation: "Primary navigation",
     mobileNavigation: "Mobile navigation",
     menu: "Menu",
-    contact: "Let’s talk",
+    contact: "Get in touch",
     switchLanguage: "切换至简体中文",
     switchLabel: "中文",
   },
@@ -35,7 +35,7 @@ const labels = {
     navigation: "主导航",
     mobileNavigation: "移动端导航",
     menu: "菜单",
-    contact: "聊聊合作",
+    contact: "联系我们",
     switchLanguage: "Switch to English",
     switchLabel: "EN",
   },
@@ -50,7 +50,7 @@ export function SiteHeader({ locale = "en", currentPath = "/" }: SiteHeaderProps
   const copy = labels[locale];
   const otherLocale: Locale = locale === "en" ? "zh" : "en";
   const languageHref = localizedPath(otherLocale, currentPath);
-  const contactHref = localizedPath(locale, "/about#contact");
+  const contactHref = localizedPath(locale, "/contact");
 
   return (
     <header className="site-header">
