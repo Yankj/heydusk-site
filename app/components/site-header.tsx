@@ -7,14 +7,12 @@ const navigation = {
   en: [
     { href: "/", label: "Home" },
     { href: "/products", label: "Products" },
-    { href: "/products/cat", label: "cat" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ],
   zh: [
     { href: "/", label: "首页" },
     { href: "/products", label: "产品" },
-    { href: "/products/cat", label: "cat" },
     { href: "/about", label: "关于我们" },
     { href: "/contact", label: "联系我们" },
   ],

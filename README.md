@@ -6,11 +6,11 @@ Official company site for **理想三旬 / HeyDusk**, a small product company bu
 
 - `/` — company home: mission, principles, featured product
 - `/products` — product list
-- `/products/cat` — cat, family-affairs assistant (closed beta, iOS)
+- mimi 小咪 (family-affairs assistant, closed beta, iOS) lives on its own site, https://mimi.heydusk.com; `/products/cat` redirects there (vercel.json)
 - `/about` — company
 - `/contact` — contact (email in `app/content-docs.ts`, `CONTACT_EMAIL`)
 - `/privacy`, `/terms` — DRAFT legal placeholders, not in effect
-- `/brand`, `/projects` — legacy pages, not in main navigation
+- `/brand` → `/about` and `/projects` → `/products` redirects (pages removed)
 
 ## Local development
 
