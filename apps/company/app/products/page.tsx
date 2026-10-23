@@ -5,18 +5,18 @@ import { ProductsPageView } from "../views/products-page";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "HeyDusk products: mimi, a family-affairs assistant for iOS (closed beta).",
+    "HeyDusk company product catalog. First product: mimi (product site: mimi.heydusk.com).",
   alternates: localeAlternates("en", "/products"),
   openGraph: {
     title: "Products — HeyDusk",
     description:
-      "HeyDusk products: mimi, a family-affairs assistant for iOS (closed beta).",
+      "HeyDusk company product catalog. First product: mimi (product site: mimi.heydusk.com).",
     images: [],
   },
   twitter: {
     title: "Products — HeyDusk",
     description:
-      "HeyDusk products: mimi, a family-affairs assistant for iOS (closed beta).",
+      "HeyDusk company product catalog. First product: mimi (product site: mimi.heydusk.com).",
     images: [],
   },
 };

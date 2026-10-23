@@ -9,8 +9,8 @@ const content = {
     eyebrow: "理想三旬 · HeyDusk",
     title: ["Calm software", "for the things families carry."],
     summary:
-      "HeyDusk is a small product company building AI software that helps families remember, plan, and follow through — quietly, with the parent always in control.",
-    primaryAction: "Meet mimi, our first product",
+      "HeyDusk (理想三旬) is the company behind our products — not the app itself. We build calm, trustworthy AI software for family life; the parent stays in control.",
+    primaryAction: "See our products",
     secondaryAction: "About the company",
     artCaption: "Dusk Field / 01",
     disciplinesLabel: "What we focus on",
@@ -26,11 +26,11 @@ const content = {
       { index: "03", title: "Your data stays yours", description: "Family information can be viewed, corrected, and deleted at any time. Children’s data gets the highest level of care.", meta: "Privacy" },
     ],
     productIndex: "02 / Products",
-    productTitle: "mimi — a family-affairs brain.",
+    productTitle: "First product: mimi / 小咪.",
     productCopy:
-      "“Let mimi remember that.” Snap a notice, say a sentence, or type a note — mimi turns it into a card you confirm. Nothing changes until you say yes. Closed beta on iOS.",
-    productLink: "Visit mimi.heydusk.com",
-    status: "Closed beta · iOS",
+      "A family-affairs assistant on iOS. The product site is separate — this page is the company catalog only.",
+    productLink: "Open the mimi product site",
+    status: "Closed beta · iOS · mimi.heydusk.com",
     contactIndex: "Partnerships, press, and beta access",
     contactTitle: "We’d like to hear from you.",
     contactLink: "Contact us",
@@ -39,8 +39,8 @@ const content = {
     eyebrow: "理想三旬 · HeyDusk",
     title: ["安静可靠的软件，", "替家庭记住要紧的事。"],
     summary:
-      "理想三旬（HeyDusk）是一家小而专注的产品公司，用 AI 帮助家庭记事、安排与落实。克制、可信，决定权始终在家长手里。",
-    primaryAction: "认识我们的第一款产品：小咪",
+      "理想三旬（HeyDusk）是产品公司，不是 App 本身。我们为家庭生活做安静、可信赖的 AI 软件；决定权始终在家长手里。",
+    primaryAction: "查看产品",
     secondaryAction: "了解公司",
     artCaption: "暮色原野 / 01",
     disciplinesLabel: "我们关注",
@@ -56,11 +56,11 @@ const content = {
       { index: "03", title: "数据属于你", description: "家庭信息随时可查看、修改和删除。孩子的数据，我们以最高标准对待。", meta: "隐私" },
     ],
     productIndex: "02 / 产品",
-    productTitle: "小咪，记住孩子的一切，一件不落。",
+    productTitle: "第一款产品：小咪 mimi。",
     productCopy:
-      "「让小咪记一下」——拍一张通知、说一句话或打几个字，整理成待你确认的卡片。确认之前，什么都不改。iOS 版正在小范围内测。",
-    productLink: "访问 mimi.heydusk.com",
-    status: "内测中 · iOS",
+      "面向家庭事务的 iOS 助理。详细介绍在产品站；本站只放公司与产品目录。",
+    productLink: "打开小咪产品站",
+    status: "内测中 · iOS · mimi.heydusk.com",
     contactIndex: "合作、媒体与内测申请",
     contactTitle: "期待听到你的声音。",
     contactLink: "联系我们",
@@ -85,7 +85,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
           <h1 id="hero-title">{copy.title.map((line) => <span key={line}>{line}</span>)}</h1>
           <p className="hero-summary">{copy.summary}</p>
           <div className="hero-actions">
-            <a className="text-link" href="https://mimi.heydusk.com">{copy.primaryAction} <span aria-hidden="true">↗</span></a>
+            <Link className="text-link" href={l("/products")}>{copy.primaryAction} <span aria-hidden="true">→</span></Link>
             <Link className="text-link text-link-muted" href={l("/about")}>{copy.secondaryAction} <span aria-hidden="true">→</span></Link>
           </div>
         </div>
