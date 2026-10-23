@@ -28,9 +28,9 @@ test("server-renders the HeyDusk homepage", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /Thoughtful products/);
-  assert.match(html, /for what comes next/);
-  assert.match(html, /Independent product studio/);
+  assert.match(html, /Calm software/);
+  assert.match(html, /理想三旬/);
+  assert.match(html, /href="\/products\/cat"/);
   assert.match(html, /Selected|Products/);
   assert.match(html, /action="\/zh"/);
   assert.match(html, /切换至简体中文/);
@@ -50,7 +50,11 @@ for (const [pathname, title, visibleCopy] of [
   ["/products", "Products — HeyDusk", "Products with a clear job to do"],
   ["/projects", "Projects — HeyDusk", "Experiments that can survive"],
   ["/brand", "Brand — HeyDusk", "Dusk is a threshold"],
-  ["/about", "About — HeyDusk", "A formal studio with a personal point of view"],
+  ["/about", "About — HeyDusk", "Who we are"],
+  ["/products/cat", "cat — family assistant — HeyDusk", "Closed beta on iOS"],
+  ["/contact", "Contact — HeyDusk", "hello@heydusk.com"],
+  ["/privacy", "Privacy Policy \\(draft\\) — HeyDusk", "DRAFT"],
+  ["/terms", "Terms of Service \\(draft\\) — HeyDusk", "DRAFT"],
 ]) {
   test(`server-renders ${pathname} with route-specific metadata`, async () => {
     const response = await render(pathname);
@@ -68,9 +72,8 @@ test("server-renders the Simplified Chinese homepage and localized navigation", 
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /审慎思考/);
-  assert.match(html, /面向接下来的世界/);
-  assert.match(html, /独立产品工作室/);
+  assert.match(html, /安静可靠的软件/);
+  assert.match(html, /理想三旬/);
   assert.match(html, /lang="zh-CN"/);
   assert.match(html, /href="\/zh\/products"/);
   assert.match(html, /Switch to English/);
@@ -83,7 +86,9 @@ for (const [pathname, title, visibleCopy] of [
   ["/zh/products", "产品 — HeyDusk", "为一个清晰的任务而生"],
   ["/zh/projects", "项目 — HeyDusk", "经得起现实检验的实验"],
   ["/zh/brand", "品牌 — HeyDusk", "暮色是一道门槛"],
-  ["/zh/about", "关于 — HeyDusk", "一个正式的工作室"],
+  ["/zh/about", "关于我们 — HeyDusk", "我们是谁"],
+  ["/zh/products/cat", "cat · 家庭事务助理 — HeyDusk", "内测中"],
+  ["/zh/privacy", "隐私政策（草案） — HeyDusk", "草案"],
 ]) {
   test(`server-renders ${pathname} in Simplified Chinese`, async () => {
     const response = await render(pathname);

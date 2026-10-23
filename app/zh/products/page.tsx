@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { localeAlternates } from "../../i18n";
 import { ProductsPageView } from "../../views/products-page";
 
-const description = "HeyDusk 的产品体系：聚焦 AI 智能体、实用软件与设计工具。";
+const description = "理想三旬 HeyDusk 的产品：家庭事务助理 cat（内测中）。";
 
 export const metadata: Metadata = {
   title: "产品",

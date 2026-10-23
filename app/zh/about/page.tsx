@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
+import { docs } from "../../content-docs";
 import { localeAlternates } from "../../i18n";
-import { AboutPageView } from "../../views/about-page";
+import { DocPageView } from "../../views/doc-page";
 
-const description = "认识独立产品工作室 HeyDusk 背后的人、思考、个人频道与合作方式。";
+const doc = docs.about.zh;
 
 export const metadata: Metadata = {
-  title: "关于",
-  description,
+  title: "关于我们",
+  description: doc.intro,
   alternates: localeAlternates("zh", "/about"),
-  openGraph: { title: "关于 — HeyDusk", description, images: [] },
-  twitter: { title: "关于 — HeyDusk", description, images: [] },
+  openGraph: { title: "关于我们 — HeyDusk", description: doc.intro, images: [] },
+  twitter: { title: "关于我们 — HeyDusk", description: doc.intro, images: [] },
 };
 
-export default function ChineseAboutPage() {
-  return <AboutPageView locale="zh" />;
+export default function Page() {
+  return <DocPageView locale="zh" path="/about" doc={doc} />;
 }

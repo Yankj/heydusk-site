@@ -6,138 +6,70 @@ import { localeLanguageTag, localizedPath, type Locale } from "../i18n";
 
 const content = {
   en: {
-    eyebrow: "Independent product studio",
-    title: ["Thoughtful products", "for what comes next."],
+    eyebrow: "理想三旬 · HeyDusk",
+    title: ["Calm software", "for the things families carry."],
     summary:
-      "HeyDusk builds focused digital products across AI, software, and design—turning emerging possibilities into useful, lasting tools.",
-    primaryAction: "Explore our work",
-    secondaryAction: "Our point of view",
+      "HeyDusk is a small product company building AI software that helps families remember, plan, and follow through — quietly, with the parent always in control.",
+    primaryAction: "Meet cat, our first product",
+    secondaryAction: "About the company",
     artCaption: "Dusk Field / 01",
-    disciplinesLabel: "Studio disciplines",
-    disciplines: ["AI agents", "Useful software", "Design systems"],
-    productsIndex: "01 / Products",
-    productsTitle: "Built around a clear job to do.",
-    productsIntro:
-      "We favor products with a focused purpose, a calm interface, and a reason to exist beyond novelty.",
-    productArea: "Product area",
-    products: [
-      {
-        index: "01",
-        title: "Agent systems",
-        description:
-          "Practical AI agents designed around real workflows, clear boundaries, and useful outcomes.",
-        meta: "AI · Workflows · Automation",
-      },
-      {
-        index: "02",
-        title: "Useful software",
-        description:
-          "Focused tools that remove friction, make complexity legible, and earn a place in everyday work.",
-        meta: "Software · Productivity · Systems",
-      },
-      {
-        index: "03",
-        title: "Design tools",
-        description:
-          "Interfaces, components, and creative infrastructure where form is part of how the product thinks.",
-        meta: "Design · Interaction · Craft",
-      },
+    disciplinesLabel: "What we focus on",
+    disciplines: ["Family life", "Applied AI", "Privacy by design"],
+    missionIndex: "01 / Mission",
+    missionTitle: "Give families back the mental load, one small task at a time.",
+    missionIntro:
+      "Parents keep hundreds of details in their heads: school notices, appointments, what each child needs this week. We build tools that hold those details reliably, so people can spend their attention on each other.",
+    principlesLabel: "Principles",
+    principles: [
+      { index: "01", title: "Confirm before acting", description: "Our products propose; people decide. Nothing important changes without an explicit confirmation.", meta: "Trust" },
+      { index: "02", title: "Restraint over noise", description: "Fewer, better-timed reminders. Quiet hours are respected by default.", meta: "Attention" },
+      { index: "03", title: "Your data stays yours", description: "Family information can be viewed, corrected, and deleted at any time. Children’s data gets the highest level of care.", meta: "Privacy" },
     ],
-    productsLink: "View the product system",
-    projectsIndex: "02 / Useful projects",
-    projectsTitle: "Small experiments. Real utility.",
-    projectsIntro:
-      "Not every useful idea needs to become a company. Labs is where focused agents, prototypes, and design experiments earn their right to grow.",
-    projectsLink: "Enter the project room",
-    projects: [
-      ["Agents", "Tools built to complete a job, not extend a conversation."],
-      ["Experiments", "Small releases for testing a useful idea in the real world."],
-      ["Systems", "Reusable design and product infrastructure for everything that follows."],
-    ],
-    brandIndex: "03 / Brand",
-    brandTitle:
-      "Dusk is not darkness. It is the moment one state becomes another.",
-    markAlt: "HeyDusk Last Light symbol",
-    brandCopy:
-      "The Last Light mark holds that transition in one gesture: a calm form crossed by a continuous trace of light.",
-    brandLink: "Read the brand idea",
-    personalIndex: "04 / Personal",
-    personalTitle: "Independent by design.",
-    personalCopy:
-      "HeyDusk has a formal public face and a human one behind it. The personal space collects the ideas, field notes, side projects, and conversations that shape the work.",
-    personalLink: "Meet the person behind HeyDusk",
-    notesLink: "Read the notes",
-    contactIndex: "A conversation can be a beginning.",
-    contactTitle: "Have something worth building?",
+    productIndex: "02 / Products",
+    productTitle: "cat — a family-affairs brain.",
+    productCopy:
+      "Snap a school notice, say a sentence, or type a note. cat turns it into a card you confirm, then keeps your family’s day in order. Currently in closed beta on iOS.",
+    productLink: "Explore cat",
+    status: "Closed beta · iOS",
+    contactIndex: "Partnerships, press, and beta access",
+    contactTitle: "We’d like to hear from you.",
+    contactLink: "Contact us",
   },
   zh: {
-    eyebrow: "独立产品工作室",
-    title: ["审慎思考，认真构建", "面向接下来的世界。"],
+    eyebrow: "理想三旬 · HeyDusk",
+    title: ["安静可靠的软件，", "替家庭记住要紧的事。"],
     summary:
-      "HeyDusk 专注于 AI、软件与设计领域，将正在发生的新可能，转化为真正有用、值得长期使用的数字产品。",
-    primaryAction: "浏览我们的作品",
-    secondaryAction: "了解品牌主张",
+      "理想三旬（HeyDusk）是一家小而专注的产品公司，用 AI 帮助家庭记事、安排与落实。克制、可信，决定权始终在家长手里。",
+    primaryAction: "认识我们的第一款产品 cat",
+    secondaryAction: "了解公司",
     artCaption: "暮色原野 / 01",
-    disciplinesLabel: "工作室方向",
-    disciplines: ["AI 智能体", "实用软件", "设计系统"],
-    productsIndex: "01 / 产品",
-    productsTitle: "围绕一个清晰的任务而生。",
-    productsIntro:
-      "我们偏爱目标明确、界面克制，并且价值不止于新奇的产品。",
-    productArea: "产品方向",
-    products: [
-      {
-        index: "01",
-        title: "智能体系统",
-        description:
-          "围绕真实工作流程、清晰边界与有效结果设计的实用型 AI 智能体。",
-        meta: "AI · 工作流 · 自动化",
-      },
-      {
-        index: "02",
-        title: "实用软件",
-        description:
-          "减少摩擦、理清复杂性，并能自然融入日常工作的专注型工具。",
-        meta: "软件 · 效率 · 系统",
-      },
-      {
-        index: "03",
-        title: "设计工具",
-        description:
-          "让形式参与产品思考的界面、组件与创作基础设施。",
-        meta: "设计 · 交互 · 工艺",
-      },
+    disciplinesLabel: "我们关注",
+    disciplines: ["家庭生活", "应用型 AI", "隐私优先"],
+    missionIndex: "01 / 使命",
+    missionTitle: "把家长脑子里的琐事，一件件稳稳接住。",
+    missionIntro:
+      "学校通知、看病预约、孩子这周要带的东西……家长每天要记住成百上千个细节。我们做的工具，就是可靠地记住这些，让家人把注意力留给彼此。",
+    principlesLabel: "我们的原则",
+    principles: [
+      { index: "01", title: "先确认，再行动", description: "产品负责提议，人来做决定。任何重要变更，都要经过你的明确确认。", meta: "可信" },
+      { index: "02", title: "克制，而不打扰", description: "提醒更少、时机更准。默认尊重夜间免打扰时段。", meta: "专注" },
+      { index: "03", title: "数据属于你", description: "家庭信息随时可查看、修改和删除。孩子的数据，我们以最高标准对待。", meta: "隐私" },
     ],
-    productsLink: "查看产品体系",
-    projectsIndex: "02 / 实用项目",
-    projectsTitle: "小规模实验，真实效用。",
-    projectsIntro:
-      "并非每一个有用的想法都要成为一家公司。Labs 让智能体、原型和设计实验先在真实世界里证明自己，再决定是否继续生长。",
-    projectsLink: "进入项目室",
-    projects: [
-      ["智能体", "为完成任务而构建，而不是只延长一次对话。"],
-      ["实验", "以小规模发布，在真实世界里验证一个有用的想法。"],
-      ["系统", "为后续产品提供可复用的设计与产品基础设施。"],
-    ],
-    brandIndex: "03 / 品牌",
-    brandTitle: "暮色不是黑暗，而是一个状态走向另一个状态的时刻。",
-    markAlt: "HeyDusk 最后一束光标志",
-    brandCopy:
-      "“最后一束光”标志用一个动作保存这种过渡：平静的形体，被一条连续的微光穿过。",
-    brandLink: "阅读品牌理念",
-    personalIndex: "04 / 个人",
-    personalTitle: "独立，是一种设计选择。",
-    personalCopy:
-      "HeyDusk 有正式的品牌外观，也有背后的个人视角。个人空间收集塑造这些作品的想法、现场笔记、支线项目与持续对话。",
-    personalLink: "认识 HeyDusk 背后的人",
-    notesLink: "浏览精选知识库",
-    contactIndex: "一次对话，也许就是开始。",
-    contactTitle: "有值得构建的东西吗？",
+    productIndex: "02 / 产品",
+    productTitle: "cat，记住孩子的一切，一件不落。",
+    productCopy:
+      "拍一张通知、说一句话或打几个字，cat 会整理成一张确认卡，确认后排进孩子的日程。iOS 版正在小范围内测。",
+    productLink: "了解 cat",
+    status: "内测中 · iOS",
+    contactIndex: "合作、媒体与内测申请",
+    contactTitle: "期待听到你的声音。",
+    contactLink: "联系我们",
   },
 };
 
 export function HomePageView({ locale }: { locale: Locale }) {
   const copy = content[locale];
+  const l = (p: string) => localizedPath(locale, p);
 
   return (
     <main lang={localeLanguageTag[locale]}>
@@ -145,124 +77,51 @@ export function HomePageView({ locale }: { locale: Locale }) {
 
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-art" aria-hidden="true">
-          <Image
-            className="hero-art-image"
-            src="/dusk-field-v2.webp"
-            alt=""
-            fill
-            priority
-            unoptimized
-            sizes="(max-width: 820px) 100vw, 72vw"
-          />
+          <Image className="hero-art-image" src="/dusk-field-v2.webp" alt="" fill priority unoptimized sizes="(max-width: 820px) 100vw, 72vw" />
           <span className="hero-art-caption">{copy.artCaption}</span>
         </div>
-
         <div className="hero-copy">
           <p className="eyebrow">{copy.eyebrow}</p>
-          <h1 id="hero-title">
-            {copy.title.map((line) => <span key={line}>{line}</span>)}
-          </h1>
+          <h1 id="hero-title">{copy.title.map((line) => <span key={line}>{line}</span>)}</h1>
           <p className="hero-summary">{copy.summary}</p>
           <div className="hero-actions">
-            <Link className="text-link" href={localizedPath(locale, "/products")}>
-              {copy.primaryAction} <span aria-hidden="true">↗</span>
-            </Link>
-            <Link className="text-link text-link-muted" href={localizedPath(locale, "/brand")}>
-              {copy.secondaryAction} <span aria-hidden="true">→</span>
-            </Link>
+            <Link className="text-link" href={l("/products/cat")}>{copy.primaryAction} <span aria-hidden="true">↗</span></Link>
+            <Link className="text-link text-link-muted" href={l("/about")}>{copy.secondaryAction} <span aria-hidden="true">→</span></Link>
           </div>
         </div>
-
         <div className="hero-index" aria-label={copy.disciplinesLabel}>
-          {copy.disciplines.map((discipline) => <span key={discipline}>{discipline}</span>)}
+          {copy.disciplines.map((d) => <span key={d}>{d}</span>)}
         </div>
       </section>
 
-      <section className="section product-overview" aria-labelledby="products-title">
+      <section className="section product-overview" aria-labelledby="mission-title">
         <div className="section-heading">
-          <p className="section-index">{copy.productsIndex}</p>
-          <h2 id="products-title">{copy.productsTitle}</h2>
-          <p>{copy.productsIntro}</p>
+          <p className="section-index">{copy.missionIndex}</p>
+          <h2 id="mission-title">{copy.missionTitle}</h2>
+          <p>{copy.missionIntro}</p>
         </div>
-
-        <div className="product-grid">
-          {copy.products.map((area) => (
-            <article className="product-card" key={area.index}>
-              <div className="card-topline">
-                <span>{area.index}</span>
-                <span>{copy.productArea}</span>
-              </div>
-              <h3>{area.title}</h3>
-              <p>{area.description}</p>
-              <span className="card-meta">{area.meta}</span>
+        <div className="product-grid" aria-label={copy.principlesLabel}>
+          {copy.principles.map((p) => (
+            <article className="product-card" key={p.index}>
+              <div className="card-topline"><span>{p.index}</span><span>{p.meta}</span></div>
+              <h3>{p.title}</h3>
+              <p>{p.description}</p>
             </article>
           ))}
         </div>
-
-        <Link className="section-link" href={localizedPath(locale, "/products")}>
-          {copy.productsLink} <span aria-hidden="true">↗</span>
-        </Link>
       </section>
 
-      <section className="dark-section" aria-labelledby="projects-title">
-        <div className="dark-section-inner">
+      <section className="dark-section" aria-labelledby="product-title">
+        <div className="dark-section-inner feature-product">
           <div className="dark-intro">
-            <p className="section-index">{copy.projectsIndex}</p>
-            <h2 id="projects-title">{copy.projectsTitle}</h2>
-            <p>{copy.projectsIntro}</p>
-            <Link className="section-link section-link-light" href={localizedPath(locale, "/projects")}>
-              {copy.projectsLink} <span aria-hidden="true">↗</span>
-            </Link>
+            <p className="section-index">{copy.productIndex}</p>
+            <h2 id="product-title">{copy.productTitle}</h2>
+            <p>{copy.productCopy}</p>
+            <p className="status-pill">{copy.status}</p>
+            <Link className="section-link section-link-light" href={l("/products/cat")}>{copy.productLink} <span aria-hidden="true">↗</span></Link>
           </div>
-
-          <div className="project-list">
-            {copy.projects.map(([title, description], index) => (
-              <article key={title}>
-                <span>0{index + 1}</span>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section brand-preview" aria-labelledby="brand-title">
-        <div className="brand-statement">
-          <p className="section-index">{copy.brandIndex}</p>
-          <h2 id="brand-title">
-            {locale === "zh" ? (
-              ["暮色不是黑暗，", "而是一个状态", "走向另一个状态的时刻。"].map((phrase) => (
-                <span className="title-phrase" key={phrase}>{phrase}</span>
-              ))
-            ) : copy.brandTitle}
-          </h2>
-        </div>
-        <div className="brand-detail">
-          <Image src="/heydusk-mark.svg" alt={copy.markAlt} width={512} height={512} unoptimized />
-          <div>
-            <p>{copy.brandCopy}</p>
-            <Link className="section-link" href={localizedPath(locale, "/brand")}>
-              {copy.brandLink} <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="section personal-preview" aria-labelledby="personal-title">
-        <div>
-          <p className="section-index">{copy.personalIndex}</p>
-          <h2 id="personal-title">{copy.personalTitle}</h2>
-        </div>
-        <div className="personal-copy">
-          <p>{copy.personalCopy}</p>
-          <div className="personal-actions">
-            <Link className="section-link" href={localizedPath(locale, "/about")}>
-              {copy.personalLink} <span aria-hidden="true">↗</span>
-            </Link>
-            <a className="section-link" href="https://blog.heydusk.com/">
-              {copy.notesLink} <span aria-hidden="true">↗</span>
-            </a>
+          <div className="feature-product-art">
+            <Image src="/cat/cat-front.webp" alt="cat" width={360} height={360} unoptimized />
           </div>
         </div>
       </section>
@@ -270,9 +129,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
       <section className="contact-band" aria-labelledby="contact-title">
         <p className="section-index">{copy.contactIndex}</p>
         <h2 id="contact-title">{copy.contactTitle}</h2>
-        <a className="contact-link" href="mailto:hello@heydusk.com">
-          hello@heydusk.com <span aria-hidden="true">↗</span>
-        </a>
+        <Link className="contact-link" href={l("/contact")}>{copy.contactLink} <span aria-hidden="true">↗</span></Link>
       </section>
 
       <SiteFooter locale={locale} />

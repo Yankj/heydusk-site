@@ -12,9 +12,9 @@ export async function generateMetadata(): Promise<Metadata> {
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
-  const title = "HeyDusk — Thoughtful products for what comes next";
+  const title = "HeyDusk (理想三旬) — Calm software for families";
   const description =
-    "HeyDusk is an independent product studio working across AI, software, and design.";
+    "HeyDusk (理想三旬) builds calm, trustworthy AI software for family life. Our first product is cat.";
 
   return {
     metadataBase: new URL(origin),
