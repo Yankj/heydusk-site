@@ -1,47 +1,43 @@
 # mimi 小咪 · 产品官网
 
-Static product marketing site for **mimi / 小咪**, deployed at https://mimi.heydusk.com.
+Product site for **mimi / 小咪** → https://mimi.heydusk.com
 
-Lives in the `Yankj/heydusk-site` monorepo as `apps/mimi`. The iOS / backend app repo is [`Yankj/mimi`](https://github.com/Yankj/mimi); the company site is sibling `apps/company` → https://heydusk.com.
+小咪是给爸爸妈妈、尤其是妈妈的家庭事务助理：拍一张、说一句、打几个字，整理成待你确认的卡片；「今天」看要办的事，「我们家」记着家里的事；不确认不改动，提醒有分寸。成长陪伴是之后的第二层。口号：**先你一步，把事办妥。**
 
-## Local development
+Lives in `Yankj/heydusk-site` as `apps/mimi`; the company site is sibling `apps/company` → https://heydusk.com. App code is in [`Yankj/mimi`](https://github.com/Yankj/mimi).
+
+## Develop
 
 ```sh
 cd apps/mimi
-npm run dev
+npm run dev      # build + serve http://localhost:4173 (PORT=… to override)
+npm run build    # → dist/
+npm run check    # links, anchors, retired-content guard
 ```
 
-Default `http://localhost:4173/`. Override with `PORT=4174 npm run dev`.
+No dependencies; Node ≥ 20.
 
-```sh
-npm run build
-npm run check
-npm run preview
-```
+## Layout
 
-## Structure
+| Path | What |
+|---|---|
+| `content.json` | All copy: tagline, phrases, demo scenarios, 今天/我们家 examples, promises, privacy, roadmap, FAQ, contact |
+| `src/index.html` | Single-page template with `{{TOKENS}}` filled from `content.json` |
+| `src/styles.css`, `src/app.js` | Styles (light/dark) and the client-only confirm-card demo, theme, menu |
+| `build.mjs` | Renders `dist/index.html`, copies `public/`, writes robots + sitemap |
+| `verify.mjs` | Post-build checks |
+| `public/` | Favicon and the images the page uses |
+| `brand/` | Snapshot of the mimi brand kit (canonical: `Yankj/mimi/docs/brand`) |
 
-- `src/` — home, trust, technology, updates (native HTML) + CSS / JS
-- `public/assets/` — video, PDF, product shots, marks used on the live site
-- `brand/` — SVG / PNG brand kit snapshot used by this site (canonical guidelines stay in `Yankj/mimi/docs/brand`)
-- `content.json` — tagline, version, URLs
-- `build.mjs` — builds four pages, SEO, sitemap
-- `dist/` — deploy output (gitignored)
+Edit copy in `content.json`; edit structure in `src/index.html`.
+
+## Rules for this site
+
+- Speak to parents, especially moms, about family affairs. No internal tech, deploy history, commit SHAs, model or agent comparisons.
+- No product film or deck on the site. `verify.mjs` fails the build check if `.mp4`/`.pdf`, "deck" or "catpaw" reappear.
+- Examples are fictional and labelled 示例; the demo runs in the browser only and stores nothing.
+- Beta access is by email (`hello@heydusk.com`); no forms, no tracking.
 
 ## Vercel
 
-| Setting | Value |
-|---|---|
-| Git repository | `Yankj/heydusk-site` |
-| Root Directory | `apps/mimi` |
-| Build Command | `npm run build` |
-| Output Directory | `dist` |
-| Production Branch | `main` |
-
-See root `README.md` and `DEPLOY.md` for DNS (`CNAME mimi → cname.vercel-dns.com`, grey cloud).
-
-## Cross-links
-
-- Footer → https://heydusk.com（理想三旬 / HeyDusk）
-- Company products page → this site
-- Contact shared with company: `hello@heydusk.com`
+Root Directory `apps/mimi`, Build `npm run build`, Output `dist`, Production branch `main`. Old URLs (`trust.html`, `technology.html`, `updates.html`, the old deck and film) redirect to `/` via `vercel.json`.
