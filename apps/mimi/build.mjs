@@ -1,37 +1,47 @@
-import {readFile,writeFile,mkdir,cp} from 'node:fs/promises';
+// Renders src/index.html + content.json into dist/. No dependencies.
+import {readFile, writeFile, mkdir, cp, rm} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
-const root=path.dirname(fileURLToPath(import.meta.url));
-const read=(p)=>readFile(path.join(root,p),'utf8');
-const c=JSON.parse(await read('content.json'));
-const escape=(s)=>String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
-await mkdir(path.join(root,'dist'),{recursive:true});
-await cp(path.join(root,'public'),path.join(root,'dist'),{recursive:true});
-const states=[['idle','等待','等你开口，随时准备帮忙。'],['thinking','思考','思考中，正在理解你的请求。'],['writing','写作','写作中，把想法整理成清楚的文字。'],['executing','执行','执行中，正在处理已确认的操作。'],['done','完成','收到成功回执，这件事办妥了。'],['error','出错','遇到问题，如实说明，等你决定下一步。']];
-const faq=[
- ['如何申请内测？在哪里下载？',`发邮件到 <a href="mailto:hello@heydusk.com?subject=%E7%94%B3%E8%AF%B7%E5%B0%8F%E5%92%AA%E5%86%85%E6%B5%8B" class="inline-link">hello@heydusk.com</a> 申请内测即可。小咪是中文优先的 iOS 原生 App（iOS 17+）。安装资料通过 <a href="${c.release}" class="inline-link" target="_blank" rel="noopener">GitHub Releases</a> 发放；本站不提供尚未确认的 App Store 或 TestFlight 链接。`],
- ['它会一直提醒我吗？','不会每件事都响铃。主动建议经过轻重分级、免打扰时段、每日提醒上限和去重。具体时段以 App 设置为准；当前按时提醒通过本地通知送达。'],
- ['和通用 AI 聊天产品有什么不同？','小咪把重点放在 iPhone 上的日程、提醒、记忆与可确认的行动。它能说明为什么来找你，写入前等你确认，办完后留下回执。它不追求替你登录网站、操作电脑或付款。'],
- ['可以关掉记忆，让它忘记吗？','可以。侧栏「了解你」管理记忆，支持开关、查看、更正和忘记。启用记忆不等于自动记住一切；自动保存还有单独开关。'],
- ['它能自己上网、读邮件或打电话吗？','现在只阅读你给的公开网页链接，不自主联网搜索，也不读取或发送邮件。Gmail 和联网搜索在计划中。系统跳转与实际代你完成通话、发送信息是不同能力，不混为一谈。'],
- ['视频里的界面，和现在一样吗？','视频和 25 页 deck 保留 v1.1 的演示。当前 v1.2.0 将侧栏改为「待办 / 记录 / 了解你」，并增加能力说明和跳转按钮。更多变化见版本与资料页。'],
- ['免费模型，意味着产品永久免费吗？','不能这样推断。模型线路有各自的额度与条款，免费额度也可能限流。本站没有虚构订阅价格，也不承诺永久免费；可用性和获取方式以版本说明为准。']
-];
-const nav=(active)=>`<a class="skip" href="#main">跳到正文</a><header class="site-header"><div class="header-inner wrap"><a href="index.html" class="logo" aria-label="mimi 小咪 产品首页"><img src="assets/mark.png" width="35" height="35" alt=""><span class="wordmark">mimi</span></a><a class="made-by" href="https://heydusk.com" target="_blank" rel="noopener" title="打开公司官网">理想三旬出品</a><nav id="main-nav" class="main-nav" aria-label="主导航"><a href="index.html#proactive">产品能力</a><a href="index.html#experience">体验与设计</a><a href="trust.html" ${active==='trust'?'aria-current="page"':''}>安全与隐私</a><a href="technology.html" ${active==='technology'?'aria-current="page"':''}>技术</a><a href="updates.html" ${active==='updates'?'aria-current="page"':''}>版本与资料</a></nav><div class="header-actions"><a href="mailto:hello@heydusk.com?subject=%E7%94%B3%E8%AF%B7%E5%B0%8F%E5%92%AA%E5%86%85%E6%B5%8B" class="button">申请内测</a><button id="theme-toggle" class="theme-toggle" aria-label="切换颜色模式">深色</button><button id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="main-nav">菜单</button></div></div></header>`;
-const footer=`<footer class="site-footer"><div class="wrap"><div class="footer-top"><div class="footer-brand"><a class="logo" href="index.html"><img src="assets/mark.png" alt="" width="35" height="35"><span class="wordmark">mimi</span></a><p>先你一步，把事办妥。<br>产品站 · 不是公司首页。</p><a class="made-by made-by-footer" href="https://heydusk.com" target="_blank" rel="noopener">理想三旬出品 ↗</a></div><div class="footer-links"><strong>认识小咪</strong><a href="index.html#film">观看产品短片</a><a href="index.html#proactive">体验提醒逻辑</a><a href="trust.html">安全与隐私</a><a href="updates.html">版本与资料</a></div><div class="footer-links"><strong>继续了解</strong><a href="mailto:hello@heydusk.com?subject=%E7%94%B3%E8%AF%B7%E5%B0%8F%E5%92%AA%E5%86%85%E6%B5%8B">申请内测 · hello@heydusk.com</a><a href="${c.release}" target="_blank" rel="noopener">GitHub 安装资料 ↗</a><a href="technology.html">技术与开源取舍</a><a href="https://heydusk.com" target="_blank" rel="noopener">公司官网 heydusk.com ↗</a><a href="assets/catpaw-product-deck.pdf" target="_blank" rel="noopener">产品 deck ↗</a></div></div><div class="footer-bottom"><span>© 2026 <a href="https://heydusk.com">理想三旬 / HeyDusk</a> · mimi 小咪产品站</span><span>从容，清楚，可靠。</span></div></div></footer>`;
-const tokens={REPO:c.repository,RELEASE:c.release,SOURCE_DATE:c.sourceDate,SOURCE_COMMIT_SHORT:c.sourceCommit.slice(0,7),PILLARS:c.pillars.map(p=>`<a href="#${p.anchor}"><b>${p.name}</b><span>${p.text}</span></a>`).join(''),CAT_STATES:states.map(([id,name,caption])=>`<button type="button" data-cat="${id}" data-caption="${caption}" aria-pressed="${id==='thinking'}"><img src="assets/cat-${id}.webp" alt="" width="256" height="256" loading="lazy">${name}</button>`).join(''),FAQ:faq.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join('')};
-const pages=[['index','先你一步，把事办妥'],['trust','安全、隐私与账号'],['technology','技术与产品取舍'],['updates','版本与资料']];
-for(const [name,title] of pages){
- let body=await read(`src/${name}.html`);
- for(const [key,value] of Object.entries(tokens))body=body.replaceAll(`{{${key}}}`,value);
- body=body.replace(/<table class="data-table">([\s\S]*?)<\/table>/g, (table,inner)=>{const headers=[...inner.matchAll(/<th scope="col">(.*?)<\/th>/g)].map(x=>x[1]);let column=0;return '<table class="data-table">'+inner.replace(/<td>/g,()=>'<td data-label="'+escape(headers[column++%headers.length])+'">')+'</table>';});
- const url=c.url+(name==='index'?'/':`/${name}.html`);
- const jsonld=JSON.stringify({'@context':'https://schema.org','@type':'SoftwareApplication',name:c.name,description:c.description,operatingSystem:'iOS 17+',applicationCategory:'ProductivityApplication',url:c.url,softwareVersion:c.appVersion});
- const html=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>mimi 小咪 · ${title}</title><meta name="description" content="${escape(c.description)}"><meta property="og:title" content="mimi 小咪 · ${title}"><meta property="og:description" content="${escape(c.description)}"><meta property="og:type" content="website"><meta property="og:url" content="${url}"><meta property="og:image" content="${c.url}/assets/film-cover.webp"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="${url}"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="stylesheet" href="styles.css"><script>try{const t=localStorage.getItem('catpaw-theme');document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch{}</script><script type="application/ld+json">${jsonld}</script><script src="app.js" defer></script></head><body>${nav(name)}<main id="main">${body}</main>${footer}</body></html>`;
- await writeFile(path.join(root,`dist/${name}.html`),html);
-}
-for(const file of ['styles.css','app.js'])await cp(path.join(root,'src',file),path.join(root,'dist',file));
-await writeFile(path.join(root,'dist/robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${c.url}/sitemap.xml\n`);
-await writeFile(path.join(root,'dist/sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${pages.map(([name])=>`<url><loc>${c.url}/${name==='index'?'':`${name}.html`}</loc></url>`).join('')}</urlset>`);
-await writeFile(path.join(root,'README-product-section.md'),`<!-- CATPAW-WEBSITE:START -->\n## 产品官网\n\n**${c.tagline}** ${c.description}\n\n[浏览官网](${c.url}/) · [观看产品视频](${c.url}/#film) · [25 页产品介绍](${c.url}/assets/catpaw-product-deck.pdf) · [安全与隐私](${c.url}/trust.html) · [技术设计](${c.url}/technology.html)\n\n${c.pillars.map(p=>`- **${p.name}**：${p.text}。`).join('\n')}\n\n官网源码位于公司站仓库 [Yankj/heydusk-site/apps/mimi](https://github.com/Yankj/heydusk-site/tree/main/apps/mimi)，与 heydusk.com 同仓分目录部署。演示素材保留 v1.1 版本；当前入口、状态与限制以 App 仓库能力清单和 CHANGELOG 为准。\n<!-- CATPAW-WEBSITE:END -->\n`);
-console.log(`Built ${pages.length} pages; video and PDF preserved as provided.`);
+
+const root = path.dirname(fileURLToPath(import.meta.url));
+const read = (p) => readFile(path.join(root, p), 'utf8');
+const c = JSON.parse(await read('content.json'));
+const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+const beta = `mailto:${c.contactEmail}?subject=${encodeURIComponent(c.betaSubject)}`;
+
+const panel = (s) => `<p class="bubble user"><span class="mode">${esc(s.mode)}</span>${esc(s.input)}</p>
+<div class="bubble mimi"><img src="assets/cat-thinking.webp" alt="" width="40" height="40"><p>${esc(s.reply)}</p></div>
+<div class="confirm-cards">${s.cards.map(([t, d]) => `<div class="confirm"><span class="tag">待你确认</span><strong>${esc(t)}</strong><p>${esc(d)}</p><div class="confirm-actions"><button type="button" class="button primary small-btn" data-confirm>确认</button><button type="button" class="button small-btn" data-skip>先不要</button></div></div>`).join('')}</div>`;
+
+const tokens = {
+  BETA: beta,
+  EMAIL: c.contactEmail,
+  PHRASES: c.phrases.map((p) => `<article><h3>${esc(p.say)}</h3><p>${esc(p.text)}</p></article>`).join(''),
+  TABS: c.scenarios.map((s, i) => `<button type="button" role="tab" id="tab-${s.id}" data-scenario="${s.id}" aria-selected="${i === 0}" ${i ? 'tabindex="-1"' : ''}><b>${esc(s.mode)}</b><span>${esc(s.title)}</span></button>`).join(''),
+  PANEL: panel(c.scenarios[0]),
+  TODAY: c.today.map(([t, w, why]) => `<li><time>${esc(t)}</time><div><strong>${esc(w)}</strong><small>${esc(why)}</small></div></li>`).join(''),
+  PROMISES: c.promises.map(([h, p]) => `<article class="card"><h3>${esc(h)}</h3><p>${esc(p)}</p></article>`).join(''),
+  PRIVACY: c.privacy.map(([h, p]) => `<article class="card"><h3>${esc(h)}</h3><p>${esc(p)}</p></article>`).join(''),
+  ROADMAP: c.roadmap.map(([h, p]) => `<li><strong>${esc(h)}</strong><p>${esc(p)}</p></li>`).join(''),
+  FAQ: c.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join(''),
+};
+
+const nav = `<a class="skip" href="#main">跳到正文</a><header class="site-header"><div class="header-inner wrap"><a href="/" class="logo" aria-label="mimi 小咪 首页"><img src="assets/mark.png" width="34" height="34" alt=""><span class="wordmark">mimi</span><span class="zh">小咪</span></a><nav id="main-nav" class="main-nav" aria-label="主导航"><a href="#how">怎么用</a><a href="#today">今天</a><a href="#family">我们家</a><a href="#privacy">隐私</a><a href="#faq">常见问题</a></nav><div class="header-actions"><a href="${beta}" class="button primary">申请内测</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换颜色模式">深色</button><button id="menu-toggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">菜单</button></div></div></header>`;
+const footer = `<footer class="site-footer"><div class="wrap footer-inner"><div><a class="logo" href="/"><img src="assets/mark.png" alt="" width="30" height="30"><span class="wordmark">mimi</span><span class="zh">小咪</span></a><p>${esc(c.tagline)}</p></div><div class="footer-links"><a href="${beta}">${c.contactEmail}</a><a href="#privacy">隐私与孩子</a><a href="${c.company}">${esc(c.companyName)} 出品 ↗</a></div></div><div class="wrap footer-bottom"><span>© 2026 ${esc(c.companyName)}</span><span>页面示例均为虚构内容</span></div></footer>`;
+
+let body = await read('src/index.html');
+for (const [k, v] of Object.entries(tokens)) body = body.replaceAll(`{{${k}}}`, v);
+if (/\{\{\w+\}\}/.test(body)) throw new Error('unreplaced token: ' + body.match(/\{\{\w+\}\}/)[0]);
+
+const title = `${c.name} · ${c.tagline.replace(/。$/, '')}`;
+const jsonld = JSON.stringify({'@context': 'https://schema.org', '@type': 'SoftwareApplication', name: c.name, description: c.description, operatingSystem: 'iOS', applicationCategory: 'LifestyleApplication', url: c.url, publisher: {'@type': 'Organization', name: c.companyName, url: c.company}});
+const html = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>${esc(title)}</title><meta name="description" content="${esc(c.description)}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(c.description)}"><meta property="og:type" content="website"><meta property="og:url" content="${c.url}/"><meta property="og:image" content="${c.url}/assets/family-moment.jpg"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="${c.url}/"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="stylesheet" href="styles.css"><script>try{const t=localStorage.getItem('mimi-theme');document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch{}</script><script type="application/ld+json">${jsonld}</script><script>window.MIMI_SCENARIOS=${JSON.stringify(c.scenarios)}</script><script src="app.js" defer></script></head><body>${nav}<main id="main">${body}</main>${footer}</body></html>`;
+
+await rm(path.join(root, 'dist'), {recursive: true, force: true});
+await mkdir(path.join(root, 'dist'), {recursive: true});
+await cp(path.join(root, 'public'), path.join(root, 'dist'), {recursive: true});
+await writeFile(path.join(root, 'dist/index.html'), html);
+for (const f of ['styles.css', 'app.js']) await cp(path.join(root, 'src', f), path.join(root, 'dist', f));
+await writeFile(path.join(root, 'dist/robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${c.url}/sitemap.xml\n`);
+await writeFile(path.join(root, 'dist/sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${c.url}/</loc></url></urlset>`);
+console.log('Built dist/index.html');
