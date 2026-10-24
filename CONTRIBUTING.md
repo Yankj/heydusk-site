@@ -5,8 +5,8 @@ This repo holds two sites: `apps/company` (heydusk.com) and `apps/mimi` (mimi.he
 ## Checklist
 
 1. Branch from the latest `main`: `feat|fix|docs|chore|refactor/<topic>`. One topic per branch; no direct commits to `main`; no force-push; no `--no-verify`.
-2. Commit in small steps. Author must be your GitHub **noreply** address:
-   `git config user.email "<id>+<username>@users.noreply.github.com"` (and enable *Keep my email addresses private* on GitHub).
+2. Commit in small steps. Author must be the company address:
+   `git config user.name Yankj` / `git config user.email hello@heydusk.com` (also enable *Keep my email addresses private* and *Block command line pushes that expose my email* on GitHub).
 3. Build and check only the site you changed:
    - Company: `cd apps/company && npm install && npm run build && npm test`
    - mimi: `cd apps/mimi && npm run build && npm run check`

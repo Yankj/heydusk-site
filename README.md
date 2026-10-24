@@ -87,7 +87,7 @@ Then add `mimi.heydusk.com` in the mimi Vercel project Domains.
 - Branch from the latest `main`, named `feat|fix|docs|chore|refactor/<topic>`; one topic per branch. Never commit to `main` directly; never force-push.
 - Small commits, one change each, with a message that says what and why.
 - Everything lands through a PR into `main`. Default to **merge commits** (no squash) so history stays traceable. Delete the branch after merge.
-- **Commit author must be the GitHub noreply address** (`<id>+<username>@users.noreply.github.com`). Turn on *Keep my email addresses private* in GitHub, set `git config user.email` locally, and use the same address for web merges.
+- **Commit author must be** `Yankj <hello@heydusk.com>`. Turn on *Keep my email addresses private* and *Block command line pushes that expose my email* in GitHub, set `git config user.email hello@heydusk.com` locally, and use the same for web merges.
 - **Merging to `main` deploys production** (both Vercel projects build from `main`), so it needs the owner's explicit approval. Use the per-branch Vercel preview to review first, and keep preview URLs that contain a personal name private.
 - Keep the company and product sites separate: a change to one app's `apps/<site>/` directory should not touch the other's, unless it is repo-level tooling or docs.
 - Product behaviour and the product's brand kit live in [`Yankj/mimi`](https://github.com/Yankj/mimi); this repo only holds the marketing sites.
