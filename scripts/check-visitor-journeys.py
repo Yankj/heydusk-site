@@ -70,11 +70,11 @@ class VisitorQA:
     def url(self, path: str) -> str:
         return self.base + path
 
-    def instrument(self, page, identity: str) -> None:
+    def instrument(self, page, identity: str, java_script_enabled: bool = True) -> None:
         log = self.logs.setdefault(identity, [])
         page.on("console", lambda message: log.append({"type": "console", "level": message.type, "text": message.text, "url": page.url, "location": message.location}))
         page.on("pageerror", lambda error: log.append({"type": "pageerror", "text": str(error), "url": page.url}))
-        page.on("requestfailed", lambda request: log.append({"type": "requestfailed", "url": request.url, "failure": request.failure}))
+        page.on("requestfailed", lambda request: log.append({"type": "requestfailed", "url": request.url, "failure": request.failure, "resource_type": request.resource_type, "expected": not java_script_enabled and request.resource_type == "script" and request.failure == "csp"}))
         page.on("response", lambda response: log.append({"type": "http-error", "url": response.url, "status": response.status}) if response.status >= 400 else None)
         page.add_init_script("""window.__qaMailtoClicks = [];
           document.addEventListener('click', event => {
@@ -121,7 +121,7 @@ class VisitorQA:
         else:
             context.add_init_script("(() => { const theme = " + json.dumps(theme) + "; try { if (!localStorage.getItem('heydusk-theme')) localStorage.setItem('heydusk-theme', theme); } catch (_) {} })();")
         page = context.new_page()
-        self.instrument(page, identity)
+        self.instrument(page, identity, java_script_enabled)
         return context, page, identity
 
     def case(self, name: str, callback, page=None) -> None:
@@ -146,7 +146,7 @@ class VisitorQA:
                     new_errors.append(entry)
                 elif entry["type"] == "http-error" and local_url and not (expected_404 and entry["status"] == 404):
                     new_errors.append(entry)
-                elif entry["type"] == "requestfailed" and local_url:
+                elif entry["type"] == "requestfailed" and local_url and not entry.get("expected", False):
                     new_errors.append(entry)
             require(not new_errors, "Unexpected browser/network error: " + "; ".join(item.get("text") or item.get("failure") or f"HTTP {item.get('status')} {item.get('url')}" for item in new_errors))
         except InterruptedError:
