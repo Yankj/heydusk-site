@@ -8,6 +8,7 @@ type Theme = "light" | "dark";
 const themeStorageKey = "heydusk-theme";
 
 const themeListeners = new Set<() => void>();
+let inMemoryTheme: Theme | null = null;
 
 const copy = {
   en: {
@@ -52,8 +53,12 @@ export function ThemeToggle({ locale = "en" }: { locale?: Locale }) {
 function getStoredTheme(): Theme | null {
   if (typeof window === "undefined") return null;
 
-  const storedTheme = window.localStorage.getItem(themeStorageKey);
-  return storedTheme === "dark" || storedTheme === "light" ? storedTheme : null;
+  try {
+    const storedTheme = window.localStorage.getItem(themeStorageKey);
+    return storedTheme === "dark" || storedTheme === "light" ? storedTheme : inMemoryTheme;
+  } catch {
+    return inMemoryTheme;
+  }
 }
 
 function getThemeSnapshot(): Theme {
@@ -82,7 +87,8 @@ function subscribeToTheme(listener: () => void) {
 }
 
 function persistTheme(theme: Theme) {
+  inMemoryTheme = theme;
   document.documentElement.dataset.theme = theme;
-  window.localStorage.setItem(themeStorageKey, theme);
+  try { window.localStorage.setItem(themeStorageKey, theme); } catch { /* Theme still works for this page when storage is unavailable. */ }
   themeListeners.forEach((listener) => listener());
 }

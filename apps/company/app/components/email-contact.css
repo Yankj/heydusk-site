@@ -1,0 +1,130 @@
+.email-contact {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--rule);
+  border-radius: 1.25rem;
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+}
+
+.email-contact h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.email-contact-label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.email-contact-address {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.6rem;
+  color: var(--ink);
+  background: var(--paper);
+  font: inherit;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  letter-spacing: -0.025em;
+  cursor: text;
+}
+
+.email-contact .email-contact-manual,
+.email-contact .email-contact-product {
+  margin: 0.65rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.email-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.email-contact-open,
+.email-contact-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 48px;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.email-contact-open {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.email-contact-copy {
+  color: var(--ink);
+  background: transparent;
+}
+
+.email-contact-open:hover,
+.email-contact-copy:hover {
+  opacity: 0.8;
+}
+
+.email-contact-copy:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.email-contact-address:focus-visible,
+.email-contact-open:focus-visible,
+.email-contact-copy:focus-visible,
+.doc-page-links a:focus-visible {
+  outline: 2px solid var(--twilight);
+  outline-offset: 4px;
+}
+
+.email-contact .email-contact-explanation {
+  margin: 1.25rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.email-contact .email-contact-status {
+  min-height: 1.7em;
+  margin: 0.75rem 0 0;
+  color: var(--ink);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.doc-page-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.doc-page-links .section-link {
+  margin-top: 0;
+}
+
+@media (max-width: 480px) {
+  .email-contact-actions > * {
+    width: 100%;
+  }
+}

@@ -3,7 +3,7 @@
     <p class="eyebrow">给家长的育儿助理 · 开发中</p>
     <h1 id="hero-title">先你一步，<br><span class="accent">把事办妥。</span></h1>
     <p class="lead">今天的安排，和慢慢长大的点滴，都值得记下。<br class="br-d">当前开发版从文字开始，核对后确认安排；<br class="br-d">也留下目标、完成记录与观察。</p>
-    <div class="actions"><a class="button primary" href="{{BETA}}">联系了解进展 <span aria-hidden="true">↗</span></a><a class="button" href="#how">看看怎么用 <span aria-hidden="true">→</span></a></div>
+    <div class="actions"><a class="button primary" href="#contact">了解与咨询 <span aria-hidden="true">↗</span></a><a class="button" href="#how">看看怎么用 <span aria-hidden="true">→</span></a></div>
   </div>
   <figure class="hero-art">
     <img class="hero-photo" src="assets/family-moment.jpg" width="1536" height="1024" alt="阳光照进客厅，妈妈和孩子坐在地毯上共读绘本" fetchpriority="high">
@@ -64,9 +64,16 @@
   <div class="wrap split"><div><h2 id="faq-title">你可能还想知道</h2></div><div class="faq">{{FAQ}}</div></div>
 </section>
 
-<section class="closing wrap section" aria-labelledby="closing-title">
+<section id="contact" class="closing wrap section" aria-labelledby="closing-title">
   <img src="assets/cat-done.webp" width="160" height="160" alt="" loading="lazy">
   <h2 id="closing-title">日子很满，<br>也可以过得轻一点。</h2>
   <p class="lead">从一件小事开始：「让小咪记一下」。</p>
-  <div class="actions"><a class="button primary" href="{{BETA}}">联系了解进展 · {{EMAIL}}</a></div>
+  <p class="contact-scope">当前提供产品介绍与邮件咨询，不承诺开放体验或内测。</p>
+  <div class="contact-tools">
+    <label for="contact-address">邮箱地址</label>
+    <input id="contact-address" type="text" value="{{EMAIL}}" readonly spellcheck="false">
+    <div class="actions"><a id="email-link" class="button primary" href="{{BETA}}">打开邮件客户端</a><button id="copy-email" class="button" type="button" hidden>复制邮箱地址</button></div>
+    <p>请在自己的邮箱中撰写并发送。没有邮件客户端时，可手动复制上方地址，使用网页邮箱。本站不会代为发送邮件。</p>
+    <p id="email-feedback" role="status" aria-live="polite"></p>
+  </div>
 </section>

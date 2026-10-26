@@ -5,17 +5,17 @@ One repo, two sites:
 | Site | Path | Domain | Stack |
 |---|---|---|---|
 | Company | `apps/company` | https://heydusk.com | Vinext / Vite (React) |
-| Product · mimi 小咪 | `apps/mimi` | https://mimi.heydusk.com | Static HTML (Node build) |
+| Product · Mimi 小咪 | `apps/mimi` | https://mimi.heydusk.com | Static HTML (Node build) |
 
 Company and product brands stay visually distinct. Shared tooling is only the monorepo layout and Vercel pointing at different root directories.
 
 ## Positioning (keep them different)
 
-[Brand, directions and product directory](docs/brand-product-system.md) is the maintenance entry for the parent brand. HeyDusk builds independent AI products across family & life, learning & growth, and creation & expression: mimi, Momo, and FrameForge / 小片场. Product capabilities and acceptance remain authoritative in each product repository. The public bilingual catalog is a dated summary in `apps/company/app/product-catalog.ts`.
+[Brand, directions and product directory](docs/brand-product-system.md) is the maintenance entry for the parent brand. HeyDusk is an independent AI product studio building focused products across family & life, learning & growth, and creation & expression: Mimi, Momo, and FrameForge / 小片场. Product capabilities and acceptance remain authoritative in each product repository. The public bilingual catalog is a dated summary in `apps/company/app/product-catalog.ts`.
 
 | | Company · heydusk.com | Product · mimi.heydusk.com |
 |---|---|---|
-| Whose site | 理想三旬 / HeyDusk **company** | **mimi / 小咪** product |
+| Whose site | 理想三旬 / HeyDusk **studio / parent brand** | **Mimi / 小咪** product |
 | Tone | Editorial / company catalog | Full product marketing |
 | Logo | HeyDusk mark | Orange-cream cat series |
 | Primary CTA | Contact / products list | Product enquiries (existing email) |
@@ -106,3 +106,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the short checklist.
 - Company `/products` → https://mimi.heydusk.com
 - Product footer → https://heydusk.com
 - Contact: `hello@heydusk.com`
+
+## Visitor journeys
+
+The company site uses standard document links for dependable navigation, including without JavaScript. `/products/mimi`, `/products/momo`, `/products/frameforge` and their `/zh` equivalents are product introductions, followed by the existing email contact. Public presentation is **HeyDusk / 理想三旬, independent AI product studio**; the studio is not registered as a company. Display names use **HeyDusk, Mimi, Momo, FrameForge**; engineering identifiers and domains keep their existing spelling.
+
+Run the production browser journey checks with `python3 scripts/check-visitor-journeys.py --base-url http://127.0.0.1:4180 --output-dir /tmp/heydusk-visitor-checks` after starting the local production server. This requires an existing Python Playwright / Chromium setup; it does not deploy or install dependencies. Website navigation validation does not establish product availability, mailbox delivery or legal/commercial readiness.

@@ -82,3 +82,11 @@ h3{font-size:20px;line-height:1.45;font-weight:600}p{color:var(--muted)}
  .confirm-cards{margin-left:0}.split.reverse>:first-child{order:2}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Contact remains usable without a configured mail application. */
+.contact-tools { max-width: 38rem; margin: 1.5rem auto 0; }
+.contact-tools label { display: block; font-size: .85rem; margin-bottom: .5rem; }
+.contact-tools input { width: min(100%, 24rem); min-height: 48px; border: 1px solid currentColor; border-radius: .8rem; padding: .65rem 1rem; color: inherit; background: transparent; font: inherit; text-align: center; }
+.contact-tools p, .contact-scope { font-size: .85rem; line-height: 1.65; }
+.contact-tools [hidden] { display: none !important; }
+#email-feedback { min-height: 1.75em; }

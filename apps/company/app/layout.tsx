@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = `${protocol}://${host}`;
   const title = "HeyDusk · 理想三旬 — independent AI products";
   const description =
-    "HeyDusk builds independent AI products for family life, learning and creative expression: mimi, Momo, and FrameForge / 小片场.";
+    "HeyDusk builds independent AI products for family life, learning and creative expression: Mimi, Momo, and FrameForge / 小片场.";
 
   return {
     metadataBase: new URL(origin),
@@ -48,13 +48,15 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const language = requestHeaders.get("x-heydusk-locale") === "zh" ? "zh-CN" : "en";
   return (
-    <html lang="en">
+    <html lang={language}>
       <head>
         <link
           rel="icon"

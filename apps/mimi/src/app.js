@@ -45,3 +45,23 @@ panel.addEventListener('click', (e) => {
   if (e.target.closest('[data-confirm]')) { card.classList.add('done'); card.querySelector('.tag').textContent = (scenarios.find((s) => s.id === document.querySelector('[data-scenario][aria-selected="true"]')?.dataset.scenario)?.confirmation || '已确认 · 本页示意'); card.querySelector('.confirm-actions').remove(); }
   if (e.target.closest('[data-skip]')) { card.classList.add('skipped'); card.querySelector('.tag').textContent = '没有改动'; card.querySelector('.confirm-actions').remove(); }
 });
+
+// Visible email fallback: no request is sent by this website.
+const emailAddress = $('#contact-address'), copyEmail = $('#copy-email'), emailFeedback = $('#email-feedback');
+if (emailAddress && copyEmail && emailFeedback) {
+  copyEmail.hidden = false;
+  emailAddress.addEventListener('focus', () => emailAddress.select());
+  copyEmail.addEventListener('click', async () => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(emailAddress.value);
+      emailFeedback.textContent = '邮箱地址已复制，可粘贴到你的邮箱中。';
+    } catch {
+      emailAddress.focus(); emailAddress.select();
+      emailFeedback.textContent = '未能自动复制，请选中上方邮箱地址，手动复制。';
+    }
+  });
+  $('#email-link')?.addEventListener('click', () => {
+    emailFeedback.textContent = '正在请求打开你的邮件客户端；若没有反应，请复制邮箱地址后使用网页邮箱。本站未发送邮件。';
+  });
+}

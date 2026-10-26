@@ -1,6 +1,6 @@
-# mimi 小咪 · 产品官网
+# Mimi 小咪 · 产品官网
 
-Product site for **mimi / 小咪** → https://mimi.heydusk.com
+Product site for **Mimi / 小咪** → https://mimi.heydusk.com
 
 给家长的育儿助理，**今日安排 + 长期成长**是双核心。当前主流程为本机中文文字输入、补充信息、确认安排、今天时间线与成长目标/完成记录/观察；图片、语音育儿提取、长期记忆、多设备/家庭共享与周期能力仍待推进。当前源码与同版 iOS/真实家庭验收分开描述。
 
@@ -12,7 +12,7 @@ Product site for **mimi / 小咪** → https://mimi.heydusk.com
 
 - `content.json` 放短文案、虚构演示和当前/待验证/规划摘要；`src/index.html` 放页面结构和栏目文案。
 - `src/app.js` 的确认只改变网页演示状态，不保存安排或触发 App/模型。
-- 联系仍使用 `hello@heydusk.com` 的 mailto 入口，不宣称已获内测名额、App Store 或 TestFlight 分发。
+- 当前仅提供介绍与邮件咨询，不承诺直接体验或开放内测。联系仍使用 `hello@heydusk.com` 的 mailto 入口，不宣称已获内测名额、App Store 或 TestFlight 分发。
 - 只描述已有本机记录改删能力，不承诺账号删除、导出或完整记忆控制已完成。
 - 本站原有中文单页；本轮不新增英文产品站。公司站保留中英版本。
 
