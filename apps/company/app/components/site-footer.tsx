@@ -6,7 +6,7 @@ const footerCopy = {
   en: {
     home: "HeyDusk home",
     navigation: "Footer navigation",
-    statement: "Company site of 理想三旬 (HeyDusk). Product pages live on their own domains.",
+    statement: "HeyDusk / 理想三旬 · independent AI products for family life, learning, and creative expression.",
     company: "Company",
     about: "About",
     contact: "Contact",
@@ -16,12 +16,12 @@ const footerCopy = {
     legal: "Legal",
     privacy: "Privacy Policy (draft)",
     terms: "Terms of Service (draft)",
-    note: "company registration in progress",
+    note: "Independent products",
   },
   zh: {
     home: "HeyDusk 首页",
     navigation: "页脚导航",
-    statement: "理想三旬（HeyDusk）公司官网。各产品有独立产品站。",
+    statement: "理想三旬（HeyDusk）独立 AI 产品公司。家庭与生活、学习与成长、创作与表达。",
     company: "公司",
     about: "关于我们",
     contact: "联系我们",
@@ -31,7 +31,7 @@ const footerCopy = {
     legal: "法律",
     privacy: "隐私政策（草案）",
     terms: "服务条款（草案）",
-    note: "公司注册办理中",
+    note: "独立产品，各自推进",
   },
 };
 

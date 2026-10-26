@@ -42,6 +42,6 @@ tabs.forEach((tab, i) => {
 });
 panel.addEventListener('click', (e) => {
   const card = e.target.closest('.confirm'); if (!card) return;
-  if (e.target.closest('[data-confirm]')) { card.classList.add('done'); card.querySelector('.tag').textContent = '已确认 · 已放进今天'; card.querySelector('.confirm-actions').remove(); }
+  if (e.target.closest('[data-confirm]')) { card.classList.add('done'); card.querySelector('.tag').textContent = (scenarios.find((s) => s.id === document.querySelector('[data-scenario][aria-selected="true"]')?.dataset.scenario)?.confirmation || '已确认 · 本页示意'); card.querySelector('.confirm-actions').remove(); }
   if (e.target.closest('[data-skip]')) { card.classList.add('skipped'); card.querySelector('.tag').textContent = '没有改动'; card.querySelector('.confirm-actions').remove(); }
 });

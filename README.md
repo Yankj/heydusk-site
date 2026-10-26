@@ -11,13 +11,15 @@ Company and product brands stay visually distinct. Shared tooling is only the mo
 
 ## Positioning (keep them different)
 
+[Brand, directions and product directory](docs/brand-product-system.md) is the maintenance entry for the parent brand. HeyDusk builds independent AI products across family & life, learning & growth, and creation & expression: mimi, Momo, and FrameForge / 小片场. Product capabilities and acceptance remain authoritative in each product repository. The public bilingual catalog is a dated summary in `apps/company/app/product-catalog.ts`.
+
 | | Company · heydusk.com | Product · mimi.heydusk.com |
 |---|---|---|
 | Whose site | 理想三旬 / HeyDusk **company** | **mimi / 小咪** product |
 | Tone | Editorial / company catalog | Full product marketing |
 | Logo | HeyDusk mark | Orange-cream cat series |
-| Primary CTA | Contact / products list | Apply for beta (email) |
-| Cross-link | Card → mimi.heydusk.com | Badge → heydusk.com 「理想三旬出品」 |
+| Primary CTA | Contact / products list | Product enquiries (existing email) |
+| Cross-link | Independent product entries and documented stages | Badge → heydusk.com 「理想三旬出品」 |
 
 A visitor should never wonder which site they are on.
 

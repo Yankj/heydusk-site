@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { localeAlternates } from "../i18n";
 import { HomePageView } from "../views/home-page";
 
-const title = "理想三旬 HeyDusk — 安静可靠的家庭软件";
+const title = "理想三旬 HeyDusk — 独立 AI 产品公司";
 const description =
-  "理想三旬（HeyDusk）用 AI 为家庭打造安静、可信赖的软件。第一款产品：小咪。";
+  "理想三旬（HeyDusk）围绕家庭与生活、学习与成长、创作与表达，打造 mimi、Momo、FrameForge / 小片场等独立 AI 产品。";
 
 export const metadata: Metadata = {
   title: { absolute: title },

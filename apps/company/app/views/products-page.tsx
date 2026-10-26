@@ -2,33 +2,24 @@ import Image from "next/image";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
 import { localeLanguageTag, type Locale } from "../i18n";
+import { catalogReviewedOn, products } from "../product-catalog";
 
 const content = {
   en: {
     eyebrow: "Products",
     title: "Products with a clear job to do.",
-    intro: "We ship few products and take each one seriously. Here is what HeyDusk is building today.",
-    catKicker: "Product site · mimi.heydusk.com",
-    catTitle: "mimi / 小咪",
-    catCopy: "Family-affairs brain for iOS. Short intro here; full product story, privacy, and beta CTA live on the product site.",
-    status: "Closed beta · opens in a new tab",
-    catLink: "Go to mimi product site",
-    nextKicker: "In exploration",
-    nextTitle: "More to come",
-    nextCopy: "Future products will be announced here only when they are ready to be useful.",
+    intro: "Family & life, learning & growth, creation & expression: three directions, with independent products and workflows. Directions can overlap; each product develops at its own pace.",
+    reviewed: "Product documentation checked",
+    source: "Summary sources and boundaries",
+    note: "Stages below describe documented development, not public availability or completed real-world acceptance. Live availability of linked experiences was not verified in this review. Contact us for access questions.",
   },
   zh: {
     eyebrow: "产品",
     title: "为一个清晰的任务而生。",
-    intro: "我们做的产品不多，但每一款都认真对待。以下是理想三旬目前在做的产品。",
-    catKicker: "产品站 · mimi.heydusk.com",
-    catTitle: "mimi / 小咪",
-    catCopy: "面向家庭事务的 iOS 助理。这里只作目录介绍；完整产品故事、隐私说明和内测申请在产品站。",
-    status: "内测中 · 新标签打开产品站",
-    catLink: "前往小咪产品站",
-    nextKicker: "探索中",
-    nextTitle: "更多产品",
-    nextCopy: "新产品只会在真正有用时，才在这里发布。",
+    intro: "家庭与生活、学习与成长、创作与表达：三个方向，各有独立产品与流程。方向可以交叉，每款产品按自己的节奏推进。",
+    reviewed: "产品文档核对日期",
+    source: "摘要来源与边界",
+    note: "以下阶段反映文档中的开发状态，不等于公开可用或已完成真实使用验收。本轮未核验链接产品的线上可用性，使用与体验事宜请联系我们。",
   },
 };
 
@@ -41,28 +32,26 @@ export function ProductsPageView({ locale }: { locale: Locale }) {
         <p className="eyebrow">{copy.eyebrow}</p>
         <h1>{copy.title}</h1>
         <p>{copy.intro}</p>
+        <p className="catalog-note">{copy.reviewed}: <time dateTime={catalogReviewedOn}>{catalogReviewedOn}</time></p>
       </section>
-      <section className="page-section product-lines">
-        <article className="product-line">
-          <span className="line-number"><Image src="/mimi/mimi-icon.png" alt="" width={72} height={72} unoptimized style={{ borderRadius: 16 }} /></span>
-          <div>
-            <p className="line-kicker">{copy.catKicker}</p>
-            <h2>{copy.catTitle}</h2>
-          </div>
-          <div className="line-copy">
-            <p>{copy.catCopy}</p>
-            <ul><li>{copy.status}</li></ul>
-            <a className="section-link" href="https://mimi.heydusk.com" target="_blank" rel="noopener">{copy.catLink} <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-        <article className="product-line">
-          <span className="line-number">02</span>
-          <div>
-            <p className="line-kicker">{copy.nextKicker}</p>
-            <h2>{copy.nextTitle}</h2>
-          </div>
-          <div className="line-copy"><p>{copy.nextCopy}</p></div>
-        </article>
+      <section className="page-section product-lines" aria-label={copy.eyebrow}>
+        {products.map((product, index) => {
+          const item = product[locale];
+          return (
+            <article className="product-line" key={product.id}>
+              <span className="line-number">{product.id === "mimi" ? <Image src="/mimi/mimi-icon.png" alt="" width={72} height={72} unoptimized /> : `0${index + 1}`}</span>
+              <div><p className="line-kicker">{item.direction}</p><h2>{product.name}</h2></div>
+              <div className="line-copy">
+                <p>{item.description}</p>
+                <ul><li>{item.stage}</li></ul>
+                <p className="catalog-boundary">{item.boundary}</p>
+                <p className="catalog-note">{product.sourceHref ? <a href={product.sourceHref}>{item.source} ↗</a> : item.source}</p>
+                <a className="section-link" href={product.href}>{item.action} <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+          );
+        })}
+        <p className="catalog-note">{copy.note}</p>
       </section>
       <SiteFooter locale={locale} />
     </main>
