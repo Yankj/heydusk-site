@@ -7,7 +7,7 @@ This app is one half of the `Yankj/heydusk-site` monorepo. The product marketing
 ## Site structure (en + /zh)
 
 - `/` — company home: mission, principles, featured product
-- `/products` — product list (mimi card links out to https://mimi.heydusk.com)
+- `/products` — independent product catalog: mimi, Momo and FrameForge / 小片场; dated summaries and existing entry points
 - `/about` — company
 - `/contact` — `hello@heydusk.com`
 - `/privacy`, `/terms` — DRAFT legal placeholders, not in effect

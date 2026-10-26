@@ -2,42 +2,29 @@
 
 Product site for **mimi / 小咪** → https://mimi.heydusk.com
 
-小咪是给爸爸妈妈、尤其是妈妈的家庭事务助理：拍一张、说一句、打几个字，整理成待你确认的卡片；「今天」看要办的事，「我们家」记着家里的事；不确认不改动，提醒有分寸。成长陪伴是之后的第二层。口号：**先你一步，把事办妥。**
+给家长的育儿助理，**今日安排 + 长期成长**是双核心。当前主流程为本机中文文字输入、补充信息、确认安排、今天时间线与成长目标/完成记录/观察；图片、语音育儿提取、长期记忆、多设备/家庭共享与周期能力仍待推进。当前源码与同版 iOS/真实家庭验收分开描述。
 
-Lives in `Yankj/heydusk-site` as `apps/mimi`; the company site is sibling `apps/company` → https://heydusk.com. App code is in [`Yankj/mimi`](https://github.com/Yankj/mimi).
+公司站为 sibling `apps/company` → https://heydusk.com，品牌层级与目录见[统一入口](../../docs/brand-product-system.md)。mimi 保留自己的橙奶油色小猫视觉；本仓只维护营销摘要，[产品合同与证据](https://github.com/Yankj/mimi)在产品仓。
 
-## Develop
+## 文案事实源
+
+2026-10-26 核对 mimi 主干 `db41ad3`，已含 #126 / #128 / #130。以 `parenting-core.md` 的双核心与 `interaction-natural-input-v0.5.md` 的最新自然输入为准；`ios-parenting-usable-gaps-2026-10-25.md` 保留当时缺口和通知验证边界，不能用旧日期状态覆盖新主路径。完整来源见统一入口，不在这里复制技术清单。
+
+- `content.json` 放短文案、虚构演示和当前/待验证/规划摘要；`src/index.html` 放页面结构和栏目文案。
+- `src/app.js` 的确认只改变网页演示状态，不保存安排或触发 App/模型。
+- 联系仍使用 `hello@heydusk.com` 的 mailto 入口，不宣称已获内测名额、App Store 或 TestFlight 分发。
+- 只描述已有本机记录改删能力，不承诺账号删除、导出或完整记忆控制已完成。
+- 本站原有中文单页；本轮不新增英文产品站。公司站保留中英版本。
+
+## 开发与检查
 
 ```sh
 cd apps/mimi
-npm run dev      # build + serve http://localhost:4173 (PORT=… to override)
 npm run build    # → dist/
 npm run check    # links, anchors, retired-content guard
+npm run dev      # build + serve http://localhost:4173 (PORT=… to override)
 ```
 
-No dependencies; Node ≥ 20.
+无依赖，Node ≥ 20。样例均为虚构、标明流程示意，颜色偏好仅保存在浏览器本地；不加营销追踪或表单。品牌快照位于 `brand/`，产品仓品牌目录仍为权威来源。保留旧 URL 重定向与既有联系入口。
 
-## Layout
-
-| Path | What |
-|---|---|
-| `content.json` | All copy: tagline, phrases, demo scenarios, 今天/我们家 examples, promises, privacy, roadmap, FAQ, contact |
-| `src/index.html` | Single-page template with `{{TOKENS}}` filled from `content.json` |
-| `src/styles.css`, `src/app.js` | Styles (light/dark) and the client-only confirm-card demo, theme, menu |
-| `build.mjs` | Renders `dist/index.html`, copies `public/`, writes robots + sitemap |
-| `verify.mjs` | Post-build checks |
-| `public/` | Favicon and the images the page uses |
-| `brand/` | Snapshot of the mimi brand kit (canonical: `Yankj/mimi/docs/brand`) |
-
-Edit copy in `content.json`; edit structure in `src/index.html`.
-
-## Rules for this site
-
-- Speak to parents, especially moms, about family affairs. No internal tech, deploy history, commit SHAs, model or agent comparisons.
-- No product film or deck on the site. `verify.mjs` fails the build check if `.mp4`/`.pdf`, "deck" or "catpaw" reappear.
-- Examples are fictional and labelled 示例; the demo runs in the browser only and stores nothing.
-- Beta access is by email (`hello@heydusk.com`); no forms, no tracking.
-
-## Vercel
-
-Root Directory `apps/mimi`, Build `npm run build`, Output `dist`, Production branch `main`. Old URLs (`trust.html`, `technology.html`, `updates.html`, the old deck and film) redirect to `/` via `vercel.json`.
+Vercel：Root Directory `apps/mimi`，Build `npm run build`，Output `dist`，Production branch `main`。本轮仅本地审阅，不触发部署。

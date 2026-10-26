@@ -7,61 +7,61 @@ import { localeLanguageTag, localizedPath, type Locale } from "../i18n";
 const content = {
   en: {
     eyebrow: "理想三旬 · HeyDusk",
-    title: ["Calm software", "for the things families carry."],
+    title: ["Calm software", "for life, learning, and creation."],
     summary:
-      "HeyDusk (理想三旬) is the company behind our products — not the app itself. We build calm, trustworthy AI software for family life; the parent stays in control.",
+      "HeyDusk (理想三旬) is a small, independent AI product company. We build focused products for family life, learning, and creative expression.",
     primaryAction: "See our products",
     secondaryAction: "About the company",
     artCaption: "Dusk Field / 01",
     disciplinesLabel: "What we focus on",
-    disciplines: ["Family life", "Applied AI", "Privacy by design"],
-    missionIndex: "01 / Mission",
-    missionTitle: "Give families back the mental load, one small task at a time.",
+    disciplines: ["Family & life", "Learning & growth", "Creation & expression"],
+    missionIndex: "01 / Directions",
+    missionTitle: "Make room for everyday life, learning, and expression.",
     missionIntro:
-      "Parents keep hundreds of details in their heads: school notices, appointments, what each child needs this week. We build tools that hold those details reliably, so people can spend their attention on each other.",
-    principlesLabel: "Principles",
+      "Three concrete directions guide our work. They can overlap; each product keeps its own audience, workflow, and development stage.",
+    principlesLabel: "Our directions",
     principles: [
-      { index: "01", title: "Confirm before acting", description: "Our products propose; people decide. Nothing important changes without an explicit confirmation.", meta: "Trust" },
-      { index: "02", title: "Restraint over noise", description: "Fewer, better-timed reminders. Quiet hours are respected by default.", meta: "Attention" },
-      { index: "03", title: "Your data stays yours", description: "Family information can be viewed, corrected, and deleted at any time. Children’s data gets the highest level of care.", meta: "Privacy" },
+      { index: "01", title: "Family & life", description: "mimi / 小咪 supports parents with today’s arrangements and long-term growth.", meta: "mimi" },
+      { index: "02", title: "Learning & growth", description: "Momo explores parent-guided English learning through a persistent classroom canvas.", meta: "Momo" },
+      { index: "03", title: "Creation & expression", description: "FrameForge / 小片场 helps creators shape video projects; children’s science is its current content focus.", meta: "FrameForge" },
     ],
     productIndex: "02 / Products",
-    productTitle: "First product: mimi / 小咪.",
+    productTitle: "Independent products. Clear purpose.",
     productCopy:
-      "A family-affairs assistant on iOS. The product site is separate — this page is the company catalog only.",
-    productLink: "Open the mimi product site",
-    status: "Closed beta · iOS · mimi.heydusk.com",
-    contactIndex: "Partnerships, press, and beta access",
+      "mimi, Momo, and FrameForge / 小片场 develop as separate products. Explore what each does, its current stage, and its existing entry point.",
+    productLink: "Explore the product catalog",
+    status: "Different stages · documented in the catalog",
+    contactIndex: "Product questions, partnerships, and press",
     contactTitle: "We’d like to hear from you.",
     contactLink: "Contact us",
   },
   zh: {
     eyebrow: "理想三旬 · HeyDusk",
-    title: ["安静可靠的软件，", "替家庭记住要紧的事。"],
+    title: ["安静可靠的软件，", "照顾生活、学习与创作。"],
     summary:
-      "理想三旬（HeyDusk）是产品公司，不是 App 本身。我们为家庭生活做安静、可信赖的 AI 软件；决定权始终在家长手里。",
+      "理想三旬（HeyDusk）是一家小而独立的 AI 产品公司。我们围绕家庭生活、学习成长和创作表达，做有清晰用途的独立产品。",
     primaryAction: "查看产品",
     secondaryAction: "了解公司",
     artCaption: "暮色原野 / 01",
     disciplinesLabel: "我们关注",
-    disciplines: ["家庭生活", "应用型 AI", "隐私优先"],
-    missionIndex: "01 / 使命",
-    missionTitle: "把家长脑子里的琐事，一件件稳稳接住。",
+    disciplines: ["家庭与生活", "学习与成长", "创作与表达"],
+    missionIndex: "01 / 方向",
+    missionTitle: "让日常更从容，让学习与表达更有着落。",
     missionIntro:
-      "学校通知、看病预约、孩子这周要带的东西……家长每天要记住成百上千个细节。我们做的工具，就是可靠地记住这些，让家人把注意力留给彼此。",
-    principlesLabel: "我们的原则",
+      "三个具体方向组织我们的工作。方向可以交叉；每款产品保留自己的使用者、流程与发展阶段。",
+    principlesLabel: "我们的方向",
     principles: [
-      { index: "01", title: "先确认，再行动", description: "产品负责提议，人来做决定。任何重要变更，都要经过你的明确确认。", meta: "可信" },
-      { index: "02", title: "克制，而不打扰", description: "提醒更少、时机更准。默认尊重夜间免打扰时段。", meta: "专注" },
-      { index: "03", title: "数据属于你", description: "家庭信息随时可查看、修改和删除。孩子的数据，我们以最高标准对待。", meta: "隐私" },
+      { index: "01", title: "家庭与生活", description: "mimi / 小咪围绕家长的今日安排与孩子的长期成长展开。", meta: "mimi" },
+      { index: "02", title: "学习与成长", description: "Momo 以持久课堂画布，探索由家长陪伴的英语学习。", meta: "Momo" },
+      { index: "03", title: "创作与表达", description: "FrameForge / 小片场服务视频创作者，当前内容重点是儿童科普。", meta: "FrameForge" },
     ],
     productIndex: "02 / 产品",
-    productTitle: "第一款产品：小咪 mimi。",
+    productTitle: "独立的产品，清楚的用途。",
     productCopy:
-      "面向家庭事务的 iOS 助理。详细介绍在产品站；本站只放公司与产品目录。",
-    productLink: "打开小咪产品站",
-    status: "内测中 · iOS · mimi.heydusk.com",
-    contactIndex: "合作、媒体与内测申请",
+      "mimi、Momo、FrameForge / 小片场各自独立推进。目录列明每款产品的用途、实际阶段与已有入口。",
+    productLink: "查看完整产品目录",
+    status: "各自推进 · 阶段详见产品目录",
+    contactIndex: "产品咨询、合作与媒体",
     contactTitle: "期待听到你的声音。",
     contactLink: "联系我们",
   },
@@ -118,7 +118,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
             <h2 id="product-title">{copy.productTitle}</h2>
             <p>{copy.productCopy}</p>
             <p className="status-pill">{copy.status}</p>
-            <a className="section-link section-link-light" href="https://mimi.heydusk.com">{copy.productLink} <span aria-hidden="true">↗</span></a>
+            <Link className="section-link section-link-light" href={l("/products")}>{copy.productLink} <span aria-hidden="true">→</span></Link>
           </div>
           <div className="feature-product-art">
             <Image src="/mimi/mimi-app-icon.png" alt="小咪 mimi" width={280} height={280} unoptimized />

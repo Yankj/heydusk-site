@@ -1941,3 +1941,9 @@ main[lang="zh-CN"] .footer-lead p {
 @media (max-width: 820px) {
 }
 .feature-product-art img { width: clamp(180px, 22vw, 300px); }
+
+/* Catalog stage and source summaries share the existing editorial layout. */
+.line-copy > .catalog-boundary { margin-top: 1.25rem; font-size: 0.85rem; }
+.catalog-note { color: var(--muted); font-size: 0.85rem; line-height: 1.65; }
+.catalog-note a { text-decoration: underline; text-underline-offset: 0.2em; }
+.dark-intro .status-pill { display: table; }

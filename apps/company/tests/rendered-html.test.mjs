@@ -95,3 +95,24 @@ for (const [pathname, title, visibleCopy] of [
     assert.match(html, /href="\/(?:zh\/)?(?:products|projects|brand|about)/);
   });
 }
+
+for (const path of ["/products", "/zh/products"]) {
+  test(`${path} keeps product stages, public entries and review date together`, async () => {
+    const html = await (await render(path)).text();
+    for (const name of ["mimi / 小咪", "Momo", "FrameForge / 小片场", "2026-10-26"]) assert.ok(html.includes(name));
+    assert.match(html, /href="https:\/\/word-island\.kunjie-yan\.chatgpt\.site\//);
+    assert.match(html, /href="mailto:hello@heydusk\.com\?subject=FrameForge/);
+    assert.doesNotMatch(html, /github\.com\/Yankj\/(?:momo-word-island|agent-frameforge)/);
+    assert.doesNotMatch(html, /Closed beta|内测中/);
+  });
+}
+
+for (const path of ["/", "/zh", "/about", "/zh/about"]) {
+  test(`${path} presents a broader parent brand without registration claims`, async () => {
+    const html = await (await render(path)).text();
+    assert.match(html, /Momo/);
+    assert.match(html, /FrameForge/);
+    assert.doesNotMatch(html, /company registration in progress|公司注册办理中|currently being registered|正在中国办理注册/);
+    assert.doesNotMatch(html, /product company for families|安静可靠的家庭软件/);
+  });
+}

@@ -1,9 +1,9 @@
 <section class="hero wrap" aria-labelledby="hero-title">
   <div class="hero-copy">
-    <p class="eyebrow">给爸爸妈妈的家庭事务助理</p>
+    <p class="eyebrow">给家长的育儿助理 · 开发中</p>
     <h1 id="hero-title">先你一步，<br><span class="accent">把事办妥。</span></h1>
-    <p class="lead">孩子的通知、临时改的课、家里零零碎碎的事，<br class="br-d">说一句「让小咪记一下」就好。<br class="br-d">它整理成卡片，等你点头；你没确认的，什么都不改。</p>
-    <div class="actions"><a class="button primary" href="{{BETA}}">申请内测 <span aria-hidden="true">↗</span></a><a class="button" href="#how">看看怎么用 <span aria-hidden="true">→</span></a></div>
+    <p class="lead">今天的安排，和慢慢长大的点滴，都值得记下。<br class="br-d">当前开发版从文字开始，核对后确认安排；<br class="br-d">也留下目标、完成记录与观察。</p>
+    <div class="actions"><a class="button primary" href="{{BETA}}">联系了解进展 <span aria-hidden="true">↗</span></a><a class="button" href="#how">看看怎么用 <span aria-hidden="true">→</span></a></div>
   </div>
   <figure class="hero-art">
     <img class="hero-photo" src="assets/family-moment.jpg" width="1536" height="1024" alt="阳光照进客厅，妈妈和孩子坐在地毯上共读绘本" fetchpriority="high">
@@ -16,27 +16,31 @@
 
 <section id="how" class="section tinted" aria-labelledby="how-title">
   <div class="wrap">
-    <div class="section-title"><p class="eyebrow">拍一张 · 说一句 · 打几个字</p><h2 id="how-title">不用整理好再开口。<br>小咪整理成卡片，等你确认。</h2></div>
+    <div class="section-title"><p class="eyebrow">当前从文字开始</p><h2 id="how-title">先交代一件事，<br>再一起核对清楚。</h2></div>
     <div class="demo">
       <div class="tabs" role="tablist" aria-label="选择示例">{{TABS}}</div>
       <div class="demo-panel" id="demo-panel" role="tabpanel" tabindex="0" aria-live="polite">{{PANEL}}</div>
     </div>
-    <p class="small muted demo-note">示例为虚构内容，只在你的浏览器里运行，不保存任何信息。</p>
+    <p class="small muted demo-note">以下是虚构的流程示意，不是 App 实况；仅在浏览器演示，不保存记录、不调用 AI。图片与语音育儿提取尚未开放。</p>
   </div>
 </section>
 
 <section id="today" class="section wrap split" aria-labelledby="today-title">
-  <div><p class="eyebrow">今天</p><h2 id="today-title">今天要办什么，<br>打开就知道。</h2><p class="lead">确认过的安排汇到「今天」，按时间排好，还写着为什么在这里。不用再翻班级群和聊天记录。</p></div>
+  <div><p class="eyebrow">今天</p><h2 id="today-title">今天要办什么，<br>打开就知道。</h2><p class="lead">确认过的安排汇到「今天」，可查看时间、来源和状态；完成后，也能记下一句话，与成长目标关联。</p></div>
   <div class="card today-card" aria-label="今天示例"><div class="card-head"><strong>今天 · 周五</strong><span class="tag">示例</span></div><ol>{{TODAY}}</ol></div>
 </section>
 
-<section id="family" class="section tinted" aria-labelledby="family-title">
+<section id="growth" class="section tinted" aria-labelledby="growth-title">
   <div class="wrap split reverse">
-    <div class="card family-card" aria-label="我们家示例"><div class="card-head"><strong>我们家</strong><span class="tag">示例</span></div>
-      <dl><div><dt>朵朵 · 6 岁</dt><dd>对芒果过敏<small>来源：你 10 月 12 日说的</small></dd></div><div><dt>放学</dt><dd>周二、周四外婆接<small>来源：你确认的安排</small></dd></div><div><dt>兴趣班</dt><dd>游泳 · 周四 17:00<small>来源：你确认的改动</small></dd></div></dl>
-      <div class="memory-actions" aria-hidden="true"><span>更正</span><span>暂停</span><span>删除</span></div></div>
-    <div><p class="eyebrow">我们家</p><h2 id="family-title">家里的事，<br>它都记着。</h2><p class="lead">孩子的习惯、过敏、接送、兴趣班……说过一次，下次就不用从头讲。每条记忆都写着来源，看得见、改得了、也能忘记。</p></div>
+    <div class="card family-card" aria-label="成长示例"><div class="card-head"><strong>成长 · 喜欢运动</strong><span class="tag">虚构示例</span></div>
+      <dl><div><dt>家长定下的目标</dt><dd>慢慢喜欢运动<small>由家长录入，不自动判断达标</small></dd></div><div><dt>关联完成</dt><dd>这周去了一次游泳<small>来源：家长确认的完成记录</small></dd></div><div><dt>一次观察</dt><dd>愿意自己收好泳镜<small>保留原话与时间，可回看</small></dd></div></dl>
+    </div>
+    <div><p class="eyebrow">成长</p><h2 id="growth-title">今天有安排，<br>成长有记录。</h2><p class="lead">把你定下的目标、相关安排的完成记录和观察放在一起。慢慢看见小变化，回到当时的原话；当前是本机记录，不是 AI 趋势判断。</p></div>
   </div>
+</section>
+
+<section id="family" class="section wrap" aria-labelledby="family-title">
+  <div class="section-title"><p class="eyebrow">我们家</p><h2 id="family-title">家长管理，<br>随时核对。</h2><p class="lead">「我们家」管理孩子资料与设置，保留辅助聊天的高级与历史入口。长期记忆、家庭共享和多设备同步仍待推进，不把手动账本说成自动记住一切。</p></div>
 </section>
 
 <section id="promise" class="section wrap" aria-labelledby="promise-title">
@@ -52,7 +56,7 @@
 </section>
 
 <section id="next" class="section wrap split" aria-labelledby="next-title">
-  <div><p class="eyebrow">慢慢长大</p><h2 id="next-title">先把事办妥，<br>再陪孩子长大。</h2></div>
+  <div><p class="eyebrow">一步步推进</p><h2 id="next-title">今天与成长，<br>一起向前。</h2></div>
   <ol class="roadmap">{{ROADMAP}}</ol>
 </section>
 
@@ -64,5 +68,5 @@
   <img src="assets/cat-done.webp" width="160" height="160" alt="" loading="lazy">
   <h2 id="closing-title">日子很满，<br>也可以过得轻一点。</h2>
   <p class="lead">从一件小事开始：「让小咪记一下」。</p>
-  <div class="actions"><a class="button primary" href="{{BETA}}">申请内测 · {{EMAIL}}</a></div>
+  <div class="actions"><a class="button primary" href="{{BETA}}">联系了解进展 · {{EMAIL}}</a></div>
 </section>
