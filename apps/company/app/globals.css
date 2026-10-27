@@ -1947,3 +1947,24 @@ main[lang="zh-CN"] .footer-lead p {
 .catalog-note { color: var(--muted); font-size: 0.85rem; line-height: 1.65; }
 .catalog-note a { text-decoration: underline; text-underline-offset: 0.2em; }
 .dark-intro .status-pill { display: table; }
+
+/* Full-document visitor journeys: visible actions and keyboard/touch feedback. */
+.skip-link { position: fixed; top: .75rem; left: .75rem; z-index: 200; padding: .8rem 1rem; background: var(--surface); border: 2px solid var(--ink); transform: translateY(-180%); }
+.skip-link:focus { transform: translateY(0); }
+#page-content { scroll-margin-top: 6rem; }
+.primary-nav a[aria-current], .mobile-menu a[aria-current] { color: var(--ink); text-decoration: underline; text-underline-offset: .35em; }
+a.direction-card { display: flex; flex-direction: column; color: inherit; min-width: 0; transition: background .15s ease; }
+a.direction-card:hover { background: var(--surface); }
+.card-action { display: flex; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 2rem; font-size: .8rem; font-weight: 600; }
+.featured-product-links { width: 100%; max-width: 28rem; display: grid; gap: .5rem; }
+.featured-product-links a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 5.5rem; padding: 1rem; border-bottom: 1px solid currentColor; color: inherit; font-size: clamp(1.2rem, 2vw, 1.8rem); }
+.featured-product-links a:hover { background: rgb(255 255 255 / .06); }
+.featured-product-links a img { width: 3rem; height: 3rem; border-radius: .7rem; }
+.featured-product-links a span:first-of-type { margin-right: auto; }
+.product-line h2 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .15em; }
+.product-line h2 a:hover { text-decoration-line: underline; }
+.not-found-page { min-height: 65vh; }
+@media (prefers-reduced-motion: reduce) { a.direction-card { transition: none; } }
+.site-header :is(.language-switch, .theme-toggle) { min-width: 44px; min-height: 44px; }
+.product-detail-page h2 { scroll-margin-top: 7rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

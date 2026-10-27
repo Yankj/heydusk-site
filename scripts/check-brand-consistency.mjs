@@ -26,9 +26,9 @@ check(publicEntries.length === 3 && publicEntries.every((s) => s === 'https://mi
 check(productSite.description.includes('今日安排') && productSite.description.includes('长期成长') && template.includes('id="growth"'), 'mimi presents both current cores');
 check(productSite.roadmap.some(([state]) => state === '待验证') && productSite.roadmap.some(([state]) => state === '规划中'), 'mimi separates verification and planning');
 check(!/拍一张通知|家里的事它都记着|成长陪伴是之后的第二层/.test(JSON.stringify(productSite) + template), 'superseded mimi claims absent');
-check(productSite.company === 'https://heydusk.com' && productSite.contactEmail === 'hello@heydusk.com', 'company backlink and existing contact preserved');
+check(productSite.company === 'https://heydusk.com/zh' && productSite.contactEmail === 'hello@heydusk.com', 'company backlink and existing contact preserved');
 const docs = await read('apps/company/app/content-docs.ts');
-check(docs.includes('Not yet legally reviewed and not in effect') && docs.includes('尚未经过法律审核，暂不生效'), 'both policy locales remain drafts');
+check(docs.includes('DRAFT') && docs.includes('Formal legal wording and provider details remain under review') && docs.includes('草案') && docs.includes('正式法律文本与提供方资料仍待审核'), 'both policy locales remain drafts');
 for (const [repo, sources] of Object.entries({
   mimi: ['docs/design/family-companion/parenting-core.md', 'docs/acceptance/family-companion/interaction-natural-input-v0.5.md', 'docs/acceptance/family-companion/ios-parenting-usable-gaps-2026-10-25.md'],
   'momo-word-island': ['docs/product-capabilities.md'],
