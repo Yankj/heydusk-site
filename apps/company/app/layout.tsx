@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = `${protocol}://${host}`;
   const title = "HeyDusk · 理想三旬 — independent AI products";
   const description =
-    "HeyDusk builds independent AI products for family life, learning and creative expression: Mimi, Momo, and FrameForge / 小片场.";
+    "HeyDusk builds independent AI products across family life, learning and creative expression — Mimi, Momo, FrameForge / 小片场 — plus an early everyday tool, Ferry Dock / 渡口.";
 
   return {
     metadataBase: new URL(origin),

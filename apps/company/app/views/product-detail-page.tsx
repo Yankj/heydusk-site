@@ -13,6 +13,8 @@ const labels = {
     stage: "Current stage & scope",
     next: "Next step",
     back: "Back to all products",
+    previewCaption: "Interface preview · schematic / in development",
+    previewBody: "No live product screenshots are published here yet. This frame marks where a real interface or flow visual will sit.",
   },
   zh: {
     breadcrumbs: "当前位置",
@@ -21,7 +23,16 @@ const labels = {
     stage: "当前阶段与范围",
     next: "下一步",
     back: "返回全部产品",
+    previewCaption: "界面示意 · 开发中",
+    previewBody: "本站尚未发布真实产品截图。此框标注真实界面或流程视觉将放置的位置，不含虚构数据。",
   },
+};
+
+const productMarks: Record<string, string> = {
+  mimi: "mimi",
+  momo: "momo",
+  frameforge: "frameforge",
+  "ferry-dock": "ferry",
 };
 
 export function ProductDetailPageView({ locale, productId }: { locale: Locale; productId: ProductId }) {
@@ -39,7 +50,7 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
   const nextNumber = steps ? "04" : "03";
 
   return (
-    <main className="product-detail-page" lang={localeLanguageTag[locale]}>
+    <main className={`product-detail-page product-detail-page--${product.id}`} lang={localeLanguageTag[locale]}>
       <SiteHeader locale={locale} currentPath={product.path} />
 
       <div className="product-detail-content">
@@ -52,7 +63,7 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
         <section className="product-detail-hero" aria-labelledby="product-title">
           <div className="product-detail-identity">
             {product.id === "mimi" ? <Image src="/mimi/mimi-icon.png" alt="" width={64} height={64} unoptimized /> : null}
-            {product.id === "ferry-dock" ? <span className="ferry-dock-logo" aria-hidden="true" /> : null}
+            {product.id !== "mimi" ? <span className={`product-mark product-mark-${productMarks[product.id]}`} aria-hidden="true" /> : null}
             <p className="eyebrow">{copy.direction}</p>
           </div>
           <h1 id="product-title">{product.name}</h1>
@@ -67,6 +78,15 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
             {repo ? <a className="product-detail-repo" href={repo.href} rel="noopener noreferrer" target="_blank">{repo.label}<span aria-hidden="true">↗</span></a> : null}
           </div>
           <p className="product-detail-entry-note">{detail.entryNote}</p>
+          <aside className="product-detail-preview" aria-label={label.previewCaption}>
+            <div className="product-detail-preview-frame" data-product={product.id}>
+              <span className="product-detail-preview-badge">{label.previewCaption}</span>
+              <div className="product-detail-preview-skeleton" aria-hidden="true">
+                <span /><span /><span />
+              </div>
+            </div>
+            <p className="product-detail-preview-note">{label.previewBody}</p>
+          </aside>
         </section>
 
         <section className="product-detail-section" aria-labelledby="product-purpose-title">

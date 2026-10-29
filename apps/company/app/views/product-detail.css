@@ -281,15 +281,116 @@
   }
 }
 
-/* Ferry Dock: brand mark, how-it-works steps, source commands and limits. */
-/* The brand mark is painted with the page's ink colour so it follows the light and dark themes. */
-.ferry-dock-logo {
+/* Product marks: painted with page ink so they follow light and dark themes. */
+.product-mark {
   display: block;
+  flex: 0 0 auto;
   width: 3rem;
   height: 3rem;
   background-color: var(--ink);
-  mask: url("/ferry-dock/logo-mono.svg") center / contain no-repeat;
-  -webkit-mask: url("/ferry-dock/logo-mono.svg") center / contain no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.product-mark-momo {
+  mask-image: url("/momo/mark-mono.svg");
+  -webkit-mask-image: url("/momo/mark-mono.svg");
+}
+
+.product-mark-frameforge {
+  mask-image: url("/frameforge/mark-mono.svg");
+  -webkit-mask-image: url("/frameforge/mark-mono.svg");
+}
+
+.product-mark-ferry,
+.ferry-dock-logo {
+  mask-image: url("/ferry-dock/logo-mono.svg");
+  -webkit-mask-image: url("/ferry-dock/logo-mono.svg");
+}
+
+/* Per-product hero tint — same skeleton, different temperature. */
+.product-detail-page--mimi .product-detail-hero {
+  background: radial-gradient(ellipse at 94% 30%, color-mix(in srgb, #eb7a35 10%, transparent), transparent 58%);
+}
+
+.product-detail-page--momo .product-detail-hero {
+  background: radial-gradient(ellipse at 94% 30%, color-mix(in srgb, #4f7cac 12%, transparent), transparent 58%);
+}
+
+.product-detail-page--frameforge .product-detail-hero {
+  background: radial-gradient(ellipse at 94% 30%, color-mix(in srgb, var(--twilight) 14%, transparent), transparent 58%);
+}
+
+.product-detail-page--ferry-dock .product-detail-hero {
+  background: radial-gradient(ellipse at 94% 30%, color-mix(in srgb, var(--ink) 8%, transparent), transparent 58%);
+}
+
+.product-detail-preview {
+  margin-top: 2.8rem;
+  max-width: 36rem;
+}
+
+.product-detail-preview-frame {
+  position: relative;
+  min-height: 11rem;
+  padding: 1.2rem;
+  border: 1px dashed color-mix(in srgb, var(--ink) 28%, transparent);
+  border-radius: 1.1rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 88%, transparent), color-mix(in srgb, var(--ink) 3%, var(--surface)));
+  overflow: hidden;
+}
+
+.product-detail-preview-badge {
+  display: inline-flex;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.product-detail-preview-skeleton {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+}
+
+.product-detail-preview-skeleton span {
+  display: block;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+}
+
+.product-detail-preview-skeleton span:nth-child(1) { width: 72%; }
+.product-detail-preview-skeleton span:nth-child(2) { width: 54%; }
+.product-detail-preview-skeleton span:nth-child(3) { width: 63%; }
+
+.product-detail-page--momo .product-detail-preview-skeleton span {
+  background: color-mix(in srgb, #4f7cac 22%, transparent);
+}
+
+.product-detail-page--frameforge .product-detail-preview-skeleton span {
+  background: color-mix(in srgb, var(--twilight) 24%, transparent);
+}
+
+.product-detail-page--mimi .product-detail-preview-skeleton span {
+  background: color-mix(in srgb, #eb7a35 22%, transparent);
+}
+
+.product-detail-preview-note {
+  margin: 0.85rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  line-height: 1.65;
 }
 
 .product-detail-repo {

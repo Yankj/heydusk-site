@@ -39,7 +39,7 @@ export function ProductsPageView({ locale }: { locale: Locale }) {
           const item = product[locale];
           return (
             <article className="product-line" key={product.id}>
-              <a className="line-number" href={localizedPath(locale, product.path)} aria-label={`${locale === "zh" ? "了解" : "Explore"} ${product.name}`}>{product.id === "mimi" ? <Image src="/mimi/mimi-icon.png" alt="" width={72} height={72} unoptimized /> : `0${index + 1}`}</a>
+              <a className="line-number" href={localizedPath(locale, product.path)} aria-label={`${locale === "zh" ? "了解" : "Explore"} ${product.name}`}>{product.id === "mimi" ? <Image src="/mimi/mimi-icon.png" alt="" width={72} height={72} unoptimized /> : product.id === "momo" ? <span className="product-mark product-mark-momo" aria-hidden="true" /> : product.id === "frameforge" ? <span className="product-mark product-mark-frameforge" aria-hidden="true" /> : product.id === "ferry-dock" ? <span className="product-mark product-mark-ferry" aria-hidden="true" /> : `0${index + 1}`}</a>
               <div><p className="line-kicker">{item.direction}</p><h2><a href={localizedPath(locale, product.path)}>{product.name}</a></h2></div>
               <div className="line-copy">
                 <p>{item.description}</p>

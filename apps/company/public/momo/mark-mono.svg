@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-labelledby="title">
+  <title id="title">Momo</title>
+  <!-- Persistent classroom canvas: open board with three lesson lines -->
+  <rect x="4" y="6" width="24" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+  <path fill="currentColor" d="M8 12h16v2H8zm0 5h12v2H8zm0 5h9v2H8z"/>
+</svg>

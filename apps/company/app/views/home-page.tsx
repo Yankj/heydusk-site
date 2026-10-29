@@ -30,6 +30,8 @@ const content = {
       "Mimi, Momo, FrameForge / 小片场, and the early-alpha tool Ferry Dock / 渡口 develop as separate products. Explore what each does, its current stage, and how to ask questions.",
     productLink: "Explore the product catalog",
     status: "Different stages · documented in the catalog",
+    toolNote: "Everyday tool · early alpha",
+    toolName: "Ferry Dock / 渡口",
     contactIndex: "Product questions, partnerships, and press",
     contactTitle: "We’d like to hear from you.",
     contactLink: "Contact us",
@@ -60,6 +62,8 @@ const content = {
       "Mimi、Momo、FrameForge / 小片场，以及早期 alpha 的小工具 Ferry Dock / 渡口各自独立推进。目录列明每款产品的用途、当前阶段与咨询方式。",
     productLink: "查看完整产品目录",
     status: "各自推进 · 阶段详见产品目录",
+    toolNote: "日常工具 · 早期 alpha",
+    toolName: "Ferry Dock / 渡口",
     contactIndex: "产品咨询、合作与媒体",
     contactTitle: "期待听到你的声音。",
     contactLink: "联系我们",
@@ -121,12 +125,15 @@ export function HomePageView({ locale }: { locale: Locale }) {
             <a className="section-link section-link-light" href={l("/products")}>{copy.productLink} <span aria-hidden="true">→</span></a>
           </div>
           <div className="feature-product-art">
-            <div className="featured-product-links">
+            <div className="featured-product-links" aria-label={copy.productTitle}>
               <a href={l("/products/mimi")}><Image src="/mimi/mimi-app-icon.png" alt="" width={64} height={64} unoptimized /><span>Mimi / 小咪</span><span aria-hidden="true">→</span></a>
-              <a href={l("/products/momo")}><span>Momo</span><span aria-hidden="true">→</span></a>
-              <a href={l("/products/frameforge")}><span>FrameForge / 小片场</span><span aria-hidden="true">→</span></a>
-              <a href={l("/products/ferry-dock")}><span>Ferry Dock / 渡口</span><span aria-hidden="true">→</span></a>
+              <a href={l("/products/momo")}><span className="product-mark product-mark-momo" aria-hidden="true" /><span>Momo</span><span aria-hidden="true">→</span></a>
+              <a href={l("/products/frameforge")}><span className="product-mark product-mark-frameforge" aria-hidden="true" /><span>FrameForge / 小片场</span><span aria-hidden="true">→</span></a>
             </div>
+            <p className="featured-tool-note">
+              <a href={l("/products/ferry-dock")}><span className="product-mark product-mark-ferry" aria-hidden="true" /><span>{copy.toolName}</span></a>
+              <span className="featured-tool-meta">{copy.toolNote}</span>
+            </p>
           </div>
         </div>
       </section>
