@@ -12,6 +12,7 @@ const content = {
     reviewed: "Product documentation checked",
     source: "Summary sources and boundaries",
     note: "Each product has its own focus and stage. Open its details to see what it offers, what is still being developed, and the next available step.",
+    explore: "Explore product and enquiries",
   },
   zh: {
     eyebrow: "产品",
@@ -20,6 +21,7 @@ const content = {
     reviewed: "产品文档核对日期",
     source: "摘要来源与边界",
     note: "每款产品有自己的用途与发展阶段。打开详情，了解当前阶段、仍在推进的能力和适合你的下一步。",
+    explore: "了解产品与咨询方式",
   },
 };
 
@@ -32,21 +34,37 @@ export function ProductsPageView({ locale }: { locale: Locale }) {
         <p className="eyebrow">{copy.eyebrow}</p>
         <h1>{copy.title}</h1>
         <p>{copy.intro}</p>
-
       </section>
       <section className="page-section product-lines" aria-label={copy.eyebrow}>
         {products.map((product, index) => {
           const item = product[locale];
+          const title = product.name;
           return (
             <article className="product-line" key={product.id}>
-              <a className="line-number" href={localizedPath(locale, product.path)} aria-label={`${locale === "zh" ? "了解" : "Explore"} ${product.name}`}>{product.id === "mimi" ? <Image src="/mimi/mimi-icon.png" alt="" width={72} height={72} unoptimized /> : `0${index + 1}`}</a>
-              <div><p className="line-kicker">{item.direction}</p><h2><a href={localizedPath(locale, product.path)}>{product.name}</a></h2></div>
+              <a
+                className="line-number"
+                href={localizedPath(locale, product.path)}
+                aria-label={`${locale === "zh" ? "了解" : "Explore"} ${title}`}
+              >
+                {product.id === "mimi" ? (
+                  <Image src="/mimi/mimi-icon-128.webp" alt="" width={72} height={72} sizes="72px" unoptimized />
+                ) : (
+                  `0${index + 1}`
+                )}
+              </a>
+              <div>
+                <p className="line-kicker">{item.direction}</p>
+                <h2>
+                  <a href={localizedPath(locale, product.path)}>{title}</a>
+                </h2>
+              </div>
               <div className="line-copy">
                 <p>{item.description}</p>
                 <ul><li>{item.stage}</li></ul>
                 <p className="catalog-boundary">{item.boundary}</p>
-
-                <a className="section-link" href={localizedPath(locale, product.path)}>{locale === "zh" ? "了解产品与咨询方式" : "Explore product and enquiries"} <span aria-hidden="true">→</span></a>
+                <a className="section-link" href={localizedPath(locale, product.path)}>
+                  {copy.explore} <span aria-hidden="true">→</span>
+                </a>
               </div>
             </article>
           );

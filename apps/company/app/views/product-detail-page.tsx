@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
+import { productNameParts } from "../display-names";
 import { localeLanguageTag, localizedPath, type Locale } from "../i18n";
 import { getProduct, type ProductId } from "../product-catalog";
 import "./product-detail.css";
@@ -13,6 +14,10 @@ const labels = {
     stage: "Current stage & scope",
     next: "Next step",
     back: "Back to all products",
+    confirmed: "Confirmed now",
+    planned: "Still planned",
+    developers: "For developers",
+    siteLink: "Full product site",
   },
   zh: {
     breadcrumbs: "当前位置",
@@ -21,6 +26,10 @@ const labels = {
     stage: "当前阶段与范围",
     next: "下一步",
     back: "返回全部产品",
+    confirmed: "此刻能确认",
+    planned: "仍在规划",
+    developers: "给开发者",
+    siteLink: "完整体验介绍",
   },
 };
 
@@ -37,9 +46,12 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
   const runCommands = "runCommands" in detail ? detail.runCommands : null;
   const stageNumber = steps ? "03" : "02";
   const nextNumber = steps ? "04" : "03";
+  const names = productNameParts(product.id, locale);
+    // Split boundaries into "confirmed framing" (stageIntro) vs planned items (boundaries list already = planned/limits)
+  const confirmedPoints = [detail.stageIntro, copy.stage, copy.boundary];
 
   return (
-    <main className="product-detail-page" lang={localeLanguageTag[locale]}>
+    <main className={`product-detail-page product-detail-page--${product.id}`} lang={localeLanguageTag[locale]}>
       <SiteHeader locale={locale} currentPath={product.path} />
 
       <div className="product-detail-content">
@@ -51,9 +63,14 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
 
         <section className="product-detail-hero" aria-labelledby="product-title">
           <div className="product-detail-identity">
-            {product.id === "mimi" ? <Image src="/mimi/mimi-icon.png" alt="" width={64} height={64} unoptimized /> : null}
+            {product.id === "mimi" ? (
+              <Image src="/mimi/mimi-icon-128.webp" alt="" width={64} height={64} sizes="64px" unoptimized />
+            ) : null}
             {product.id === "ferry-dock" ? <span className="ferry-dock-logo" aria-hidden="true" /> : null}
-            <p className="eyebrow">{copy.direction}</p>
+            <p className="eyebrow">
+              {copy.direction}
+              {names.secondary ? <span className="product-name-secondary"> · {names.secondary}</span> : null}
+            </p>
           </div>
           <h1 id="product-title">{product.name}</h1>
           <p className="product-detail-headline">{detail.headline}</p>
@@ -101,13 +118,6 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
                 </li>
               ))}
             </ol>
-            {runCommands && "runTitle" in detail && "runBody" in detail ? (
-              <div className="product-detail-run">
-                <h3>{detail.runTitle}</h3>
-                <p>{detail.runBody}</p>
-                <pre><code>{runCommands}</code></pre>
-              </div>
-            ) : null}
           </section>
         ) : null}
 
@@ -117,17 +127,41 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
             <h2 id="product-stage-title">{copy.stage}</h2>
           </div>
           <div className="product-detail-scope-copy">
-            <p>{detail.stageIntro}</p>
-            <ul>{detail.boundaries.map((boundary) => <li key={boundary}>{boundary}</li>)}</ul>
-            {limits && "limitsTitle" in detail ? (
-              <div className="product-detail-limits">
-                <h3>{detail.limitsTitle}</h3>
-                <dl>
-                  {limits.map((item) => (
-                    <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>
+            <div className="product-fact-grid" data-reveal>
+              <article className="product-fact-card product-fact-card--confirmed">
+                <h3>{label.confirmed}</h3>
+                <ul>
+                  {confirmedPoints.map((point) => (
+                    <li key={point}>{point}</li>
                   ))}
-                </dl>
-              </div>
+                </ul>
+              </article>
+              <article className="product-fact-card product-fact-card--planned">
+                <h3>{label.planned}</h3>
+                <ul>{detail.boundaries.map((boundary) => <li key={boundary}>{boundary}</li>)}</ul>
+              </article>
+            </div>
+            {runCommands || limits ? (
+              <details className="product-detail-developers">
+                <summary>{label.developers}</summary>
+                {runCommands && "runTitle" in detail && "runBody" in detail ? (
+                  <div className="product-detail-run">
+                    <h3>{detail.runTitle}</h3>
+                    <p>{detail.runBody}</p>
+                    <pre><code>{runCommands}</code></pre>
+                  </div>
+                ) : null}
+                {limits && "limitsTitle" in detail ? (
+                  <div className="product-detail-limits">
+                    <h3>{detail.limitsTitle}</h3>
+                    <dl>
+                      {limits.map((item) => (
+                        <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>
+                      ))}
+                    </dl>
+                  </div>
+                ) : null}
+              </details>
             ) : null}
           </div>
         </section>

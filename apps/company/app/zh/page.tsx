@@ -4,7 +4,7 @@ import { HomePageView } from "../views/home-page";
 
 const title = "理想三旬 HeyDusk — 独立 AI 产品工作室";
 const description =
-  "理想三旬（HeyDusk）围绕家庭与生活、学习与成长、创作与表达，打造 Mimi、Momo、FrameForge / 小片场等独立 AI 产品。";
+  "理想三旬（HeyDusk）围绕家庭与生活、学习与成长、创作与表达打造独立 AI 产品（Mimi、Momo、FrameForge / 小片场），目录中另有早期日常工具 Ferry Dock / 渡口。";
 
 export const metadata: Metadata = {
   title: { absolute: title },
