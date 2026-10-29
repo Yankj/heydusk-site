@@ -10,10 +10,10 @@ This information site uses ordinary document links. The previous production buil
 |---|---|---|
 | Desktop navigation, mobile menu and home CTA | Localized home, catalog, about or contact route | Full document navigation; URL, title and body agree |
 | Header and footer logo | `/` or `/zh` | Return to the current language's home |
-| Three direction cards | Corresponding `/products/mimi`, `/products/momo`, `/products/frameforge`, with `/zh` equivalents | Read the relevant product introduction |
+| Three direction cards | Corresponding `/products/mimi`, `/products/momo`, `/products/frameforge`, with `/zh` equivalents (Ferry Dock, `/products/ferry-dock`, is a catalog-only tool without a home direction card) | Read the relevant product introduction |
 | Catalog icon, product title and detail CTA | The same localized product detail | All three entry forms reach the same product |
 | Detail introduction button | The page's product-purpose section | A visible section is reached, without implying product access |
-| Detail enquiry link | `/contact?product=mimi\|momo\|frameforge`, localized | The contact page shows the chosen product and prepares an appropriate email subject |
+| Detail enquiry link | `/contact?product=mimi\|momo\|frameforge\|ferry-dock`, localized | The contact page shows the chosen product and prepares an appropriate email subject |
 | Footer contact address | Localized contact page | The visible address has a page with usable email and copy options |
 | Mail link | `mailto:hello@heydusk.com` with an optional known-product subject | The visitor's own client handles sending; the website never claims delivery |
 | Copy email | Browser clipboard, or a visible selectable-address fallback | Accurate success/failure feedback, with manual copying always possible |

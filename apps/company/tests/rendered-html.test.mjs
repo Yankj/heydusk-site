@@ -17,7 +17,7 @@ const localize = (locale, path) => locale === "en" ? path : `/zh${path === "/" ?
 const visibleHTML = (html) => html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
 const escape = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const tagAttributes = (html, tag) => [...html.matchAll(new RegExp(`<${tag}\\b([^>]*)>`, "gi"))].map((match) => Object.fromEntries([...match[1].matchAll(/([\w:-]+)="([^"]*)"/g)].map((attribute) => [attribute[1].toLowerCase(), attribute[2]])));
-const products = [["mimi", "Mimi / 小咪"], ["momo", "Momo"], ["frameforge", "FrameForge / 小片场"]];
+const products = [["mimi", "Mimi / 小咪"], ["momo", "Momo"], ["frameforge", "FrameForge / 小片场"], ["ferry-dock", "Ferry Dock / 渡口"]];
 const routes = [
   ["/", null, "Calm software", "安静可靠的软件"],
   ["/products", ["Products", "产品"], "Products with a clear job to do", "为一个清晰的任务而生"],
@@ -71,7 +71,8 @@ for (const locale of ["en", "zh"]) {
     assert.match(header, /<summary>/);
     assert.match(header, /class="theme-toggle"/);
     assert.match(header, new RegExp(`<form[^>]+action="${escape(localize(locale === "en" ? "zh" : "en", "/"))}"[^>]+method="get"`));
-    for (const [slug] of products) assert.match(html, new RegExp(`<a[^>]+class="product-card[^"]*"[^>]+href="${escape(localize(locale, `/products/${slug}`))}"`));
+    // Ferry Dock is a catalog-only tool: it has no home direction card.
+    for (const [slug] of products.filter(([slug]) => slug !== "ferry-dock")) assert.match(html, new RegExp(`<a[^>]+class="product-card[^"]*"[^>]+href="${escape(localize(locale, `/products/${slug}`))}"`));
     assert.match(html, /src="\/dusk-field-v2\.webp"/);
     assert.doesNotMatch(html, /\/_next\/image/);
   });
@@ -85,6 +86,7 @@ for (const locale of ["en", "zh"]) {
     }
     assert.doesNotMatch(html, /href="https:\/\/(?:mimi\.heydusk\.com|word-island\.kunjie-yan\.chatgpt\.site)/);
     assert.doesNotMatch(html, /github\.com\/Yankj\/(?:momo-word-island|agent-frameforge)/);
+    assert.doesNotMatch(html, /href="https:\/\/github\.com\/Yankj\/ferry-dock/);
     assert.doesNotMatch(html, /Closed beta|内测中|Get early access|立即体验/);
   });
 
@@ -101,6 +103,16 @@ for (const locale of ["en", "zh"]) {
       assert.doesNotMatch(html, /href="https:\/\/(?:mimi\.heydusk\.com|word-island\.kunjie-yan\.chatgpt\.site)/);
     });
   }
+
+  test(`${locale} Ferry Dock page states alpha scope honestly and links its source`, async () => {
+    const html = visibleHTML(await (await render(localize(locale, "/products/ferry-dock"))).text());
+    assert.match(html, /<a class="product-detail-repo" href="https:\/\/github\.com\/Yankj\/ferry-dock"[^>]*rel="noopener noreferrer"/);
+    for (const fact of locale === "en"
+      ? ["Early alpha", "15 minutes", "64 KiB", "1 MiB", "MIT", "trusted local network", "Agent task inputs are planned", "no binary release or npm package"]
+      : ["早期 alpha", "15 分钟", "64 KiB", "1 MiB", "MIT", "可信局域网", "Agent 任务输入", "没有二进制发布或 npm 包"]) assert.ok(html.includes(fact), fact);
+    assert.doesNotMatch(html, /href="[^"]*(?:\/releases|\.zip|\.dmg|\.exe|npmjs\.com)/i);
+    assert.match(html, /class="ferry-dock-logo" aria-hidden="true"/);
+  });
 
   test(`${locale} contact has a usable no-JavaScript email fallback`, async () => {
     const html = visibleHTML(await (await render(localize(locale, "/contact") + "?product=momo")).text());

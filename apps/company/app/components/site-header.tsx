@@ -20,7 +20,7 @@ function subscribeToQuery(listener: () => void) {
 }
 function contactProductSnapshot(): string | null {
   const product = new URLSearchParams(window.location.search).get("product");
-  return product === "mimi" || product === "momo" || product === "frameforge" ? product : null;
+  return product === "mimi" || product === "momo" || product === "frameforge" || product === "ferry-dock" ? product : null;
 }
 function serverContactProduct(): null { return null; }
 

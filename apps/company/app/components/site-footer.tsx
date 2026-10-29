@@ -54,6 +54,7 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
           <a href={l("/products/mimi")}>{copy.mimi}</a>
           <a href={l("/products/momo")}>Momo</a>
           <a href={l("/products/frameforge")}>FrameForge / 小片场</a>
+          <a href={l("/products/ferry-dock")}>Ferry Dock / 渡口</a>
           <a href={l("/products")}>{copy.allProducts}</a>
         </div>
         <div>

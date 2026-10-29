@@ -31,6 +31,12 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
   const label = labels[locale];
   const catalogHref = localizedPath(locale, "/products");
   const contactHref = `${localizedPath(locale, "/contact")}?product=${product.id}`;
+  const steps = "steps" in detail ? detail.steps : null;
+  const limits = "limits" in detail ? detail.limits : null;
+  const repo = "repoLabel" in detail ? { label: detail.repoLabel, href: product.href } : null;
+  const runCommands = "runCommands" in detail ? detail.runCommands : null;
+  const stageNumber = steps ? "03" : "02";
+  const nextNumber = steps ? "04" : "03";
 
   return (
     <main className="product-detail-page" lang={localeLanguageTag[locale]}>
@@ -46,6 +52,7 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
         <section className="product-detail-hero" aria-labelledby="product-title">
           <div className="product-detail-identity">
             {product.id === "mimi" ? <Image src="/mimi/mimi-icon.png" alt="" width={64} height={64} unoptimized /> : null}
+            {product.id === "ferry-dock" ? <span className="ferry-dock-logo" aria-hidden="true" /> : null}
             <p className="eyebrow">{copy.direction}</p>
           </div>
           <h1 id="product-title">{product.name}</h1>
@@ -57,6 +64,7 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
               {copy.action}<span aria-hidden="true">↓</span>
             </a>
             <a className="product-detail-secondary" href={contactHref}>{detail.contactAction}<span aria-hidden="true">→</span></a>
+            {repo ? <a className="product-detail-repo" href={repo.href} rel="noopener noreferrer" target="_blank">{repo.label}<span aria-hidden="true">↗</span></a> : null}
           </div>
           <p className="product-detail-entry-note">{detail.entryNote}</p>
         </section>
@@ -78,19 +86,54 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
           </div>
         </section>
 
+        {steps && "howTitle" in detail && "howLabel" in detail ? (
+          <section className="product-detail-section product-detail-how" aria-labelledby="product-how-title">
+            <div className="product-detail-section-heading">
+              <p className="product-detail-label">02 / {detail.howLabel}</p>
+              <h2 id="product-how-title">{detail.howTitle}</h2>
+            </div>
+            <ol className="product-detail-steps">
+              {steps.map((step, index) => (
+                <li className="product-detail-step" key={step.title}>
+                  <span className="product-detail-number" aria-hidden="true">0{index + 1}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </li>
+              ))}
+            </ol>
+            {runCommands && "runTitle" in detail && "runBody" in detail ? (
+              <div className="product-detail-run">
+                <h3>{detail.runTitle}</h3>
+                <p>{detail.runBody}</p>
+                <pre><code>{runCommands}</code></pre>
+              </div>
+            ) : null}
+          </section>
+        ) : null}
+
         <section className="product-detail-section product-detail-scope" aria-labelledby="product-stage-title">
           <div className="product-detail-section-heading">
-            <p className="product-detail-label">02 / {label.stage}</p>
+            <p className="product-detail-label">{stageNumber} / {label.stage}</p>
             <h2 id="product-stage-title">{copy.stage}</h2>
           </div>
           <div className="product-detail-scope-copy">
             <p>{detail.stageIntro}</p>
             <ul>{detail.boundaries.map((boundary) => <li key={boundary}>{boundary}</li>)}</ul>
+            {limits && "limitsTitle" in detail ? (
+              <div className="product-detail-limits">
+                <h3>{detail.limitsTitle}</h3>
+                <dl>
+                  {limits.map((item) => (
+                    <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>
+                  ))}
+                </dl>
+              </div>
+            ) : null}
           </div>
         </section>
 
         <section className="product-detail-next" aria-labelledby="product-next-title">
-          <p className="product-detail-label">03 / {label.next}</p>
+          <p className="product-detail-label">{nextNumber} / {label.next}</p>
           <h2 id="product-next-title">{detail.nextTitle}</h2>
           <p className="product-detail-next-copy">{detail.nextBody}</p>
           <div className="product-detail-actions">
@@ -98,6 +141,7 @@ export function ProductDetailPageView({ locale, productId }: { locale: Locale; p
               {copy.action}<span aria-hidden="true">↑</span>
             </a>
             <a className="product-detail-secondary" href={contactHref}>{detail.contactAction}<span aria-hidden="true">→</span></a>
+            {repo ? <a className="product-detail-repo" href={repo.href} rel="noopener noreferrer" target="_blank">{repo.label}<span aria-hidden="true">↗</span></a> : null}
           </div>
           <p className="product-detail-entry-note">{detail.entryNote}</p>
           <a className="product-detail-back" href={catalogHref}><span aria-hidden="true">←</span>{label.back}</a>

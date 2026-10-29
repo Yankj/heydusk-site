@@ -40,7 +40,7 @@ export const docs: Record<string, Record<Locale, DocContent>> = {
       title: "Get in touch.",
       intro: "For product questions, partnerships, press, or questions about this website, write to hello@heydusk.com.",
       sections: [
-        { heading: "Product enquiries", body: ["Tell us whether you are interested in Mimi, Momo or FrameForge / 小片场, and what you hope to do. All three currently offer product introductions and enquiries through the shared email address above.", "An email is an enquiry. It does not reserve a trial place or activate a product."] },
+        { heading: "Product enquiries", body: ["Tell us whether you are interested in Mimi, Momo, FrameForge / 小片场 or Ferry Dock / 渡口, and what you hope to do. All four currently offer product introductions and enquiries through the shared email address above.", "An email is an enquiry. It does not reserve a trial place or activate a product."] },
         { heading: "Privacy questions", body: ["Please say whether your question concerns this website or a particular product. Leave children’s records, passwords and sensitive account details out of your first message."] },
         { heading: "If your email app does not open", body: ["Your browser or device may need an email app configured. Select or copy the address above, then compose a message in the email service you normally use."] },
       ],
@@ -50,7 +50,7 @@ export const docs: Record<string, Record<Locale, DocContent>> = {
       title: "期待你的来信。",
       intro: "产品咨询、商务合作、媒体或本站相关问题，欢迎来信 hello@heydusk.com。",
       sections: [
-        { heading: "产品咨询", body: ["请说明你关注的是 Mimi、Momo 还是 FrameForge / 小片场，以及希望完成什么。三款产品当前都提供介绍与邮件咨询，统一使用上方邮箱。", "来信属于咨询，不代表预留了体验名额或开通了产品。"] },
+        { heading: "产品咨询", body: ["请说明你关注的是 Mimi、Momo、FrameForge / 小片场还是 Ferry Dock / 渡口，以及希望完成什么。四款产品当前都提供介绍与邮件咨询，统一使用上方邮箱。", "来信属于咨询，不代表预留了体验名额或开通了产品。"] },
         { heading: "隐私问题", body: ["请说明问题涉及本站还是某款产品。首次来信请勿附上儿童记录、密码或敏感账号信息。"] },
         { heading: "邮件客户端没有打开时", body: ["浏览器或设备可能需要先配置邮件客户端。你也可以选中或复制上方地址，在平时使用的邮箱中自行撰写邮件。"] },
       ],

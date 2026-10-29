@@ -8,7 +8,7 @@ const content = {
   en: {
     eyebrow: "Products",
     title: "Products with a clear job to do.",
-    intro: "Family & life, learning & growth, creation & expression: three directions, with independent products and workflows. Directions can overlap; each product develops at its own pace.",
+    intro: "Family & life, learning & growth, creation & expression: three directions, plus a small everyday tool, with independent products and workflows. Directions can overlap; each product develops at its own pace.",
     reviewed: "Product documentation checked",
     source: "Summary sources and boundaries",
     note: "Each product has its own focus and stage. Open its details to see what it offers, what is still being developed, and the next available step.",
@@ -16,7 +16,7 @@ const content = {
   zh: {
     eyebrow: "产品",
     title: "为一个清晰的任务而生。",
-    intro: "家庭与生活、学习与成长、创作与表达：三个方向，各有独立产品与流程。方向可以交叉，每款产品按自己的节奏推进。",
+    intro: "家庭与生活、学习与成长、创作与表达：三个方向，外加一款日常小工具，各有独立产品与流程。方向可以交叉，每款产品按自己的节奏推进。",
     reviewed: "产品文档核对日期",
     source: "摘要来源与边界",
     note: "每款产品有自己的用途与发展阶段。打开详情，了解当前阶段、仍在推进的能力和适合你的下一步。",

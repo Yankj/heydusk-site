@@ -20,7 +20,9 @@ from urllib.parse import parse_qs, urlsplit
 from playwright.sync_api import sync_playwright
 
 
-PRODUCTS = ("mimi", "momo", "frameforge")
+PRODUCTS = ("mimi", "momo", "frameforge", "ferry-dock")
+# Products that have a direction card on the home page (Ferry Dock is a catalog-only tool).
+HOME_CARD_PRODUCTS = ("mimi", "momo", "frameforge")
 ROUTES = ("/", "/products", "/about", "/contact", "/privacy", "/terms") + tuple(
     f"/products/{slug}" for slug in PRODUCTS
 )
@@ -312,8 +314,8 @@ class VisitorQA:
             self.click_route(self.page.locator(".product-detail-secondary").nth(index), contact)
             require(parse_qs(urlsplit(self.page.url).query).get("product") == [slug], "Product context missing from contact URL")
             mailto = self.page.locator('.email-contact a[href^="mailto:"]')
-            self.page.wait_for_function("slug => { const a = document.querySelector('.email-contact a[href^=\"mailto:\"]'); return a && new URL(a.href).searchParams.get('subject')?.toLowerCase().includes(slug); }", arg=slug)
-            require(slug in parse_qs(urlsplit(mailto.get_attribute("href")).query).get("subject", [""])[0].lower(), "Contact email subject missing product")
+            self.page.wait_for_function("slug => { const a = document.querySelector('.email-contact a[href^=\"mailto:\"]'); return a && new URL(a.href).searchParams.get('subject')?.toLowerCase().includes(slug.replace('-', ' ')); }", arg=slug)
+            require(slug.replace("-", " ") in parse_qs(urlsplit(mailto.get_attribute("href")).query).get("subject", [""])[0].lower(), "Contact email subject missing product")
         self.go(detail)
         self.click_route(self.page.locator(".product-detail-breadcrumb a"), localized(self.locale, "/products"))
 
@@ -335,7 +337,7 @@ class VisitorQA:
             form.get_by_role("button").click()
             self.assert_route(localized(other, "/contact"))
             require(parse_qs(urlsplit(self.page.url).query).get("product") == [slug], "Language switch lost product context")
-            self.page.wait_for_function("slug => { const a = document.querySelector('.email-contact a[href^=\"mailto:\"]'); return a && new URL(a.href).searchParams.get('subject')?.toLowerCase().includes(slug); }", arg=slug)
+            self.page.wait_for_function("slug => { const a = document.querySelector('.email-contact a[href^=\"mailto:\"]'); return a && new URL(a.href).searchParams.get('subject')?.toLowerCase().includes(slug.replace('-', ' ')); }", arg=slug)
             form = self.page.locator(".language-form:visible").first
             form.locator(f'input[name="product"][value="{slug}"]').wait_for(state="attached")
             form.get_by_role("button").click()
@@ -468,7 +470,8 @@ class VisitorQA:
                             continue
                         self.case("logos-and-footer-real-clicks", self.logos_and_footer)
                         for slug in PRODUCTS:
-                            self.case("direction-history-" + slug, lambda slug=slug: self.direction_history(slug))
+                            if slug in HOME_CARD_PRODUCTS:
+                                self.case("direction-history-" + slug, lambda slug=slug: self.direction_history(slug))
                             self.case("catalog-title-icon-cta-" + slug, lambda slug=slug: self.catalog_entries(slug))
                             self.case("detail-actions-" + slug, lambda slug=slug: self.detail_actions(slug))
                         self.case("language-preserves-page-semantics", self.language_journeys)
