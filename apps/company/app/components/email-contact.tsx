@@ -5,13 +5,14 @@ import { CONTACT_EMAIL } from "../content-docs";
 import type { Locale } from "../i18n";
 import "./email-contact.css";
 
-type ContactProduct = "mimi" | "momo" | "frameforge";
+type ContactProduct = "mimi" | "momo" | "frameforge" | "ferry-dock";
 type Feedback = "idle" | "email" | "copying" | "copied" | "failed";
 
 const productNames: Record<ContactProduct, string> = {
   mimi: "Mimi",
   momo: "Momo",
   frameforge: "FrameForge",
+  "ferry-dock": "Ferry Dock",
 };
 
 const copy = {
@@ -60,7 +61,7 @@ function subscribeToProduct(listener: () => void) {
 
 function getProductSnapshot(): ContactProduct | null {
   const product = new URLSearchParams(window.location.search).get("product");
-  return product === "mimi" || product === "momo" || product === "frameforge"
+  return product === "mimi" || product === "momo" || product === "frameforge" || product === "ferry-dock"
     ? product
     : null;
 }
