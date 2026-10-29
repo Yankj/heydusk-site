@@ -25,6 +25,7 @@ const copy = {
     explanation: "This opens your own email app. Compose and send your message there; this website does not send it.",
     manual: "You can also select the address and copy it manually.",
     product: "Product enquiry:",
+    pick: "Choose a product (optional)",
     subject: "enquiry",
     feedback: {
       idle: "",
@@ -43,6 +44,7 @@ const copy = {
     explanation: "这会请求打开你自己的邮件客户端。请在那里撰写并发送邮件，本站不会代为发送。",
     manual: "你也可以选中地址，手动复制。",
     product: "产品咨询：",
+    pick: "选择产品（可选）",
     subject: "产品咨询",
     feedback: {
       idle: "",
@@ -101,6 +103,28 @@ export function EmailContact({ locale }: { locale: Locale }) {
   return (
     <article className="email-contact" aria-labelledby={`${id}-title`}>
       <h2 id={`${id}-title`}>{text.heading}</h2>
+      <p className="email-contact-pick-label" id={`${id}-pick`}>{text.pick}</p>
+      <div className="email-contact-products" role="group" aria-labelledby={`${id}-pick`}>
+        {(["mimi", "momo", "frameforge", "ferry-dock"] as ContactProduct[]).map((id) => {
+          const href = `?product=${id}`;
+          const active = product === id;
+          return (
+            <a
+              key={id}
+              className={active ? "email-contact-product-chip is-active" : "email-contact-product-chip"}
+              href={href}
+              aria-current={active ? "true" : undefined}
+            >
+              {productNames[id]}
+            </a>
+          );
+        })}
+        {product ? (
+          <a className="email-contact-product-chip email-contact-product-clear" href="?">
+            {locale === "zh" ? "清除" : "Clear"}
+          </a>
+        ) : null}
+      </div>
       <label className="email-contact-label" htmlFor={`${id}-address`}>{text.address}</label>
       <input
         className="email-contact-address"

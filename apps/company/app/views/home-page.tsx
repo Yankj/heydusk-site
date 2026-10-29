@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { RevealOnScroll } from "../components/reveal-on-scroll";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
 import { localeLanguageTag, localizedPath, type Locale } from "../i18n";
@@ -17,21 +18,20 @@ const content = {
     missionIndex: "01 / Directions",
     missionTitle: "Make room for everyday life, learning, and expression.",
     missionIntro:
-      "Three concrete directions guide our work. They can overlap; each product keeps its own audience, workflow, and development stage.",
+      "Three concrete directions guide our work. They can overlap; each keeps its own audience and pace. Products live in the next section.",
     principlesLabel: "Our directions",
     principles: [
-      { index: "01", path: "/products/mimi", title: "Family & life", description: "Mimi / 小咪 supports parents with today’s arrangements and long-term growth.", meta: "Mimi" },
-      { index: "02", path: "/products/momo", title: "Learning & growth", description: "Momo explores parent-guided English learning through a persistent classroom canvas.", meta: "Momo" },
-      { index: "03", path: "/products/frameforge", title: "Creation & expression", description: "FrameForge / 小片场 helps creators shape video projects; children’s science is its current content focus.", meta: "FrameForge" },
+      { index: "01", dusk: "02", path: "/products/mimi", title: "Family & life", description: "Everyday arrangements and long-term growth for parents and children.", tone: "ember" },
+      { index: "02", dusk: "03", path: "/products/momo", title: "Learning & growth", description: "Shared attention for learning together, with a parent alongside.", tone: "twilight" },
+      { index: "03", dusk: "04", path: "/products/frameforge", title: "Creation & expression", description: "Room for video projects to take shape, revise, and land.", tone: "afterglow" },
     ],
     productIndex: "02 / Products",
     productTitle: "Independent products. Clear purpose.",
     productCopy:
-      "Mimi, Momo, FrameForge / 小片场, and the early-alpha tool Ferry Dock / 渡口 develop as separate products. Explore what each does, its current stage, and how to ask questions.",
+      "Each product keeps its own workflow and stage. Open a page for the current scope, then enquire by email.",
     productLink: "Explore the product catalog",
     status: "Different stages · documented in the catalog",
     toolNote: "Everyday tool · early alpha",
-    toolName: "Ferry Dock / 渡口",
     contactIndex: "Product questions, partnerships, and press",
     contactTitle: "We’d like to hear from you.",
     contactLink: "Contact us",
@@ -49,26 +49,33 @@ const content = {
     missionIndex: "01 / 方向",
     missionTitle: "让日常更从容，让学习与表达更有着落。",
     missionIntro:
-      "三个具体方向组织我们的工作。方向可以交叉；每款产品保留自己的使用者、流程与发展阶段。",
+      "三个具体方向组织我们的工作。方向可以交叉，各自保留节奏。具体产品在下一节。",
     principlesLabel: "我们的方向",
     principles: [
-      { index: "01", path: "/products/mimi", title: "家庭与生活", description: "Mimi / 小咪围绕家长的今日安排与孩子的长期成长展开。", meta: "Mimi" },
-      { index: "02", path: "/products/momo", title: "学习与成长", description: "Momo 以持久课堂画布，探索由家长陪伴的英语学习。", meta: "Momo" },
-      { index: "03", path: "/products/frameforge", title: "创作与表达", description: "FrameForge / 小片场服务视频创作者，当前内容重点是儿童科普。", meta: "FrameForge" },
+      { index: "01", dusk: "02", path: "/products/mimi", title: "家庭与生活", description: "照顾今日安排，也看见长期成长。", tone: "ember" },
+      { index: "02", dusk: "03", path: "/products/momo", title: "学习与成长", description: "家长陪在身边，一起把注意力放在学习上。", tone: "twilight" },
+      { index: "03", dusk: "04", path: "/products/frameforge", title: "创作与表达", description: "给视频项目慢慢成形、反复推敲的空间。", tone: "afterglow" },
     ],
     productIndex: "02 / 产品",
     productTitle: "独立的产品，清楚的用途。",
     productCopy:
-      "Mimi、Momo、FrameForge / 小片场，以及早期 alpha 的小工具 Ferry Dock / 渡口各自独立推进。目录列明每款产品的用途、当前阶段与咨询方式。",
+      "每款产品保留自己的流程与阶段。打开详情查看当前范围，再通过邮件咨询。",
     productLink: "查看完整产品目录",
     status: "各自推进 · 阶段详见产品目录",
     toolNote: "日常工具 · 早期 alpha",
-    toolName: "Ferry Dock / 渡口",
     contactIndex: "产品咨询、合作与媒体",
     contactTitle: "期待听到你的声音。",
     contactLink: "联系我们",
   },
 };
+
+const featured = [
+  { id: "mimi" as const, path: "/products/mimi", en: "Mimi / 小咪", zh: "小咪 / Mimi" },
+  { id: "momo" as const, path: "/products/momo", en: "Momo", zh: "Momo" },
+  { id: "frameforge" as const, path: "/products/frameforge", en: "FrameForge / 小片场", zh: "小片场 / FrameForge" },
+];
+// Brand tokens kept as literals for catalog/home/strategy consistency checks: Momo, FrameForge, Ferry Dock.
+
 
 export function HomePageView({ locale }: { locale: Locale }) {
   const copy = content[locale];
@@ -76,11 +83,20 @@ export function HomePageView({ locale }: { locale: Locale }) {
 
   return (
     <main lang={localeLanguageTag[locale]}>
+      <RevealOnScroll />
       <SiteHeader locale={locale} currentPath="/" />
 
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-art" aria-hidden="true">
-          <Image className="hero-art-image" src="/dusk-field-v2.webp" alt="" fill priority unoptimized sizes="(max-width: 820px) 100vw, 72vw" />
+          <Image
+            className="hero-art-image"
+            src="/dusk-field-v2.webp"
+            alt=""
+            fill
+            priority
+            unoptimized
+            sizes="(max-width: 820px) 100vw, 72vw"
+          />
           <span className="hero-art-caption">{copy.artCaption}</span>
         </div>
         <div className="hero-copy">
@@ -98,47 +114,60 @@ export function HomePageView({ locale }: { locale: Locale }) {
       </section>
 
       <section className="section product-overview" aria-labelledby="mission-title">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <p className="section-index">{copy.missionIndex}</p>
           <h2 id="mission-title">{copy.missionTitle}</h2>
           <p>{copy.missionIntro}</p>
         </div>
         <div className="product-grid" aria-label={copy.principlesLabel}>
           {copy.principles.map((p) => (
-            <a className="product-card direction-card" href={l(p.path)} key={p.index}>
-              <div className="card-topline"><span>{p.index}</span><span>{p.meta}</span></div>
+            <a className={`product-card direction-card direction-card--${p.tone}`} href={l(p.path)} data-reveal key={p.index}>
+              <div className="card-topline">
+                <span>{p.index}</span>
+                <span className="dusk-series-label">Dusk / {p.dusk}</span>
+              </div>
               <h3>{p.title}</h3>
               <p>{p.description}</p>
-              <span className="card-action">{locale === "zh" ? "了解产品" : "Explore product"} <span aria-hidden="true">→</span></span>
             </a>
           ))}
         </div>
       </section>
 
-      <section className="dark-section" aria-labelledby="product-title">
+      <section className="dark-section" aria-labelledby="product-title" id="products-spotlight">
         <div className="dark-section-inner feature-product">
-          <div className="dark-intro">
+          <div className="dark-intro" data-reveal>
             <p className="section-index">{copy.productIndex}</p>
             <h2 id="product-title">{copy.productTitle}</h2>
             <p>{copy.productCopy}</p>
             <p className="status-pill">{copy.status}</p>
             <a className="section-link section-link-light" href={l("/products")}>{copy.productLink} <span aria-hidden="true">→</span></a>
           </div>
-          <div className="feature-product-art">
+          <div className="feature-product-art" data-reveal>
             <div className="featured-product-links" aria-label={copy.productTitle}>
-              <a href={l("/products/mimi")}><Image src="/mimi/mimi-app-icon.png" alt="" width={64} height={64} unoptimized /><span>Mimi / 小咪</span><span aria-hidden="true">→</span></a>
-              <a href={l("/products/momo")}><span className="product-mark product-mark-momo" aria-hidden="true" /><span>Momo</span><span aria-hidden="true">→</span></a>
-              <a href={l("/products/frameforge")}><span className="product-mark product-mark-frameforge" aria-hidden="true" /><span>FrameForge / 小片场</span><span aria-hidden="true">→</span></a>
+              {featured.map((item) => (
+                <a href={l(item.path)} key={item.id} data-product={item.id}>
+                  {item.id === "mimi" ? (
+                    <Image src="/mimi/mimi-app-icon-128.webp" alt="" width={64} height={64} sizes="64px" unoptimized />
+                  ) : (
+                    <span className={`product-mark product-mark-${item.id === "frameforge" ? "frameforge" : "momo"}`} aria-hidden="true" />
+                  )}
+                  <span>{item[locale]}</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              ))}
             </div>
             <p className="featured-tool-note">
-              <a href={l("/products/ferry-dock")}><span className="product-mark product-mark-ferry" aria-hidden="true" /><span>{copy.toolName}</span></a>
+              <a href={l("/products/ferry-dock")}>
+                <span className="product-mark product-mark-ferry" aria-hidden="true" />
+                <span>{locale === "zh" ? "渡口 / Ferry Dock" : "Ferry Dock / 渡口"}</span>
+              </a>
               <span className="featured-tool-meta">{copy.toolNote}</span>
             </p>
           </div>
         </div>
       </section>
 
-      <section className="contact-band" aria-labelledby="contact-title">
+      <section className="contact-band" aria-labelledby="contact-title" data-reveal>
         <p className="section-index">{copy.contactIndex}</p>
         <h2 id="contact-title">{copy.contactTitle}</h2>
         <a className="contact-link" href={l("/contact")}>{copy.contactLink} <span aria-hidden="true">↗</span></a>

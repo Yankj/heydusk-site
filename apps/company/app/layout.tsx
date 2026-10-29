@@ -1,23 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
 export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get("x-forwarded-host") ??
-    requestHeaders.get("host") ??
-    "heydusk.com";
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ??
-    (host.startsWith("localhost") ? "http" : "https");
-  const origin = `${protocol}://${host}`;
+  const metadataOrigin = "https://heydusk.com";
   const title = "HeyDusk · 理想三旬 — independent AI products";
   const description =
     "HeyDusk builds independent AI products across family life, learning and creative expression — Mimi, Momo, FrameForge / 小片场 — plus an early everyday tool, Ferry Dock / 渡口.";
 
   return {
-    metadataBase: new URL(origin),
+    metadataBase: new URL(metadataOrigin),
     title: {
       default: title,
       template: "%s — HeyDusk",
@@ -25,17 +24,17 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     openGraph: {
       type: "website",
-      url: origin,
+      url: metadataOrigin,
       siteName: "HeyDusk",
       title,
       description,
-      images: [`${origin}/og.png`],
+      images: [`${metadataOrigin}/og.png`],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`${origin}/og.png`],
+      images: [`${metadataOrigin}/og.png`],
     },
   };
 }
@@ -56,7 +55,7 @@ export default async function RootLayout({
   const requestHeaders = await headers();
   const language = requestHeaders.get("x-heydusk-locale") === "zh" ? "zh-CN" : "en";
   return (
-    <html lang={language}>
+    <html lang={language} className={inter.variable}>
       <head>
         <link
           rel="icon"
@@ -70,7 +69,7 @@ export default async function RootLayout({
           type="image/x-icon"
         />
       </head>
-      <body>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

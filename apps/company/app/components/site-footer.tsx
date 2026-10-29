@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { formatProductName } from "../display-names";
 import { localizedPath, type Locale } from "../i18n";
+import type { ProductId } from "../product-catalog";
 
 const footerCopy = {
   en: {
@@ -10,7 +12,6 @@ const footerCopy = {
     about: "About",
     contact: "Contact",
     products: "Products",
-    mimi: "Mimi / 小咪",
     allProducts: "All products",
     legal: "Legal",
     privacy: "Privacy Policy (draft)",
@@ -25,7 +26,6 @@ const footerCopy = {
     about: "关于我们",
     contact: "联系我们",
     products: "产品",
-    mimi: "Mimi / 小咪",
     allProducts: "全部产品",
     legal: "法律",
     privacy: "隐私政策（草案）",
@@ -33,6 +33,8 @@ const footerCopy = {
     note: "独立产品，各自推进",
   },
 };
+
+const footerProducts: ProductId[] = ["mimi", "momo", "frameforge", "ferry-dock"];
 
 export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
   const copy = footerCopy[locale];
@@ -51,10 +53,9 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
       <div className="footer-nav" aria-label={copy.navigation}>
         <div>
           <p className="footer-label">{copy.products}</p>
-          <a href={l("/products/mimi")}>{copy.mimi}</a>
-          <a href={l("/products/momo")}>Momo</a>
-          <a href={l("/products/frameforge")}>FrameForge / 小片场</a>
-          <a href={l("/products/ferry-dock")}>Ferry Dock / 渡口</a>
+          {footerProducts.map((id) => (
+            <a href={l(`/products/${id}`)} key={id}>{formatProductName(id, locale, "full")}</a>
+          ))}
           <a href={l("/products")}>{copy.allProducts}</a>
         </div>
         <div>

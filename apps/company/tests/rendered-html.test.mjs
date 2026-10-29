@@ -111,7 +111,7 @@ for (const locale of ["en", "zh"]) {
       ? ["Early alpha", "15 minutes", "64 KiB", "1 MiB", "MIT", "trusted local network", "Agent task inputs are planned", "no binary release or npm package"]
       : ["早期 alpha", "15 分钟", "64 KiB", "1 MiB", "MIT", "可信局域网", "Agent 任务输入", "没有二进制发布或 npm 包"]) assert.ok(html.includes(fact), fact);
     assert.doesNotMatch(html, /href="[^"]*(?:\/releases|\.zip|\.dmg|\.exe|npmjs\.com)/i);
-    assert.match(html, /class="product-mark product-mark-ferry" aria-hidden="true"/);
+    assert.match(html, /class="ferry-dock-logo" aria-hidden="true"/);
   });
 
   test(`${locale} contact has a usable no-JavaScript email fallback`, async () => {

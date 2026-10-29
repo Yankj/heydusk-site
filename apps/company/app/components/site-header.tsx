@@ -10,8 +10,8 @@ const navigation = {
   zh: [{ href: "/", label: "首页" }, { href: "/products", label: "产品" }, { href: "/about", label: "关于我们" }, { href: "/contact", label: "联系我们" }],
 };
 const labels = {
-  en: { home: "HeyDusk home", navigation: "Primary navigation", mobileNavigation: "Mobile navigation", menu: "Menu", contact: "Get in touch", switchLanguage: "切换至简体中文", switchLabel: "中文", skip: "Skip to content" },
-  zh: { home: "HeyDusk 首页", navigation: "主导航", mobileNavigation: "移动端导航", menu: "菜单", contact: "联系我们", switchLanguage: "Switch to English", switchLabel: "EN", skip: "跳到正文" },
+  en: { home: "HeyDusk home", navigation: "Primary navigation", mobileNavigation: "Mobile navigation", menu: "Menu", contact: "Get in touch", switchLanguage: "中文 — 切换至简体中文", switchLabel: "中文", skip: "Skip to content" },
+  zh: { home: "HeyDusk 首页", navigation: "主导航", mobileNavigation: "移动端导航", menu: "菜单", contact: "联系我们", switchLanguage: "EN — Switch to English", switchLabel: "EN", skip: "跳到正文" },
 };
 
 function subscribeToQuery(listener: () => void) {
