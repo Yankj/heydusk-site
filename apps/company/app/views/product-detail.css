@@ -280,3 +280,151 @@
     transition: none;
   }
 }
+
+/* Ferry Dock: brand mark, how-it-works steps, source commands and limits. */
+/* The brand mark is painted with the page's ink colour so it follows the light and dark themes. */
+.ferry-dock-logo {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--ink);
+  mask: url("/ferry-dock/logo-mono.svg") center / contain no-repeat;
+  -webkit-mask: url("/ferry-dock/logo-mono.svg") center / contain no-repeat;
+}
+
+.product-detail-repo {
+  display: inline-flex;
+  gap: 0.6rem;
+  min-height: 48px;
+  align-items: center;
+  padding: 0.65rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  transition: opacity 180ms ease;
+}
+
+.product-detail-repo:hover {
+  opacity: 0.72;
+}
+
+.product-detail-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+  margin: 3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-detail-step {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.product-detail-step h3 {
+  margin: 1.8rem 0 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 550;
+  line-height: 1.35;
+}
+
+.product-detail-step p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.product-detail-run {
+  margin-top: 3.5rem;
+  max-width: 46rem;
+}
+
+.product-detail-run h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 550;
+  line-height: 1.4;
+}
+
+.product-detail-run p {
+  margin: 0.8rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.product-detail-run pre {
+  margin: 1.4rem 0 0;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--ink) 4%, var(--surface));
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.product-detail-run code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.product-detail-limits {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.product-detail-limits h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 550;
+  line-height: 1.4;
+}
+
+.product-detail-limits dl {
+  display: grid;
+  margin: 1rem 0 0;
+}
+
+.product-detail-limits dl > div {
+  display: flex;
+  gap: 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.product-detail-limits dt {
+  color: var(--ink-soft);
+}
+
+.product-detail-limits dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 550;
+}
+
+@media (max-width: 820px) {
+  .product-detail-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .product-detail-step h3 {
+    margin-top: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-detail-repo {
+    transition: none;
+  }
+}
