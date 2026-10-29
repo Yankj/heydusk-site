@@ -8,7 +8,7 @@
 |---|---|---|
 | 企业 / 母品牌 | 未注册的独立 AI 产品工作室，对外统一产品归属 | HeyDusk / 理想三旬；尚未注册，不声称法律公司主体已成立 |
 | 业务方向 | 组织产品的分类，可以交叉，不设新品牌或事业部 | 家庭与生活；学习与成长；创作与表达 |
-| 独立产品 | 各自解决具体需求，保持独立体验和发展节奏 | Mimi / 小咪；Momo；FrameForge / 小片场（同一产品） |
+| 独立产品 | 各自解决具体需求，保持独立体验和发展节奏 | Mimi / 小咪；Momo；FrameForge / 小片场（同一产品）；Ferry Dock / 渡口（日常小工具，早期 alpha） |
 | 交付形态 | 根据使用场景选择的入口 | iOS App、网页、插件、MCP；不是品牌层级 |
 | 工程边界 | 各仓维护各自合同、实现与证据 | 不因品牌统一而合并产品、账号、数据或引擎 |
 
@@ -21,6 +21,7 @@
 | Mimi / 小咪 · 家庭与生活 | iOS 开发中；今日安排 + 长期成长双核心。本机文字输入当前使用中文规则，家长确认后保存；图片/语音育儿提取、长期记忆、多设备与周期能力仍需后续推进。同版真机/真实家庭验收未完成 | [产品站](https://mimi.heydusk.com)；保留联系入口，不许诺测试名额 | mimi 主干 `db41ad3`（含 #126/#128/#130）：`docs/design/family-companion/parenting-core.md`、`docs/acceptance/family-companion/interaction-natural-input-v0.5.md`、`docs/acceptance/family-companion/ios-parenting-usable-gaps-2026-10-25.md`；较早日期记录不覆盖较新主路径 |
 | Momo · 学习与成长 | 开发探索中；ChatGPT + MCP + 持久课堂画布为 36 节课程设计，独立网页为 48 节活动。宿主、评测和服务范围分别验收 | [独立网页（48 节活动）](https://word-island.kunjie-yan.chatgpt.site/)；不代表 36 节 MCP 课堂已发布 | 私有项目 README 与课程/网页说明，由有权限的维护者核对；不在公共仓或营销站暴露私有源码链接 |
 | FrameForge / 小片场 · 创作与表达 | 同一视频创作产品；当前 Codex 插件 v0.2.2、持久工程、宿主浏览器主线。使用者是创作者，默认 3–8 岁儿童科普是内容配置。Web 实验另列 | [既有联系入口](mailto:hello@heydusk.com)（源码私有，不作公开安装入口） | agent-frameforge 私有主干 `88f2456` 的插件 README 与 manifest（由有权限维护者核对）；未合草稿 PR #2 不作主线事实 |
+| Ferry Dock / 渡口 · 日常工具 | 早期 alpha 的本地中转服务：电脑启动、手机扫码，把纯文本发到临时收件箱。目前仅支持手机到电脑的纯文本；文件传输与 Agent 任务输入在规划中。仅在可信局域网内用 HTTP，会话 15 分钟、文本 64 KiB、收件箱 1 MiB，MIT 许可。无二进制发布或 npm 包；浏览器流程验证与真机局域网验收尚未完成 | [公开源码仓库](https://github.com/Yankj/ferry-dock)（仅源码，不提供下载入口） | ferry-dock 公开仓 `13e5b27` 的 `README.md`、`docs/verification.md`、`brand/README.md`；不是业务方向之一，仅作目录中的小工具；该条核对于 2026-10-29，其余条目日期不变 |
 
 本轮来源为已有仓库文档与源码，未访问儿童学习记录、未验证链接产品的线上可用性、未调用模型/生产服务。mimi 的本机账本、旧辅助聊天和家庭云候选不得互相代替证据。Momo 的 36 / 48 两条体验不可相加成课程总数；FrameForge 插件与 Web 的状态不可合写成统一生产服务。
 

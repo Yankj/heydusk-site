@@ -109,6 +109,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the short checklist.
 
 ## Visitor journeys
 
-The company site uses standard document links for dependable navigation, including without JavaScript. `/products/mimi`, `/products/momo`, `/products/frameforge` and their `/zh` equivalents are product introductions, followed by the existing email contact. Public presentation is **HeyDusk / 理想三旬, independent AI product studio**; the studio is not registered as a company. Display names use **HeyDusk, Mimi, Momo, FrameForge**; engineering identifiers and domains keep their existing spelling.
+The company site uses standard document links for dependable navigation, including without JavaScript. `/products/mimi`, `/products/momo`, `/products/frameforge`, `/products/ferry-dock` and their `/zh` equivalents are product introductions, followed by the existing email contact. Public presentation is **HeyDusk / 理想三旬, independent AI product studio**; the studio is not registered as a company. Display names use **HeyDusk, Mimi, Momo, FrameForge**; engineering identifiers and domains keep their existing spelling.
 
 Run the production browser journey checks with `python3 scripts/check-visitor-journeys.py --base-url http://127.0.0.1:4180 --output-dir /tmp/heydusk-visitor-checks` after starting the local production server. This requires an existing Python Playwright / Chromium setup; it does not deploy or install dependencies. Website navigation validation does not establish product availability, mailbox delivery or legal/commercial readiness.
