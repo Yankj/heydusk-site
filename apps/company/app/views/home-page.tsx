@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { RevealOnScroll } from "../components/reveal-on-scroll";
+import { YushengCoverFx } from "../components/yusheng-cover-fx";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
 import { localeLanguageTag, localizedPath, type Locale } from "../i18n";
@@ -202,7 +203,10 @@ export function HomePageView({ locale }: { locale: Locale }) {
             const body = (
               <>
                 <div className="yusheng-card-art">
-                  <Image src={world.image} alt={world.alt} width={1280} height={720} sizes="(max-width: 820px) 100vw, 30vw" unoptimized />
+                  <div className="yusheng-card-art-inner">
+                    <Image src={world.image} alt={world.alt} width={1280} height={720} sizes="(max-width: 820px) 100vw, 30vw" unoptimized />
+                    <YushengCoverFx worldId={world.id} />
+                  </div>
                 </div>
                 <div className="card-topline">
                   <span>{world.index} / {world.source}</span>
