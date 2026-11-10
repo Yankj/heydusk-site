@@ -35,14 +35,14 @@ const content = {
     yushengIndex: "03 / 余生所往",
     yushengTitle: "A life one might long for.",
     yushengIntro:
-      "Walkable worlds in the spirit of Tao Yuanming: peach-blossom fields, a return to the garden, chrysanthemums by the east fence. Enter when a place is ready; the others remain quiet until they are.",
+      "Walkable worlds in the spirit of Tao Yuanming: peach-blossom fields, a return to the garden, chrysanthemums by the east fence. The doors are open; walk in when you like, unhurried.",
     yushengLabel: "Worlds to walk",
     yushengEnter: "Enter 桃源",
     yushengSoon: "Coming soon",
     worlds: [
-      { id: "taoyuan", index: "01", source: "桃花源记", title: "桃花源", blurb: "Follow the stream into the peach grove; across the stone bridge is a village you can walk, unhurried.", href: "https://life.heydusk.com/taoyuan", image: "/yusheng/taoyuan-overview.webp", alt: "A peach-blossom village beside a stream and a stone bridge." },
-      { id: "guiyuan", index: "02", source: "归园田居", title: "归园田居", blurb: "A modest homestead of vegetable plots, mulberry and elm, a thatched roof and a well, with cooking smoke at dusk.", href: null, image: "/yusheng/guiyuan-overview.webp", alt: "A thatched cottage among vegetable plots, a well, and chickens at evening." },
-      { id: "caiju", index: "03", source: "饮酒 · 其五", title: "采菊东篱下", blurb: "Chrysanthemums along the east fence, a wine pot on the stone, and the southern hills at ease in the distance.", href: null, image: "/yusheng/caiju-overview.webp", alt: "Autumn chrysanthemums by a rustic fence, with distant hills beyond a poet’s cottage." },
+      { id: "taoyuan", index: "01", source: "桃花源记", title: "桃花源", blurb: "Follow the stream into the peach grove; across the stone bridge is a village you can walk, unhurried.", href: "https://life.heydusk.com/taoyuan", enter: "Enter 桃源", image: "/yusheng/taoyuan-overview.webp", alt: "A peach-blossom village beside a stream and a stone bridge." },
+      { id: "guiyuan", index: "02", source: "归园田居", title: "归园田居", blurb: "A modest homestead of vegetable plots, mulberry and elm, a thatched roof and a well, with cooking smoke at dusk.", href: "https://life.heydusk.com/guiyuan", enter: "Enter 归园田居", image: "/yusheng/guiyuan-overview.webp", alt: "A thatched cottage among vegetable plots, a well, and chickens at evening." },
+      { id: "caiju", index: "03", source: "饮酒 · 其五", title: "采菊东篱下", blurb: "Chrysanthemums along the east fence, a wine pot on the stone, and the southern hills at ease in the distance.", href: "https://life.heydusk.com/caiju", enter: "Enter 东篱", image: "/yusheng/caiju-overview.webp", alt: "Autumn chrysanthemums by a rustic fence, with distant hills beyond a poet’s cottage." },
     ],
     contactIndex: "Product questions, partnerships, and press",
     contactTitle: "We’d like to hear from you.",
@@ -78,14 +78,14 @@ const content = {
     yushengIndex: "03 / 余生所往",
     yushengTitle: "向往的生活。",
     yushengIntro:
-      "循陶渊明的意思，做几处可以慢慢走的地方：桃花源、归园田居、采菊东篱下。开了门的就进去；其余的，等到了再开。",
+      "循陶渊明的意思，做了三处可以慢慢走的地方：桃花源、归园田居、采菊东篱下。门已开，进去走走停停即可。",
     yushengLabel: "可走的世界",
     yushengEnter: "进入桃源",
     yushengSoon: "即将开放",
     worlds: [
-      { id: "taoyuan", index: "01", source: "桃花源记", title: "桃花源", blurb: "沿着溪水走进桃花林，石桥对面是可以慢慢走过的村落。不必赶路，只是走走停停。", href: "https://life.heydusk.com/taoyuan", image: "/yusheng/taoyuan-overview.webp", alt: "溪边桃花村落与一座石桥。" },
-      { id: "guiyuan", index: "02", source: "归园田居", title: "归园田居", blurb: "菜畦、桑榆、茅檐与井。炊烟起时，把这一日过完。", href: null, image: "/yusheng/guiyuan-overview.webp", alt: "茅草小屋、菜畦、水井与暮色中的鸡群。" },
-      { id: "caiju", index: "03", source: "饮酒 · 其五", title: "采菊东篱下", blurb: "东篱把菊开好了，酒壶放在石上，南山就在眼前。", href: null, image: "/yusheng/caiju-overview.webp", alt: "秋菊依着东篱，远处是南山。" },
+      { id: "taoyuan", index: "01", source: "桃花源记", title: "桃花源", blurb: "沿着溪水走进桃花林，石桥对面是可以慢慢走过的村落。不必赶路，只是走走停停。", href: "https://life.heydusk.com/taoyuan", enter: "进入桃源", image: "/yusheng/taoyuan-overview.webp", alt: "溪边桃花村落与一座石桥。" },
+      { id: "guiyuan", index: "02", source: "归园田居", title: "归园田居", blurb: "菜畦、桑榆、茅檐与井。炊烟起时，把这一日过完。", href: "https://life.heydusk.com/guiyuan", enter: "进入田居", image: "/yusheng/guiyuan-overview.webp", alt: "茅草小屋、菜畦、水井与暮色中的鸡群。" },
+      { id: "caiju", index: "03", source: "饮酒 · 其五", title: "采菊东篱下", blurb: "东篱把菊开好了，酒壶放在石上，南山就在眼前。", href: "https://life.heydusk.com/caiju", enter: "进入东篱", image: "/yusheng/caiju-overview.webp", alt: "秋菊依着东篱，远处是南山。" },
     ],
     contactIndex: "产品咨询、合作与媒体",
     contactTitle: "期待听到你的声音。",
@@ -211,7 +211,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
                 <h3>{world.title}</h3>
                 <p>{world.blurb}</p>
                 {world.href ? (
-                  <span className="yusheng-card-action">{copy.yushengEnter} <span aria-hidden="true">↗</span></span>
+                  <span className="yusheng-card-action">{world.enter || copy.yushengEnter} <span aria-hidden="true">↗</span></span>
                 ) : (
                   <span className="yusheng-card-action yusheng-card-action--quiet">{copy.yushengSoon}</span>
                 )}
