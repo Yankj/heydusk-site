@@ -40,7 +40,7 @@ const content = {
     yushengEnter: "Enter 桃源",
     yushengSoon: "Coming soon",
     worlds: [
-      { id: "taoyuan", index: "01", source: "桃花源记", title: "桃花源", blurb: "Follow the stream into the peach grove; across the stone bridge is a village you can walk, unhurried.", href: "https://taoyuan.heydusk.com", image: "/yusheng/taoyuan-overview.webp", alt: "A peach-blossom village beside a stream and a stone bridge." },
+      { id: "taoyuan", index: "01", source: "桃花源记", title: "桃花源", blurb: "Follow the stream into the peach grove; across the stone bridge is a village you can walk, unhurried.", href: "https://life.heydusk.com/taoyuan", image: "/yusheng/taoyuan-overview.webp", alt: "A peach-blossom village beside a stream and a stone bridge." },
       { id: "guiyuan", index: "02", source: "归园田居", title: "归园田居", blurb: "A modest homestead of vegetable plots, mulberry and elm, a thatched roof and a well, with cooking smoke at dusk.", href: null, image: "/yusheng/guiyuan-overview.webp", alt: "A thatched cottage among vegetable plots, a well, and chickens at evening." },
       { id: "caiju", index: "03", source: "饮酒 · 其五", title: "采菊东篱下", blurb: "Chrysanthemums along the east fence, a wine pot on the stone, and the southern hills at ease in the distance.", href: null, image: "/yusheng/caiju-overview.webp", alt: "Autumn chrysanthemums by a rustic fence, with distant hills beyond a poet’s cottage." },
     ],
@@ -83,7 +83,7 @@ const content = {
     yushengEnter: "进入桃源",
     yushengSoon: "即将开放",
     worlds: [
-      { id: "taoyuan", index: "01", source: "桃花源记", title: "桃花源", blurb: "沿着溪水走进桃花林，石桥对面是可以慢慢走过的村落。不必赶路，只是走走停停。", href: "https://taoyuan.heydusk.com", image: "/yusheng/taoyuan-overview.webp", alt: "溪边桃花村落与一座石桥。" },
+      { id: "taoyuan", index: "01", source: "桃花源记", title: "桃花源", blurb: "沿着溪水走进桃花林，石桥对面是可以慢慢走过的村落。不必赶路，只是走走停停。", href: "https://life.heydusk.com/taoyuan", image: "/yusheng/taoyuan-overview.webp", alt: "溪边桃花村落与一座石桥。" },
       { id: "guiyuan", index: "02", source: "归园田居", title: "归园田居", blurb: "菜畦、桑榆、茅檐与井。炊烟起时，把这一日过完。", href: null, image: "/yusheng/guiyuan-overview.webp", alt: "茅草小屋、菜畦、水井与暮色中的鸡群。" },
       { id: "caiju", index: "03", source: "饮酒 · 其五", title: "采菊东篱下", blurb: "东篱把菊开好了，酒壶放在石上，南山就在眼前。", href: null, image: "/yusheng/caiju-overview.webp", alt: "秋菊依着东篱，远处是南山。" },
     ],
