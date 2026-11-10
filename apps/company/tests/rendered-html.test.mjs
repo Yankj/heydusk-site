@@ -162,3 +162,17 @@ test("Chinese dotted unknown URLs retain localized 404 recovery", async () => {
   assert.match(html, /<html[^>]+lang="zh-CN"/);
   assert.ok(html.includes('href="/zh/products"'));
 });
+
+for (const locale of ["en", "zh"]) {
+  test(`${locale} home presents 余生所往 with a live 桃源 entry and unpublished companions`, async () => {
+    const html = visibleHTML(await (await render(localize(locale, "/"))).text());
+    assert.match(html, /id="yusheng-suowang"/);
+    assert.ok(html.includes("余生所往"));
+    assert.ok(html.includes(locale === "zh" ? "向往的生活。" : "A life one might long for."));
+    assert.match(html, /<a[^>]+class="yusheng-card"[^>]+href="https:\/\/taoyuan\.heydusk\.com"/);
+    assert.ok(html.includes("归园田居"));
+    assert.ok(html.includes("采菊东篱下"));
+    assert.ok(html.includes(locale === "zh" ? "即将开放" : "Coming soon"));
+    assert.doesNotMatch(html, /guiyuan\.heydusk\.com|caiju\.heydusk\.com/);
+  });
+}
