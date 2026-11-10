@@ -2188,17 +2188,135 @@ a.direction-card:hover { background: var(--surface); }
   background: color-mix(in srgb, var(--ink) 6%, var(--paper));
 }
 
+.yusheng-card-art-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transition: transform 640ms var(--ease-out);
+}
+
 .yusheng-card-art img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 640ms var(--ease-out);
 }
 
-a.yusheng-card:hover .yusheng-card-art img,
-a.yusheng-card:focus-visible .yusheng-card-art img {
+a.yusheng-card:hover .yusheng-card-art-inner,
+a.yusheng-card:focus-visible .yusheng-card-art-inner {
   transform: scale(1.03);
+}
+
+.yusheng-fx {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.yusheng-smoke,
+.yusheng-leaf,
+.yusheng-petal {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.yusheng-fx--guiyuan .yusheng-smoke {
+  left: 45.4%;
+  top: 20.5%;
+  width: 22px;
+  height: 34px;
+}
+
+.yusheng-fx--taoyuan .yusheng-smoke {
+  left: 25.2%;
+  top: 24%;
+  width: 14px;
+  height: 22px;
+}
+
+.yusheng-smoke {
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 70%, rgba(255, 252, 245, 0.42) 0%, rgba(232, 222, 205, 0.16) 46%, rgba(232, 222, 205, 0) 74%);
+  filter: blur(5px);
+  opacity: 0;
+  transform: translate(-50%, 0) scale(0.45);
+  animation-name: yusheng-smoke-rise;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+.yusheng-smoke--far {
+  filter: blur(3.5px);
+  background: radial-gradient(ellipse at 50% 70%, rgba(255, 252, 245, 0.32) 0%, rgba(232, 222, 205, 0.12) 48%, rgba(232, 222, 205, 0) 74%);
+}
+
+.yusheng-leaf,
+.yusheng-petal {
+  top: -8%;
+  background: var(--tint);
+  opacity: 0;
+  animation-name: yusheng-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.yusheng-leaf {
+  border-radius: 0 80% 20% 80%;
+  box-shadow: inset -2px 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.yusheng-petal {
+  border-radius: 70% 10% 70% 10%;
+  box-shadow: inset -1px 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+@keyframes yusheng-smoke-rise {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 4px) scale(0.4);
+  }
+  12% {
+    opacity: 0.85;
+  }
+  70% {
+    opacity: 0.28;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--drift, 16px)), -86px) scale(var(--scale, 1.3));
+  }
+}
+
+@keyframes yusheng-drift {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  8% {
+    opacity: 0.92;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift, 40px), 118%) rotate(var(--spin, 220deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yusheng-fx {
+    display: none;
+  }
+
+  a.yusheng-card:hover .yusheng-card-art-inner,
+  a.yusheng-card:focus-visible .yusheng-card-art-inner {
+    transform: none;
+  }
 }
 
 .yusheng-card h3 {
