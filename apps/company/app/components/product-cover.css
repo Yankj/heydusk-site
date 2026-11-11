@@ -1,0 +1,254 @@
+/* Small editorial still lifes. Each product retains its own existing brand palette. */
+.product-cover {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  container-type: inline-size;
+  pointer-events: none;
+}
+
+.product-cover-stage {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1.48;
+  transform: translate(-50%, -50%);
+}
+
+.product-cover-caption { z-index: 5; }
+
+/* MIMI: a small notebook, a loose reminder, and the existing cat mark. */
+.product-cover--mimi { background: #e9dfcf; }
+.mimi-cover-sun {
+  position: absolute;
+  width: 66%;
+  aspect-ratio: 1;
+  top: -15%;
+  right: -13%;
+  border: 1px solid #b6a48a45;
+  border-radius: 50%;
+  background: #f0e7d9;
+}
+.mimi-cover-paper {
+  position: absolute;
+  top: 13%;
+  left: 34%;
+  width: 42%;
+  aspect-ratio: .8;
+  border-radius: 2px;
+}
+.mimi-cover-paper--back {
+  background: #cbb89a;
+  transform: rotate(7deg) translate(4%, 1%);
+  box-shadow: 0 8px 14px #82674712;
+}
+.mimi-cover-paper--front {
+  background: #fcf7ea;
+  box-shadow: -1px 2px 2px #745a3b16, 5px 13px 22px #745a3b1c;
+  transform: rotate(-6deg);
+  transition: transform 650ms cubic-bezier(.2,.7,.2,1);
+}
+.mimi-cover-binding {
+  position: absolute;
+  left: 7%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #c8bba040;
+  box-shadow: 2px 0 #fffaf2;
+}
+.mimi-cover-mark {
+  position: absolute;
+  left: 20%;
+  top: 12%;
+  width: 68%;
+  height: auto;
+}
+.mimi-cover-name {
+  position: absolute;
+  left: 22%;
+  bottom: 15%;
+  color: #8b5837;
+  font-size: clamp(18px, 6.2cqw, 30px);
+  font-weight: 600;
+  letter-spacing: -.06em;
+  line-height: 1;
+}
+.mimi-cover-rule {
+  position: absolute;
+  bottom: 16%;
+  right: 15%;
+  width: 19%;
+  height: 1px;
+  background: #ccac83;
+}
+.mimi-cover-note {
+  position: absolute;
+  left: 12%;
+  top: 37%;
+  width: 31%;
+  aspect-ratio: 1.04;
+  padding: 10% 7% 3%;
+  color: #927c60;
+  background: #e5ceb0;
+  box-shadow: 2px 8px 14px #745a3b12;
+  transform: rotate(-14deg);
+}
+.mimi-cover-note > span {
+  position: absolute;
+  top: 17%;
+  left: 20%;
+  font-size: clamp(10px, 3cqw, 14px);
+  letter-spacing: -.03em;
+}
+.mimi-cover-note > i { display: block; height: 1px; margin-bottom: 23%; background: #9e866552; }
+.mimi-cover-note > i:last-child { width: 65%; }
+.mimi-cover-pencil {
+  position: absolute;
+  right: 16%;
+  bottom: 9%;
+  width: 2%;
+  height: 57%;
+  border-radius: 1px;
+  background: linear-gradient(90deg, #bf703c 33%, #de9957 33%, #de9957 70%, #ad663a 70%);
+  box-shadow: 3px 2px 5px #745a3b26;
+  transform: rotate(20deg);
+}
+.mimi-cover-pencil::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 9%;
+  background: linear-gradient(#dfc297 67%, #5e5548 67%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* MOMO: an alphabet study made from paper, cloth, and a wooden apple. */
+.product-cover--momo { background: #dce3d5; color: #344b3c; }
+.momo-cover-orbit {
+  position: absolute;
+  left: -12%;
+  top: 3%;
+  width: 73%;
+  aspect-ratio: 1;
+  border: 1px solid #607b5a26;
+  border-radius: 50%;
+}
+.momo-cover-book {
+  position: absolute;
+  right: 14%;
+  top: 22%;
+  width: 35%;
+  aspect-ratio: .77;
+  border-radius: 2px 5px 5px 2px;
+  color: #b9c6a9;
+  background: #536b53;
+  border-right: 4px solid #839278;
+  box-shadow: 1px 2px #c2c6ac, 4px 12px 20px #344b3c28;
+  transform: rotate(12deg);
+}
+.momo-cover-book > span:last-child {
+  position: absolute;
+  right: 13%;
+  top: -5%;
+  font-size: clamp(78px, 31cqw, 135px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.07em;
+}
+.momo-cover-book-line { position: absolute; inset: 0 auto 0 8%; width: 1px; background: #c4d0b22b; }
+.momo-cover-card {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 43%;
+  aspect-ratio: .77;
+  color: #3a5742;
+  background: #f5f1de;
+  border-radius: 3px;
+  box-shadow: 1px 2px 2px #4453391a, 4px 16px 24px #344b3c24;
+  transform: rotate(-9deg);
+  transition: transform 650ms cubic-bezier(.2,.7,.2,1);
+}
+.momo-cover-card::after { content: ""; position: absolute; inset: 6%; border: 1px solid #7f916630; border-radius: 1px; }
+.momo-cover-card-corner { position: absolute; top: 11%; left: 14%; font-size: clamp(9px, 2.5cqw, 12px); font-weight: 500; }
+.momo-cover-letter {
+  position: absolute;
+  inset: 9% 0 auto;
+  text-align: center;
+  font-size: clamp(100px, 36cqw, 160px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.06em;
+  text-shadow: 1px 1px #a4b18d;
+}
+.momo-cover-word { position: absolute; bottom: 12%; left: 16%; font-size: clamp(11px, 3.3cqw, 15px); letter-spacing: .03em; }
+.momo-cover-apple {
+  position: absolute;
+  width: 22%;
+  aspect-ratio: 1;
+  right: 19%;
+  bottom: 10%;
+  transform: rotate(10deg);
+  filter: drop-shadow(3px 8px 4px #344b3c22);
+}
+.momo-cover-apple::before, .momo-cover-apple::after { content: ""; position: absolute; width: 60%; height: 77%; top: 21%; background: #c48248; border-radius: 48% 49% 42% 45%; }
+.momo-cover-apple::before { left: 5%; transform: rotate(-13deg); }
+.momo-cover-apple::after { right: 5%; transform: rotate(13deg); background: #cb8e51; }
+.momo-cover-apple > span { position: absolute; z-index: 1; left: 48%; top: 9%; width: 5%; height: 26%; background: #6b6542; transform: rotate(13deg); border-radius: 2px; }
+.momo-cover-apple > i { position: absolute; z-index: 2; left: 53%; top: 1%; width: 31%; height: 17%; border-radius: 90% 0 90% 0; background: #71845b; transform: rotate(-14deg); }
+.momo-cover-name { position: absolute; right: 14%; top: 9%; color: #62765a; font-size: clamp(11px, 3cqw, 14px); letter-spacing: -.04em; font-weight: 600; }
+
+/* FRAMEFORGE: the same shot, from pencil blocking to a cinematic frame. */
+.product-cover--frameforge { background: #282b29; color: #e8e8d9; }
+.frameforge-cover-guide { position: absolute; top: 6%; right: 9%; width: 58%; aspect-ratio: 1; border: 1px solid #adb4a115; border-radius: 50%; }
+.frameforge-cover-board {
+  position: absolute;
+  left: 13%;
+  bottom: 12%;
+  width: 56%;
+  aspect-ratio: 1.28;
+  padding: 6% 3% 3%;
+  color: #747466;
+  background: #e8e4d7;
+  box-shadow: 3px 8px 20px #121a1540;
+  transform: rotate(-10deg);
+}
+.frameforge-cover-board-label { position: absolute; top: 8%; left: 6%; font-size: clamp(8px, 2.2cqw, 11px); letter-spacing: .03em; }
+.film-scene { display: block; width: 100%; height: auto; }
+.frameforge-cover-board > .film-scene { border: 1px solid #a2a38d; }
+.frameforge-cover-pencil-line { display: block; width: 45%; height: 1px; background: #aaa38e; margin-top: 7%; }
+.frameforge-cover-pencil-line--short { width: 29%; margin-top: 3%; }
+.frameforge-cover-film {
+  position: absolute;
+  top: 16%;
+  right: 10%;
+  width: 72%;
+  padding: 5.5% 2.5%;
+  background: #131d19;
+  box-shadow: 1px 3px 5px #0d171b52, 4px 14px 28px #111b1859;
+  transform: rotate(6deg);
+  transition: transform 650ms cubic-bezier(.2,.7,.2,1);
+}
+.frameforge-cover-perfs { position: absolute; left: 4%; right: 4%; height: 4%; background: repeating-linear-gradient(90deg, #778075 0, #778075 2.3%, transparent 2.3%, transparent 5.9%); opacity: .55; }
+.frameforge-cover-perfs--top { top: 5%; }
+.frameforge-cover-perfs--bottom { bottom: 5%; }
+.frameforge-cover-mark { position: absolute; top: 8%; left: 13%; width: 6%; height: auto; opacity: .45; filter: invert(1); }
+.studio-home .product-cover--frameforge .product-cover-caption { color: #bdc5b7; opacity: 1; }
+.studio-home .product-cover--momo .product-cover-caption { color: #52654b; opacity: 1; }
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .studio-product:hover .mimi-cover-paper--front, .studio-product:focus-visible .mimi-cover-paper--front { transform: translateY(-3%) rotate(-3deg); }
+  .studio-product:hover .momo-cover-card, .studio-product:focus-visible .momo-cover-card { transform: translateY(-3%) rotate(-6deg); }
+  .studio-product:hover .frameforge-cover-film, .studio-product:focus-visible .frameforge-cover-film { transform: translateY(-3%) rotate(3deg); }
+}
+@media (max-width: 520px) {
+  .product-cover-stage { width: 103%; max-width: 380px; top: 45%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mimi-cover-paper--front, .momo-cover-card, .frameforge-cover-film { transition: none; }
+}

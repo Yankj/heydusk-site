@@ -1,7 +1,7 @@
 name: Company production build verification
 on:
   push:
-    branches: [main, feat/studio-editorial-refresh-ci]
+    branches: [main, feat/studio-editorial-refresh-ci, feat/editorial-cover-art]
   workflow_dispatch:
 permissions:
   contents: read
