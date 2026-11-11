@@ -1,8 +1,8 @@
 /* Small, composited atmospheric layers. The source paintings stay readable. */
-.world-atmosphere { position: absolute; inset: 0; overflow: hidden; pointer-events: none; contain: paint; }
+.world-atmosphere { position: absolute; inset: 0; overflow: hidden; pointer-events: none; contain: paint; container-type: inline-size; }
 .world-atmosphere > i { position: absolute; display: block; animation-play-state: paused; opacity: 0; }
 .world-atmosphere[data-running="true"] > i { animation-play-state: running; }
-.world-smoke { aspect-ratio: 1 / 2.2; border-radius: 48%; background: radial-gradient(ellipse at 50% 62%, #fff7e4a0, #f6efdb42 38%, transparent 70%); transform-origin: 50% 100%; animation: world-smoke-rise 10s ease-out infinite; animation-delay: var(--phase); }
+.world-smoke { aspect-ratio: 1 / 3.8; border-radius: 48%; background: radial-gradient(ellipse at 36% 25%, #fff9e66b, transparent 62%), radial-gradient(ellipse at 65% 65%, #f6efdb80, transparent 64%); transform-origin: 50% 100%; animation: world-smoke-rise 10s ease-out infinite; animation-delay: var(--phase); }
 .world-atmosphere--taoyuan .world-smoke { animation-duration: 12s; }
 .world-mist { width: 72%; height: 16%; left: 23%; top: 17%; background: radial-gradient(ellipse at center, #fff8e13b, #fff8e112 45%, transparent 72%); animation: world-mist-pass 24s ease-in-out infinite alternate; }
 .world-atmosphere--taoyuan .world-mist { top: 43%; left: 9%; height: 18%; width: 58%; }
@@ -12,8 +12,8 @@
 .world-atmosphere--guiyuan .world-drift { background: #8b9252; }
 @keyframes world-smoke-rise {
   0% { opacity: 0; transform: translate(-50%, -100%) scale(.55); }
-  18% { opacity: .42; }
-  60% { opacity: .25; }
+  18% { opacity: .52; transform: translate(-45%, -135%) scale(.85, 1.05) rotate(-7deg); }
+  60% { opacity: .34; transform: translate(5%, -220%) scale(1.8, 1.5) rotate(8deg); }
   100% { opacity: 0; transform: translate(65%, -300%) scale(2.6, 2); }
 }
 @keyframes world-mist-pass {
@@ -25,7 +25,7 @@
   0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(0); }
   15% { opacity: .55; }
   65% { opacity: .42; }
-  100% { opacity: 0; transform: translate3d(var(--travel), 340px, 0) rotate(var(--turn)); }
+  100% { opacity: 0; transform: translate3d(var(--travel), 60cqw, 0) rotate(var(--turn)); }
 }
 .world-motion-control { display: inline-flex; align-items: center; gap: .55rem; width: fit-content; min-height: 44px; padding: .35rem 0; border: 0; background: transparent; color: inherit; font: inherit; font-size: .75rem; cursor: pointer; }
 .world-motion-control:hover { text-decoration: underline; text-underline-offset: .3em; }
@@ -36,3 +36,33 @@
 html[data-theme="dark"] .studio-home .yusheng-motion-row { color: #b9c1b3; }
 @media (max-width: 520px) { .studio-home .yusheng-motion-row { justify-content: flex-start; margin-top: -1rem; } .world-drift:nth-last-child(-n+2) { display: none; } }
 @media (prefers-reduced-motion: reduce) { .world-atmosphere { display: none; } .world-atmosphere > i { animation: none !important; } }
+
+/* Glints follow the actual river, rather than washing over roofs and gardens. */
+.world-water { position: absolute; inset: 0; clip-path: polygon(29% 48%, 35% 48%, 42% 56%, 54% 67%, 72% 70%, 94% 88%, 96% 100%, 67% 100%, 65% 86%, 58% 78%, 45% 69%, 30% 64%, 18% 68%, 2% 70%, 0 65%, 23% 60%, 29% 55%); }
+.world-water i { position: absolute; height: .45%; width: 8%; border-radius: 50%; background: #fff5da; opacity: .12; animation: world-water-glint 7s ease-in-out infinite; animation-play-state: paused; }
+.world-water i:nth-child(1) { left: 29%; top: 55%; }
+.world-water i:nth-child(2) { left: 60%; top: 76%; animation-delay: -2s; }
+.world-water i:nth-child(3) { left: 79%; top: 90%; animation-delay: -4s; }
+.world-lantern { position: absolute; left: 27.5%; top: 45%; width: 3%; height: 6%; border-radius: 50%; background: radial-gradient(ellipse, #ffd98b55, transparent 70%); animation: world-lantern-warmth 8s ease-in-out infinite; animation-play-state: paused; }
+.world-atmosphere[data-running="true"] .world-water i, .world-atmosphere[data-running="true"] .world-lantern { animation-play-state: running; }
+@keyframes world-water-glint { 0%, 100% { opacity: .08; transform: translateX(-10%) scaleX(.55); } 45% { opacity: .27; transform: translateX(16%) scaleX(1.15); } }
+@keyframes world-lantern-warmth { 0%, 100% { opacity: .3; } 50% { opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .world-water i, .world-lantern { animation: none !important; } }
+
+/* One foreground hen is separated from its ground. The other four remain in the painting. */
+.world-hen-scene { position: absolute; inset: 0; }
+.world-hen-ground { position: absolute; left: 46.5625%; top: 80.2778%; width: 9.375%; height: 16.6667%; background: url('/yusheng/guiyuan-hen-ground-patch.webp') center / 100% 100%; mask-image: radial-gradient(ellipse 41% 37% at 50.5% 50.5%, #000 72%, transparent 100%); }
+.world-hen { position: absolute; left: 48.2%; top: 83.5%; width: 6.2%; aspect-ratio: 1; animation: world-hen-forage 14s ease-in-out infinite; animation-play-state: paused; transform-origin: 52% 81%; }
+.world-hen > span { display: block; width: 100%; height: 100%; background: url('/yusheng/guiyuan-hen.webp') center / contain no-repeat; transform-origin: 53% 81%; animation: world-hen-peck 14s ease-in-out infinite; animation-play-state: paused; }
+.world-atmosphere[data-running="true"] .world-hen, .world-atmosphere[data-running="true"] .world-hen > span { animation-play-state: running; }
+@keyframes world-hen-forage { 0%, 22%, 100% { transform: translateX(0); } 32%, 68% { transform: translateX(-13%); } 78%, 90% { transform: translateX(-6%); } }
+@keyframes world-hen-peck { 0%, 8%, 20%, 35%, 45%, 62%, 80%, 100% { transform: rotate(0); } 11%, 16%, 49%, 55% { transform: rotate(-11deg) scaleY(.96); } 27%, 73% { transform: translateY(-1%) rotate(2deg); } }
+@media (prefers-reduced-motion: reduce) { .world-hen, .world-hen > span { animation: none !important; } }
+
+/* Tiny feathered sky repairs replace the original suspended leaves, without repainting the landscape. */
+.world-sky-detail { position: absolute; width: 3.4375%; height: 6.1111%; }
+.world-sky-patch { position: absolute; inset: 0; background: var(--sky-patch) center / 100% 100%; mask-image: radial-gradient(ellipse, #000 48%, transparent 72%); }
+.world-painted-leaf { position: absolute; left: 8%; top: 8%; width: 84%; height: 84%; background: url('/yusheng/caiju-leaf.webp') center / contain no-repeat; opacity: .75; animation: world-painted-leaf-turn var(--duration) ease-in-out infinite; animation-delay: var(--phase); animation-play-state: paused; }
+.world-atmosphere[data-running="true"] .world-painted-leaf { animation-play-state: running; }
+@keyframes world-painted-leaf-turn { 0% { opacity: 0; transform: translate(-18%, -100%) rotate(var(--leaf-angle)) scaleX(.7); } 15% { opacity: .8; } 45% { transform: translate(30%, 40%) rotate(calc(var(--leaf-angle) + 35deg)) scaleX(1); } 75% { opacity: .7; } 100% { opacity: 0; transform: translate(-35%, 170%) rotate(calc(var(--leaf-angle) + 100deg)) scaleX(.6); } }
+@media (prefers-reduced-motion: reduce) { .world-painted-leaf { animation: none !important; } }
