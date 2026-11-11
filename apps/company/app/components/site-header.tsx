@@ -6,8 +6,8 @@ import { localizedPath, type Locale } from "../i18n";
 import { ThemeToggle } from "./theme-toggle";
 
 const navigation = {
-  en: [{ href: "/", label: "Home" }, { href: "/products", label: "Products" }, { href: "/about", label: "About" }, { href: "/contact", label: "Contact" }],
-  zh: [{ href: "/", label: "首页" }, { href: "/products", label: "产品" }, { href: "/about", label: "关于我们" }, { href: "/contact", label: "联系我们" }],
+  en: [{ href: "/products", label: "Products" }, { href: "/#yusheng-suowang", label: "Works" }, { href: "/about", label: "About" }],
+  zh: [{ href: "/products", label: "产品" }, { href: "/#yusheng-suowang", label: "作品" }, { href: "/about", label: "关于我们" }],
 };
 const labels = {
   en: { home: "HeyDusk home", navigation: "Primary navigation", mobileNavigation: "Mobile navigation", menu: "Menu", contact: "Get in touch", switchLanguage: "中文 — 切换至简体中文", switchLabel: "中文", skip: "Skip to content" },
@@ -61,7 +61,7 @@ export function SiteHeader({ locale = "en", currentPath = "/" }: { locale?: Loca
       <header className="site-header">
         <a className="brand" href={localizedPath(locale, "/")} aria-label={copy.home}><Image src="/heydusk-mark.svg" alt="" width={32} height={30} unoptimized /><span>HeyDusk</span></a>
         <div className="header-actions">
-          <nav className="primary-nav" aria-label={copy.navigation}>{navigation[locale].map((item) => <a key={item.href} href={localizedPath(locale, item.href)} aria-current={current(item.href)}>{item.label}</a>)}</nav>
+          <nav className="primary-nav" aria-label={copy.navigation}>{navigation[locale].map((item) => <a onClick={() => { if (menu.current) menu.current.open = false; }} key={item.href} href={item.href.startsWith("/#") ? `${localizedPath(locale, "/")}#yusheng-suowang` : localizedPath(locale, item.href)} aria-current={current(item.href)}>{item.label}</a>)}</nav>
           {languageSwitch}<ThemeToggle locale={locale} />
           <a className="header-contact" href={localizedPath(locale, "/contact")}><span>{copy.contact}</span><span className="contact-arrow" aria-hidden="true">↗</span></a>
         </div>
@@ -69,7 +69,7 @@ export function SiteHeader({ locale = "en", currentPath = "/" }: { locale?: Loca
           {languageSwitch}<ThemeToggle locale={locale} />
           <details ref={menu} className="mobile-menu">
             <summary><span>{copy.menu}</span><span className="menu-glyph" aria-hidden="true" /></summary>
-            <nav aria-label={copy.mobileNavigation}>{navigation[locale].map((item) => <a key={item.href} href={localizedPath(locale, item.href)} aria-current={current(item.href)}>{item.label}<span aria-hidden="true">→</span></a>)}</nav>
+            <nav aria-label={copy.mobileNavigation}>{navigation[locale].map((item) => <a onClick={() => { if (menu.current) menu.current.open = false; }} key={item.href} href={item.href.startsWith("/#") ? `${localizedPath(locale, "/")}#yusheng-suowang` : localizedPath(locale, item.href)} aria-current={current(item.href)}>{item.label}<span aria-hidden="true">→</span></a>)}<a href={localizedPath(locale, "/contact")}>{copy.contact}<span aria-hidden="true">→</span></a></nav>
           </details>
         </div>
       </header>

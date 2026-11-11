@@ -60,6 +60,7 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
         </div>
         <div>
           <p className="footer-label">{copy.company}</p>
+          <a href={`${l("/")}#yusheng-suowang`}>{locale === "zh" ? "作品 · 余生所往" : "Works · 余生所往"}</a>
           <a href={l("/about")}>{copy.about}</a>
           <a href={l("/contact")}>{copy.contact}</a>
         </div>

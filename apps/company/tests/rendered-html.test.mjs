@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(pathname = "/") {
+  if (process.env.HEYDUSK_TEST_URL) return fetch(new URL(pathname, process.env.HEYDUSK_TEST_URL), { headers: { accept: "text/html" } });
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
   const { default: worker } = await import(workerUrl.href);
@@ -106,11 +107,12 @@ for (const locale of ["en", "zh"]) {
 
   test(`${locale} Ferry Dock page states alpha scope honestly and links its source`, async () => {
     const html = visibleHTML(await (await render(localize(locale, "/products/ferry-dock"))).text());
-    assert.match(html, /<a class="product-detail-repo" href="https:\/\/github\.com\/Yankj\/ferry-dock"[^>]*rel="noopener noreferrer"/);
+    assert.match(html, /<a class="product-detail-repo" href="https:\/\/github\.com\/Yankj\/ferry-dock\/releases\/tag\/v0\.1\.0-alpha\.2"[^>]*rel="noopener noreferrer"/);
     for (const fact of locale === "en"
-      ? ["Early alpha", "15 minutes", "64 KiB", "1 MiB", "MIT", "trusted local network", "Agent task inputs are planned", "no binary release or npm package"]
-      : ["早期 alpha", "15 分钟", "64 KiB", "1 MiB", "MIT", "可信局域网", "Agent 任务输入", "没有二进制发布或 npm 包"]) assert.ok(html.includes(fact), fact);
-    assert.doesNotMatch(html, /href="[^"]*(?:\/releases|\.zip|\.dmg|\.exe|npmjs\.com)/i);
+      ? ["Early alpha", "15 minutes", "64 KiB", "1 MiB", "MIT", "trusted local network", "task", "Apple Silicon", "CLI", "npm"]
+      : ["早期 alpha", "15 分钟", "64 KiB", "1 MiB", "MIT", "可信局域网", "任务", "Apple Silicon", "CLI", "npm"]) assert.ok(html.includes(fact), fact);
+    assert.match(html, /https:\/\/github\.com\/Yankj\/ferry-dock\/releases\/tag\/v0\.1\.0-alpha\.2/);
+    assert.doesNotMatch(html, /href="[^"]*(?:\.dmg|\.exe|npmjs\.com)/i);
     assert.match(html, /class="ferry-dock-logo" aria-hidden="true"/);
   });
 
@@ -176,5 +178,21 @@ for (const locale of ["en", "zh"]) {
     assert.ok(html.includes("采菊东篱下"));
     assert.doesNotMatch(html, /即将开放|Coming soon/);
     assert.doesNotMatch(html, /taoyuan\.heydusk\.com|guiyuan\.heydusk\.com|caiju\.heydusk\.com/);
+  });
+}
+
+
+for (const locale of ["en", "zh"]) {
+  test(`${locale} studio home presents products before works with explicit stages`, async () => {
+    const html = visibleHTML(await (await render(localize(locale, "/"))).text());
+    assert.ok(html.indexOf('id="products-spotlight"') < html.indexOf('id="yusheng-suowang"'));
+    assert.ok(html.indexOf('id="yusheng-suowang"') < html.indexOf('id="studio-note-title"'));
+    assert.match(html, /studio-product--mimi/);
+    assert.match(html, /studio-product--momo/);
+    assert.match(html, /studio-product--frameforge/);
+    assert.match(html, /Workflow illustration|工作流示意/);
+    assert.match(html, /In development|开发中/);
+    assert.ok(html.includes(`href="${localize(locale, "/")}#yusheng-suowang"`));
+    assert.doesNotMatch(html, /direction-card|mission-title|featured-product-links/);
   });
 }

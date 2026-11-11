@@ -1,0 +1,118 @@
+/* Studio home: product-first editorial rhythm; scoped to leave detail pages intact. */
+.studio-home { --studio-warm: #e9dccb; }
+.studio-home .hero { min-height: 660px; height: min(790px, 83svh); padding-top: 4rem; }
+.studio-home .hero-copy { padding-bottom: 3rem; }
+.studio-home .hero-art { width: 64vw; bottom: 4rem; }
+.studio-home .hero-index { display: flex; gap: 2.5rem; }
+.studio-home .hero-index span { text-align: left; }
+.studio-home .eyebrow { margin-bottom: 2rem; }
+.studio-home .section { padding-block: clamp(4rem, 7vw, 7rem); }
+.studio-home .studio-section-head { display: grid; grid-template-columns: 1fr 3fr auto; gap: 2rem; align-items: start; margin-bottom: 3rem; }
+.studio-home .studio-section-head h2 { margin: 0; font-size: clamp(2rem, 3.2vw, 3.4rem); line-height: 1.25; font-weight: 500; letter-spacing: -.02em; }
+.studio-home .studio-section-head p:not(.section-index) { color: var(--ink-soft); line-height: 1.8; max-width: 35em; margin-bottom: 0; }
+.studio-home .studio-product-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 1.4rem; }
+.studio-home .studio-product { display: flex; flex-direction: column; min-width: 0; padding: 0; border: 1px solid var(--rule); background: var(--surface); overflow: hidden; transition: border-color 180ms ease, transform 180ms ease; }
+.studio-home .studio-product:hover { border-color: var(--ink-soft); transform: translateY(-3px); }
+.studio-home .studio-product-visual { min-height: 290px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.studio-home .studio-product--mimi .studio-product-visual { background: #eee2d1; }
+.studio-home .studio-product--mimi .studio-product-visual > img { width: 135px; height: 135px; border-radius: 25%; box-shadow: 0 14px 32px #73412615; transform: rotate(-7deg); }
+.studio-home .studio-product--momo .studio-product-visual { background: #dfe5dc; color: #32463b; }
+.studio-home .studio-product--frameforge .studio-product-visual { background: #292830; color: #f4eddf; }
+.studio-home .visual-caption { position: absolute; bottom: 1.1rem; left: 1.25rem; font-size: .7rem; letter-spacing: .06em; opacity: .6; }
+.studio-home .learning-visual { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; width: 85%; text-align: center; }
+.studio-home .learning-visual > span { display: grid; place-items: center; height: 100px; border: 1px solid #32463b35; border-radius: 48% 48% 8px 8px; font-family: Georgia, serif; font-size: 2.5rem; }
+.studio-home .learning-visual > span:nth-child(2) { transform: translateY(-18px); background: #f9f4e8; }
+.studio-home .learning-visual small { grid-column: 1 / -1; margin-top: 1.3rem; font-size: .75rem; }
+.studio-home .creation-visual { display: flex; width: 88%; align-items: center; justify-content: center; }
+.studio-home .creation-visual > span { width: 30%; aspect-ratio: 3/4; padding: .8rem; border: 1px solid #f4eddf42; font-size: .7rem; display: flex; flex-direction: column; justify-content: space-between; }
+.studio-home .creation-visual > span:nth-of-type(2) { background: #f4eddf; color: #292830; transform: translateY(-12px); }
+.studio-home .creation-visual > span > span { font-size: .85rem; line-height: 1.3; overflow-wrap: anywhere; }
+.studio-home .creation-visual i { width: .6rem; height: 1px; background: #f4eddf42; }
+.studio-home .studio-product-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.studio-home .studio-product-meta { display: flex; gap: .75rem; justify-content: space-between; font-size: .72rem; color: var(--ink-soft); align-items: center; }
+.studio-home .studio-stage { white-space: nowrap; font-size: .72rem; color: var(--ink-soft); }
+.studio-home .studio-stage::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #a27b4a; display: inline-block; margin-right: .4rem; vertical-align: middle; }
+.studio-home .studio-product h3 { display: flex; gap: .5rem; justify-content: space-between; font-size: clamp(1.3rem, 1.65vw, 1.85rem); margin: 1.5rem 0 .9rem; max-width: none; line-height: 1.35; }
+.studio-home .studio-product h3 > span { font-size: 1.25rem; font-weight: 400; }
+.studio-home .studio-product p { color: var(--ink-soft); font-size: .95rem; line-height: 1.85; margin: 0 0 1.8rem; }
+.studio-home .studio-product-action { margin-top: auto; font-size: .78rem; display: flex; justify-content: space-between; align-items: center; min-height: 44px; border-top: 1px solid var(--rule); padding-top: .65rem; }
+.studio-home .studio-tool { display: flex; align-items: center; gap: 1.4rem; padding: 1.5rem 0; border-bottom: 1px solid var(--rule); margin-top: 1rem; }
+.studio-home .studio-tool > div { flex: 1; }
+.studio-home .studio-tool h3 { font-size: 1rem; margin: 0 0 .35rem; }
+.studio-home .studio-tool p { color: var(--ink-soft); font-size: .85rem; margin: 0; line-height: 1.7; }
+.studio-home .yusheng { background: #e9e5dc; color: #292e28; }
+.studio-home .yusheng .section-index, .studio-home .yusheng .section-heading > p { color: #64685e; }
+.studio-home .yusheng-grid { grid-template-columns: 1.45fr 1fr; gap: 1.8rem; border: 0; }
+.studio-home .yusheng-card { padding: 0; border: 0; }
+.studio-home .yusheng-card:first-child { grid-row: span 2; }
+.studio-home .yusheng-card:first-child .yusheng-card-art { aspect-ratio: 4/3; }
+.studio-home .yusheng-card:not(:first-child) { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.4rem; align-content: start; }
+.studio-home .yusheng-card:not(:first-child) .yusheng-card-art { grid-row: span 5; aspect-ratio: 4/5; margin: 0; }
+.studio-home .yusheng-card-art img { width: 100%; height: 100%; object-fit: cover; }
+.studio-home .yusheng-card:not(:first-child) h3 { font-size: 1.5rem; margin-top: .7rem; }
+.studio-home .yusheng-card-state { color: #63675f; }
+.studio-home .yusheng-card-action { border-color: #292e2830; }
+.studio-home .studio-note { display: grid; grid-template-columns: 1fr 3fr; gap: 2rem; }
+.studio-home .studio-note h2 { font-size: clamp(2rem, 3vw, 3.3rem); font-weight: 500; margin: 0 0 1.5rem; }
+.studio-home .studio-note p:not(.section-index) { color: var(--ink-soft); line-height: 1.9; max-width: 42em; margin-bottom: 1.5rem; }
+.studio-home .contact-band { padding-block: 4rem; border-top: 1px solid var(--rule); }
+.studio-home .contact-band h2 { font-size: clamp(2rem, 4vw, 4rem); }
+html[data-theme="dark"] .studio-home .yusheng { background: #242923; color: #e8e6dd; }
+html[data-theme="dark"] .studio-home .yusheng .section-index, html[data-theme="dark"] .studio-home .yusheng .section-heading > p, html[data-theme="dark"] .studio-home .yusheng-card-state { color: #acb3a4; }
+@media (max-width: 1100px) {
+ .studio-home .studio-product-grid { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
+ .studio-home .studio-product-body { padding: 1rem; }
+ .studio-home .studio-product-visual { min-height: 240px; }
+ .studio-home .studio-product-meta { align-items: start; flex-direction: column; gap: .3rem; }
+ .studio-home .yusheng-grid { gap: 1.4rem; }
+ .studio-home .yusheng-card:not(:first-child) { display: flex; }
+ .studio-home .yusheng-card:not(:first-child) .yusheng-card-art { aspect-ratio: 16/9; margin-bottom: 1rem; }
+}
+@media (max-width: 820px) {
+ .studio-home .hero, main.studio-home[lang="zh-CN"] .hero { height: auto; min-height: 620px; padding-top: 3rem; }
+ .studio-home .hero-copy { padding-bottom: 4rem; }
+ .studio-home .hero-art { width: 100%; top: 10rem; }
+ .studio-home .hero-index { gap: 1rem; justify-content: space-between; }
+ .studio-home .studio-section-head { grid-template-columns: 1fr; gap: 1rem; }
+ .studio-home .studio-section-head .section-index { margin: 0; }
+ .studio-home .studio-product-grid { grid-template-columns: 1fr; }
+ .studio-home .studio-product { display: grid; grid-template-columns: 1fr 1.2fr; }
+ .studio-home .studio-product-visual { min-height: 290px; }
+ .studio-home .studio-product-body { padding: 1.5rem; }
+ .studio-home .studio-product-meta { flex-direction: row; }
+ .studio-home .yusheng-grid { grid-template-columns: 1fr 1fr; }
+ .studio-home .yusheng-card:first-child { grid-column: 1/-1; grid-row: auto; }
+ .studio-home .yusheng-card:first-child .yusheng-card-art { aspect-ratio: 16/9; }
+ .studio-home .yusheng-card:not(:first-child) { border: 0; }
+ .studio-home .studio-note { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+ .studio-home .hero, main.studio-home[lang="zh-CN"] .hero { min-height: 610px; }
+ .studio-home .hero-index { gap: .5rem; }
+ .studio-home .hero-index span { font-size: .66rem; letter-spacing: 0; }
+ .studio-home .studio-product { display: flex; }
+ .studio-home .studio-product-visual { min-height: 245px; }
+ .studio-home .studio-product h3 { font-size: 1.6rem; }
+ .studio-home .studio-tool { flex-wrap: wrap; gap: 1rem; }
+ .studio-home .studio-tool > div { flex-basis: calc(100% - 60px); }
+ .studio-home .studio-tool > .studio-stage { margin-left: 48px; flex: 1; }
+ .studio-home .yusheng-grid { grid-template-columns: 1fr; }
+ .studio-home .yusheng-card:first-child { grid-column: auto; }
+ .studio-home .yusheng-card:not(:first-child) { padding: 0; }
+ .studio-home .yusheng-card:first-child .yusheng-card-art, .studio-home .yusheng-card:not(:first-child) .yusheng-card-art { aspect-ratio: 16/10; }
+ .studio-home .section { padding-block: 3.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { .studio-home .studio-product { transition: none; } .studio-home .studio-product:hover { transform: none; } }
+main.studio-home[lang="zh-CN"] .studio-product h3 { font-size: clamp(1.25rem, 1.65vw, 1.65rem); line-height: 1.4; }
+.studio-home .yusheng { width: 100%; padding-inline: var(--content-gutter); }
+.studio-home .contact-band { background: #222620; color: #f7f6f2; }
+.studio-home .contact-band .section-index { color: #c4c7bd; }
+.studio-home .contact-link { color: #f7f6f2; }
+html[data-theme="dark"] .studio-home .studio-tool > img { filter: invert(1); }
+@media (prefers-color-scheme: dark) {
+ html:not([data-theme]) .studio-home .yusheng { background: #242923; color: #e8e6dd; }
+ html:not([data-theme]) .studio-home .yusheng .section-index, html:not([data-theme]) .studio-home .yusheng .section-heading > p, html:not([data-theme]) .studio-home .yusheng-card-state { color: #acb3a4; }
+}
+.studio-home .text-link { color: var(--ink); }
+.studio-home .text-link-muted { color: var(--ink-soft); }
+.studio-home .studio-product--mimi .visual-caption { color: #6a4a32; opacity: 1; }

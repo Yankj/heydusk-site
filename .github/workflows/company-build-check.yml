@@ -1,0 +1,41 @@
+name: Company production build verification
+on:
+  push:
+    branches: [main, feat/studio-editorial-refresh-ci]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: company-build-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    name: ${{ matrix.target }} production build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [cloudflare, vercel]
+    defaults:
+      run:
+        working-directory: apps/company
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.17.1'
+          cache: npm
+          cache-dependency-path: apps/company/package-lock.json
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Lint
+        run: npm run lint
+      - name: Check public product facts
+        run: node ../../scripts/check-brand-consistency.mjs
+      - name: Build Cloudflare and run rendered document tests
+        if: matrix.target == 'cloudflare'
+        run: npm test
+      - name: Build Vercel production output (no deployment)
+        if: matrix.target == 'vercel'
+        run: npm run build:vercel
