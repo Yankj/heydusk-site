@@ -31,10 +31,5 @@
       "destination": "/zh/products",
       "permanent": false
     }
-  ],
-  "git": {
-    "deploymentEnabled": {
-      "feat/studio-editorial-refresh-ci": false
-    }
-  }
+  ]
 }
