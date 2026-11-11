@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { RevealOnScroll } from "../components/reveal-on-scroll";
+import "./studio-home.css";
 import { YushengCoverFx } from "../components/yusheng-cover-fx";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
@@ -8,32 +8,20 @@ import { localeLanguageTag, localizedPath, type Locale } from "../i18n";
 const content = {
   en: {
     eyebrow: "理想三旬 · HeyDusk",
-    title: ["Calm software", "for life, learning, and creation."],
+    title: ["Calm software.", "A little room to live."],
     summary:
       "HeyDusk (理想三旬) is an independent AI product studio. We build focused products for family life, learning, and creative expression.",
-    primaryAction: "See our products",
-    secondaryAction: "About the studio",
+    primaryAction: "Explore our products",
+    secondaryAction: "Step into our worlds",
     artCaption: "Dusk Field / 01",
     disciplinesLabel: "What we focus on",
     disciplines: ["Family & life", "Learning & growth", "Creation & expression"],
-    missionIndex: "01 / Directions",
-    missionTitle: "Make room for everyday life, learning, and expression.",
-    missionIntro:
-      "Three concrete directions guide our work. They can overlap; each keeps its own audience and pace. Products live in the next section.",
-    principlesLabel: "Our directions",
-    principles: [
-      { index: "01", dusk: "02", path: "/products/mimi", title: "Family & life", description: "Everyday arrangements and long-term growth for parents and children.", tone: "ember" },
-      { index: "02", dusk: "03", path: "/products/momo", title: "Learning & growth", description: "Shared attention for learning together, with a parent alongside.", tone: "twilight" },
-      { index: "03", dusk: "04", path: "/products/frameforge", title: "Creation & expression", description: "Room for video projects to take shape, revise, and land.", tone: "afterglow" },
-    ],
-    productIndex: "02 / Products",
+    productIndex: "01 / Products",
     productTitle: "Independent products. Clear purpose.",
     productCopy:
-      "Each product keeps its own workflow and stage. Open a page for the current scope, then enquire by email.",
+      "For a more considered day, a shared moment of learning, or an idea worth making.",
     productLink: "Explore the product catalog",
-    status: "Different stages · documented in the catalog",
-    toolNote: "Everyday tool · early alpha",
-    yushengIndex: "03 / 余生所往",
+    yushengIndex: "02 / Works · 余生所往",
     yushengTitle: "A life one might long for.",
     yushengIntro:
       "Walkable worlds in the spirit of Tao Yuanming: peach-blossom fields, a return to the garden, chrysanthemums by the east fence. The doors are open; walk in when you like, unhurried.",
@@ -51,32 +39,20 @@ const content = {
   },
   zh: {
     eyebrow: "理想三旬 · HeyDusk",
-    title: ["安静可靠的软件，", "照顾生活、学习与创作。"],
+    title: ["安静可靠的软件，", "留一些空间给生活。"],
     summary:
       "理想三旬（HeyDusk）是独立 AI 产品工作室。我们围绕家庭生活、学习成长和创作表达，做有清晰用途的产品。",
     primaryAction: "查看产品",
-    secondaryAction: "了解工作室",
+    secondaryAction: "去作品里走走",
     artCaption: "暮色原野 / 01",
     disciplinesLabel: "我们关注",
     disciplines: ["家庭与生活", "学习与成长", "创作与表达"],
-    missionIndex: "01 / 方向",
-    missionTitle: "让日常更从容，让学习与表达更有着落。",
-    missionIntro:
-      "三个具体方向组织我们的工作。方向可以交叉，各自保留节奏。具体产品在下一节。",
-    principlesLabel: "我们的方向",
-    principles: [
-      { index: "01", dusk: "02", path: "/products/mimi", title: "家庭与生活", description: "照顾今日安排，也看见长期成长。", tone: "ember" },
-      { index: "02", dusk: "03", path: "/products/momo", title: "学习与成长", description: "家长陪在身边，一起把注意力放在学习上。", tone: "twilight" },
-      { index: "03", dusk: "04", path: "/products/frameforge", title: "创作与表达", description: "给视频项目慢慢成形、反复推敲的空间。", tone: "afterglow" },
-    ],
-    productIndex: "02 / 产品",
+    productIndex: "01 / 产品",
     productTitle: "独立的产品，清楚的用途。",
     productCopy:
-      "每款产品保留自己的流程与阶段。打开详情查看当前范围，再通过邮件咨询。",
+      "从一家人的日常，到一起学习的片刻，再到一个想做出来的故事。",
     productLink: "查看完整产品目录",
-    status: "各自推进 · 阶段详见产品目录",
-    toolNote: "日常工具 · 早期 alpha",
-    yushengIndex: "03 / 余生所往",
+    yushengIndex: "02 / 作品 · 余生所往",
     yushengTitle: "向往的生活。",
     yushengIntro:
       "循陶渊明的意思，做了三处可以慢慢走的地方：桃花源、归园田居、采菊东篱下。门已开，进去走走停停即可。",
@@ -95,9 +71,9 @@ const content = {
 };
 
 const featured = [
-  { id: "mimi" as const, path: "/products/mimi", en: "Mimi / 小咪", zh: "小咪 / Mimi" },
-  { id: "momo" as const, path: "/products/momo", en: "Momo", zh: "Momo" },
-  { id: "frameforge" as const, path: "/products/frameforge", en: "FrameForge / 小片场", zh: "小片场 / FrameForge" },
+  { id: "mimi" as const, path: "/products/mimi", en: "Mimi / 小咪", zh: "小咪 / Mimi", category: { en: "Family & life", zh: "家庭与生活" }, description: { en: "A place for the day's arrangements and the small steps of growing up.", zh: "把今日安排和成长中的小事，放进一家人的日常。" } },
+  { id: "momo" as const, path: "/products/momo", en: "Momo", zh: "Momo", category: { en: "Learning & growth", zh: "学习与成长" }, description: { en: "English activities for children, with a parent learning alongside.", zh: "家长陪在身边，在看、听、说的互动中一起学英语。" } },
+  { id: "frameforge" as const, path: "/products/frameforge", en: "FrameForge / 小片场", zh: "小片场 / FrameForge", category: { en: "Creation & expression", zh: "创作与表达" }, description: { en: "Video-making tools for creators, from the first idea to the work taking shape.", zh: "面向创作者的视频创作工具，让想法一步步成为作品。" } },
 ];
 // Brand tokens kept as literals for catalog/home/strategy consistency checks: Momo, FrameForge, Ferry Dock.
 
@@ -107,8 +83,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
   const l = (p: string) => localizedPath(locale, p);
 
   return (
-    <main lang={localeLanguageTag[locale]}>
-      <RevealOnScroll />
+    <main className="studio-home" lang={localeLanguageTag[locale]}>
       <SiteHeader locale={locale} currentPath="/" />
 
       <section className="hero" aria-labelledby="hero-title">
@@ -129,8 +104,8 @@ export function HomePageView({ locale }: { locale: Locale }) {
           <h1 id="hero-title">{copy.title.map((line) => <span key={line}>{line}</span>)}</h1>
           <p className="hero-summary">{copy.summary}</p>
           <div className="hero-actions">
-            <a className="text-link" href={l("/products")}>{copy.primaryAction} <span aria-hidden="true">→</span></a>
-            <a className="text-link text-link-muted" href={l("/about")}>{copy.secondaryAction} <span aria-hidden="true">→</span></a>
+            <a className="text-link" href="#products-spotlight">{copy.primaryAction} <span aria-hidden="true">→</span></a>
+            <a className="text-link text-link-muted" href="#yusheng-suowang">{copy.secondaryAction} <span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div className="hero-index" aria-label={copy.disciplinesLabel}>
@@ -138,58 +113,35 @@ export function HomePageView({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="section product-overview" aria-labelledby="mission-title">
-        <div className="section-heading" data-reveal>
-          <p className="section-index">{copy.missionIndex}</p>
-          <h2 id="mission-title">{copy.missionTitle}</h2>
-          <p>{copy.missionIntro}</p>
+      <section className="section studio-products" aria-labelledby="product-title" id="products-spotlight">
+        <div className="studio-section-head">
+          <p className="section-index">{copy.productIndex}</p>
+          <div><h2 id="product-title">{copy.productTitle}</h2><p>{copy.productCopy}</p></div>
+          <a className="text-link" href={l("/products")}>{locale === "zh" ? "全部产品" : "All products"} <span aria-hidden="true">↗</span></a>
         </div>
-        <div className="product-grid" aria-label={copy.principlesLabel}>
-          {copy.principles.map((p) => (
-            <a className={`product-card direction-card direction-card--${p.tone}`} href={l(p.path)} data-reveal key={p.index}>
-              <div className="card-topline">
-                <span>{p.index}</span>
-                <span className="dusk-series-label">Dusk / {p.dusk}</span>
+        <div className="studio-product-grid">
+          {featured.map((item) => (
+            <a className={`product-card studio-product studio-product--${item.id}`} href={l(item.path)} key={item.id} data-product={item.id}>
+              <div className="studio-product-visual" aria-hidden="true">
+                {item.id === "mimi" ? <Image src="/mimi/mimi-app-icon.svg" alt="" width={160} height={160} unoptimized /> : item.id === "momo" ?
+                  <div className="learning-visual"><span>Aa</span><span>Bb</span><span>Cc</span><small>{locale === "zh" ? "看见 · 听见 · 一起说" : "Look · listen · say it together"}</small></div> :
+                  <div className="creation-visual"><span>01<span>{locale === "zh" ? "想法" : "Idea"}</span></span><i /><span>02<span>{locale === "zh" ? "分镜" : "Storyboard"}</span></span><i /><span>03<span>{locale === "zh" ? "成片" : "Film"}</span></span></div>}
+                <span className="visual-caption">{item.id === "mimi" ? (locale === "zh" ? "小咪 · 家庭日常" : "Mimi · family life") : (locale === "zh" ? "工作流示意" : "Workflow illustration")}</span>
               </div>
-              <h3>{p.title}</h3>
-              <p>{p.description}</p>
+              <div className="studio-product-body">
+                <div className="studio-product-meta"><span>{item.category[locale]}</span><span className="studio-stage">{locale === "zh" ? "开发中" : "In development"}</span></div>
+                <h3>{item[locale]} <span aria-hidden="true">↗</span></h3>
+                <p>{item.description[locale]}</p>
+                <span className="studio-product-action">{locale === "zh" ? "了解产品与当前进展" : "Explore the product and its progress"} <span aria-hidden="true">→</span></span>
+              </div>
             </a>
           ))}
         </div>
-      </section>
-
-      <section className="dark-section" aria-labelledby="product-title" id="products-spotlight">
-        <div className="dark-section-inner feature-product">
-          <div className="dark-intro" data-reveal>
-            <p className="section-index">{copy.productIndex}</p>
-            <h2 id="product-title">{copy.productTitle}</h2>
-            <p>{copy.productCopy}</p>
-            <p className="status-pill">{copy.status}</p>
-            <a className="section-link section-link-light" href={l("/products")}>{copy.productLink} <span aria-hidden="true">→</span></a>
-          </div>
-          <div className="feature-product-art" data-reveal>
-            <div className="featured-product-links" aria-label={copy.productTitle}>
-              {featured.map((item) => (
-                <a href={l(item.path)} key={item.id} data-product={item.id}>
-                  {item.id === "mimi" ? (
-                    <Image src="/mimi/mimi-app-icon-128.webp" alt="" width={64} height={64} sizes="64px" unoptimized />
-                  ) : (
-                    <span className={`product-mark product-mark-${item.id === "frameforge" ? "frameforge" : "momo"}`} aria-hidden="true" />
-                  )}
-                  <span>{item[locale]}</span>
-                  <span aria-hidden="true">→</span>
-                </a>
-              ))}
-            </div>
-            <p className="featured-tool-note">
-              <a href={l("/products/ferry-dock")}>
-                <span className="product-mark product-mark-ferry" aria-hidden="true" />
-                <span>{locale === "zh" ? "渡口 / Ferry Dock" : "Ferry Dock / 渡口"}</span>
-              </a>
-              <span className="featured-tool-meta">{copy.toolNote}</span>
-            </p>
-          </div>
-        </div>
+        <a className="studio-tool" href={l("/products/ferry-dock")}>
+          <Image src="/ferry-dock/logo-mono.svg" alt="" width={32} height={32} unoptimized />
+          <div><h3>{locale === "zh" ? "渡口 / Ferry Dock" : "Ferry Dock / 渡口"}</h3><p>{locale === "zh" ? "把手机上的一段文字，送到电脑上。" : "A small bridge for text, from your phone to your computer."}</p></div>
+          <span className="studio-stage">{locale === "zh" ? "小工具 · 早期 alpha" : "Small tool · early alpha"}</span><span aria-hidden="true">↗</span>
+        </a>
       </section>
 
       <section className="section yusheng" id="yusheng-suowang" aria-labelledby="yusheng-title">
@@ -232,6 +184,11 @@ export function HomePageView({ locale }: { locale: Locale }) {
             );
           })}
         </div>
+      </section>
+
+      <section className="studio-note section" aria-labelledby="studio-note-title">
+        <p className="section-index">{locale === "zh" ? "03 / 工作室" : "03 / The studio"}</p>
+        <div><h2 id="studio-note-title">{locale === "zh" ? "做具体的事，留长久的余地。" : "Focused work. Room to grow."}</h2><p>{locale === "zh" ? "理想三旬是一个独立 AI 产品工作室。我们关心技术怎样进入真实的日常，也为一些没有效率指标的好奇心留出位置。产品各有用途，作品各有性格。" : "HeyDusk is an independent AI product studio. We care about how technology fits into everyday life, and make room for curiosity that has no productivity target. Each product has a purpose; each work, a character."}</p><a className="text-link" href={l("/about")}>{locale === "zh" ? "认识理想三旬" : "Meet the studio"} <span aria-hidden="true">→</span></a></div>
       </section>
 
       <section className="contact-band" aria-labelledby="contact-title" data-reveal>

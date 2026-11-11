@@ -10,5 +10,6 @@
     { "source": "/updates.html", "destination": "/", "permanent": true },
     { "source": "/assets/catpaw-product-deck.pdf", "destination": "/", "permanent": true },
     { "source": "/assets/launch-final-v2.mp4", "destination": "/", "permanent": true }
-  ]
+  ],
+  "git": { "deploymentEnabled": { "feat/studio-editorial-refresh-ci": false } }
 }
