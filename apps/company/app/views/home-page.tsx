@@ -1,5 +1,7 @@
 import Image from "next/image";
 import "./studio-home.css";
+import { ProductCover } from "../components/product-cover";
+import { WorldMotionControl } from "../components/world-motion-control";
 import { YushengCoverFx } from "../components/yusheng-cover-fx";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
@@ -123,10 +125,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
           {featured.map((item) => (
             <a className={`product-card studio-product studio-product--${item.id}`} href={l(item.path)} key={item.id} data-product={item.id}>
               <div className="studio-product-visual" aria-hidden="true">
-                {item.id === "mimi" ? <Image src="/mimi/mimi-app-icon.svg" alt="" width={160} height={160} unoptimized /> : item.id === "momo" ?
-                  <div className="learning-visual"><span>Aa</span><span>Bb</span><span>Cc</span><small>{locale === "zh" ? "看见 · 听见 · 一起说" : "Look · listen · say it together"}</small></div> :
-                  <div className="creation-visual"><span>01<span>{locale === "zh" ? "想法" : "Idea"}</span></span><i /><span>02<span>{locale === "zh" ? "分镜" : "Storyboard"}</span></span><i /><span>03<span>{locale === "zh" ? "成片" : "Film"}</span></span></div>}
-                <span className="visual-caption">{item.id === "mimi" ? (locale === "zh" ? "小咪 · 家庭日常" : "Mimi · family life") : (locale === "zh" ? "工作流示意" : "Workflow illustration")}</span>
+                <ProductCover product={item.id} locale={locale} />
               </div>
               <div className="studio-product-body">
                 <div className="studio-product-meta"><span>{item.category[locale]}</span><span className="studio-stage">{locale === "zh" ? "开发中" : "In development"}</span></div>
@@ -150,6 +149,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
           <h2 id="yusheng-title">{copy.yushengTitle}</h2>
           <p>{copy.yushengIntro}</p>
         </div>
+        <div className="yusheng-motion-row"><WorldMotionControl locale={locale} /></div>
         <div className="yusheng-grid" aria-label={copy.yushengLabel}>
           {copy.worlds.map((world) => {
             const body = (

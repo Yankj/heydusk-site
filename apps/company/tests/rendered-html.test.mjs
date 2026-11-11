@@ -196,3 +196,15 @@ for (const locale of ["en", "zh"]) {
     assert.doesNotMatch(html, /direction-card|mission-title|featured-product-links/);
   });
 }
+
+for (const locale of ["en", "zh"]) {
+  test(`${locale} cover motion is decorative, bounded and has a pause control`, async () => {
+    const html = visibleHTML(await (await render(localize(locale, "/"))).text());
+    assert.equal((html.match(/data-world-motion=/g) ?? []).length, 3);
+    assert.equal((html.match(/class="world-smoke"/g) ?? []).length, 6);
+    assert.equal((html.match(/class="world-mist"/g) ?? []).length, 2);
+    assert.match(html, /class="world-motion-control"[^>]*type="button"/);
+    assert.match(html, /class="world-atmosphere world-atmosphere--caiju"[^>]*aria-hidden="true"/);
+    assert.doesNotMatch(html, /yusheng-leaf|yusheng-smoke|<canvas/);
+  });
+}

@@ -1,0 +1,38 @@
+/* Small, composited atmospheric layers. The source paintings stay readable. */
+.world-atmosphere { position: absolute; inset: 0; overflow: hidden; pointer-events: none; contain: paint; }
+.world-atmosphere > i { position: absolute; display: block; animation-play-state: paused; opacity: 0; }
+.world-atmosphere[data-running="true"] > i { animation-play-state: running; }
+.world-smoke { aspect-ratio: 1 / 2.2; border-radius: 48%; background: radial-gradient(ellipse at 50% 62%, #fff7e4a0, #f6efdb42 38%, transparent 70%); transform-origin: 50% 100%; animation: world-smoke-rise 10s ease-out infinite; animation-delay: var(--phase); }
+.world-atmosphere--taoyuan .world-smoke { animation-duration: 12s; }
+.world-mist { width: 72%; height: 16%; left: 23%; top: 17%; background: radial-gradient(ellipse at center, #fff8e13b, #fff8e112 45%, transparent 72%); animation: world-mist-pass 24s ease-in-out infinite alternate; }
+.world-atmosphere--taoyuan .world-mist { top: 43%; left: 9%; height: 18%; width: 58%; }
+.world-drift { top: -5%; width: var(--size); height: calc(var(--size) * .65); background: #c88333; border-radius: 1px 70% 1px 70%; animation: world-drift-fall var(--duration) linear infinite; animation-delay: var(--phase); }
+.world-drift:nth-of-type(even) { background: #d8a65c; }
+.world-drift--petal, .world-drift--petal:nth-of-type(even) { background: #efb5b9; border-radius: 70% 35% 70% 15%; }
+.world-atmosphere--guiyuan .world-drift { background: #8b9252; }
+@keyframes world-smoke-rise {
+  0% { opacity: 0; transform: translate(-50%, -100%) scale(.55); }
+  18% { opacity: .42; }
+  60% { opacity: .25; }
+  100% { opacity: 0; transform: translate(65%, -300%) scale(2.6, 2); }
+}
+@keyframes world-mist-pass {
+  0% { opacity: .18; transform: translateX(-5%); }
+  65% { opacity: .5; }
+  100% { opacity: .22; transform: translateX(10%); }
+}
+@keyframes world-drift-fall {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(0); }
+  15% { opacity: .55; }
+  65% { opacity: .42; }
+  100% { opacity: 0; transform: translate3d(var(--travel), 340px, 0) rotate(var(--turn)); }
+}
+.world-motion-control { display: inline-flex; align-items: center; gap: .55rem; width: fit-content; min-height: 44px; padding: .35rem 0; border: 0; background: transparent; color: inherit; font: inherit; font-size: .75rem; cursor: pointer; }
+.world-motion-control:hover { text-decoration: underline; text-underline-offset: .3em; }
+.world-motion-control:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.world-motion-control:disabled { cursor: default; opacity: .65; text-decoration: none; }
+.world-motion-glyph { font-size: .9rem; }
+.studio-home .yusheng-motion-row { display: flex; justify-content: flex-end; margin: -1.8rem 0 1.4rem; color: #63675f; }
+html[data-theme="dark"] .studio-home .yusheng-motion-row { color: #b9c1b3; }
+@media (max-width: 520px) { .studio-home .yusheng-motion-row { justify-content: flex-start; margin-top: -1rem; } .world-drift:nth-last-child(-n+2) { display: none; } }
+@media (prefers-reduced-motion: reduce) { .world-atmosphere { display: none; } .world-atmosphere > i { animation: none !important; } }
