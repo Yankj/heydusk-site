@@ -201,8 +201,12 @@ for (const locale of ["en", "zh"]) {
   test(`${locale} cover motion is decorative, bounded and has a pause control`, async () => {
     const html = visibleHTML(await (await render(localize(locale, "/"))).text());
     assert.equal((html.match(/data-world-motion=/g) ?? []).length, 3);
-    assert.equal((html.match(/class="world-smoke"/g) ?? []).length, 6);
+    assert.equal((html.match(/class="world-smoke"/g) ?? []).length, 10);
     assert.equal((html.match(/class="world-mist"/g) ?? []).length, 2);
+    assert.match(html, /class="world-hen-ground"/);
+    assert.match(html, /class="world-hen"/);
+    assert.match(html, /class="world-water"/);
+    assert.equal((html.match(/class="world-painted-leaf"/g) ?? []).length, 5);
     assert.match(html, /class="world-motion-control"[^>]*type="button"/);
     assert.match(html, /class="world-atmosphere world-atmosphere--caiju"[^>]*aria-hidden="true"/);
     assert.doesNotMatch(html, /yusheng-leaf|yusheng-smoke|<canvas/);

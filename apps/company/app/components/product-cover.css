@@ -241,14 +241,76 @@
 .studio-home .product-cover--frameforge .product-cover-caption { color: #bdc5b7; opacity: 1; }
 .studio-home .product-cover--momo .product-cover-caption { color: #52654b; opacity: 1; }
 
+/* One-shot physical responses, never continuous floating. */
+.mimi-cover-note { transform-origin: 85% 80%; transition: transform 700ms cubic-bezier(.2,.7,.2,1); }
+.mimi-cover-pencil { transform-origin: 50% 85%; }
+.momo-cover-apple { transform-origin: 50% 95%; }
+.momo-cover-apple > i { transform-origin: 0 100%; }
+.frameforge-cover-pencil-line { transform-origin: left; }
+.frameforge-cover-film::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(112deg, transparent 20%, #f5dda10d 43%, #fff0c626 49%, #f5dda10d 55%, transparent 78%);
+  background-size: 240% 100%;
+  background-position: 100% 0;
+}
+@keyframes mimi-pencil-roll {
+  0%, 100% { transform: rotate(20deg); }
+  38% { transform: translateX(3px) rotate(23deg); }
+  70% { transform: translateX(-1px) rotate(19deg); }
+}
+@keyframes momo-apple-settle {
+  0%, 100% { transform: rotate(10deg); }
+  32% { transform: rotate(4deg); }
+  65% { transform: rotate(12deg); }
+  84% { transform: rotate(9deg); }
+}
+@keyframes momo-leaf-flutter {
+  0%, 100% { transform: rotate(-14deg); }
+  30% { transform: rotate(-28deg); }
+  60% { transform: rotate(-7deg); }
+  80% { transform: rotate(-17deg); }
+}
+@keyframes frameforge-light-pass {
+  0% { opacity: 0; background-position: 100% 0; }
+  25% { opacity: .8; }
+  75% { opacity: .65; }
+  100% { opacity: 0; background-position: 0 0; }
+}
+@keyframes frameforge-pencil-reveal {
+  0% { transform: scaleX(.25); opacity: .35; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .studio-product:focus-visible .mimi-cover-paper--front { transform: translateY(-3%) rotate(-3deg); }
+  .studio-product:focus-visible .mimi-cover-note { transform: translate(-1%, 1%) rotate(-16deg); }
+  .studio-product:focus-visible .mimi-cover-pencil { animation: mimi-pencil-roll 1050ms ease-in-out both; }
+  .studio-product:focus-visible .momo-cover-card { transform: translateY(-3%) rotate(-6deg); }
+  .studio-product:focus-visible .momo-cover-apple { animation: momo-apple-settle 1100ms ease-in-out both; }
+  .studio-product:focus-visible .momo-cover-apple > i { animation: momo-leaf-flutter 1200ms 80ms ease-in-out both; }
+  .studio-product:focus-visible .frameforge-cover-film { transform: translateY(-3%) rotate(3deg); }
+  .studio-product:focus-visible .frameforge-cover-film::after { animation: frameforge-light-pass 1400ms 100ms ease-in-out both; }
+  .studio-product:focus-visible .frameforge-cover-pencil-line { animation: frameforge-pencil-reveal 900ms 200ms cubic-bezier(.2,.7,.2,1) both; }
+  .studio-product:focus-visible .frameforge-cover-pencil-line--short { animation-delay: 360ms; }
+}
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .studio-product:hover .mimi-cover-paper--front, .studio-product:focus-visible .mimi-cover-paper--front { transform: translateY(-3%) rotate(-3deg); }
-  .studio-product:hover .momo-cover-card, .studio-product:focus-visible .momo-cover-card { transform: translateY(-3%) rotate(-6deg); }
-  .studio-product:hover .frameforge-cover-film, .studio-product:focus-visible .frameforge-cover-film { transform: translateY(-3%) rotate(3deg); }
+  .studio-product:hover .mimi-cover-paper--front { transform: translateY(-3%) rotate(-3deg); }
+  .studio-product:hover .mimi-cover-note { transform: translate(-1%, 1%) rotate(-16deg); }
+  .studio-product:hover .mimi-cover-pencil { animation: mimi-pencil-roll 1050ms ease-in-out both; }
+  .studio-product:hover .momo-cover-card { transform: translateY(-3%) rotate(-6deg); }
+  .studio-product:hover .momo-cover-apple { animation: momo-apple-settle 1100ms ease-in-out both; }
+  .studio-product:hover .momo-cover-apple > i { animation: momo-leaf-flutter 1200ms 80ms ease-in-out both; }
+  .studio-product:hover .frameforge-cover-film { transform: translateY(-3%) rotate(3deg); }
+  .studio-product:hover .frameforge-cover-film::after { animation: frameforge-light-pass 1400ms 100ms ease-in-out both; }
+  .studio-product:hover .frameforge-cover-pencil-line { animation: frameforge-pencil-reveal 900ms 200ms cubic-bezier(.2,.7,.2,1) both; }
+  .studio-product:hover .frameforge-cover-pencil-line--short { animation-delay: 360ms; }
 }
 @media (max-width: 520px) {
   .product-cover-stage { width: 103%; max-width: 380px; top: 45%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mimi-cover-paper--front, .momo-cover-card, .frameforge-cover-film { transition: none; }
+  .mimi-cover-paper--front, .mimi-cover-note, .momo-cover-card, .frameforge-cover-film { transition: none; }
 }
