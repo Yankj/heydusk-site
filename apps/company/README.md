@@ -11,7 +11,7 @@ This app is one half of the `Yankj/heydusk-site` monorepo. The product marketing
 - `/about` — company
 - `/contact` — `hello@heydusk.com`
 - `/privacy`, `/terms` — DRAFT legal placeholders, not in effect
-- Redirects (see `vercel.json`): `/products/cat`, `/products/mimi` → mimi site; `/brand` → `/about`; `/projects` → `/products`
+- Redirects (see `vercel.json`): `/products/cat` and `/zh/products/cat` → the Mimi product site; `/en` and `/en/` → English home `/`; `/brand` → `/about`; `/projects` → `/products`. `/products/mimi` remains the company-site product introduction.
 
 ## Local development
 
@@ -29,7 +29,7 @@ npm test
 
 ## Vercel
 
-Root Directory for this project must be **`apps/company`**. Build: `npm run build:vercel`.
+Root Directory for this project must be **`apps/company`**. Build: `npm run build:vercel`. Full project and DNS notes live in the repo [docs/vercel-and-dns.md](../../docs/vercel-and-dns.md).
 
 ## Brand
 

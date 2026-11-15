@@ -2,6 +2,16 @@
   "buildCommand": "npm run build:vercel",
   "redirects": [
     {
+      "source": "/en",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/en/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/products/cat",
       "destination": "https://mimi.heydusk.com",
       "permanent": false

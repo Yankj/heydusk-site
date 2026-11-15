@@ -17,6 +17,8 @@ const footerCopy = {
     privacy: "Privacy Policy (draft)",
     terms: "Terms of Service (draft)",
     note: "Independent products",
+    github: "GitHub",
+    blog: "Blog",
   },
   zh: {
     home: "HeyDusk 首页",
@@ -31,6 +33,8 @@ const footerCopy = {
     privacy: "隐私政策（草案）",
     terms: "服务条款（草案）",
     note: "独立产品，各自推进",
+    github: "GitHub",
+    blog: "博客",
   },
 };
 
@@ -73,7 +77,11 @@ export function SiteFooter({ locale = "en" }: { locale?: Locale }) {
 
       <div className="footer-meta">
         <span>© 2026 理想三旬 / HeyDusk · {copy.note}</span>
-        <a href={l("/contact")}>hello@heydusk.com</a>
+        <span className="footer-elsewhere">
+          <a href="https://github.com/Yankj" rel="noopener noreferrer">{copy.github}</a>
+          <a href="https://blog.heydusk.com" rel="noopener noreferrer">{copy.blog}</a>
+          <a href={l("/contact")}>hello@heydusk.com</a>
+        </span>
       </div>
     </footer>
   );

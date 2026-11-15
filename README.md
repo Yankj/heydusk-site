@@ -1,114 +1,55 @@
-# HeyDusk sites · 理想三旬
+# 理想三旬 / HeyDusk
 
-One repo, two sites:
+这是 [理想三旬 / HeyDusk](https://heydusk.com) 官网，以及 [小咪 / Mimi](https://mimi.heydusk.com) 产品站的源码仓库。
 
-| Site | Path | Domain | Stack |
+理想三旬是独立 AI 产品工作室。我们围绕家庭生活、学习成长和创作表达，做有清晰用途的产品。
+
+## 站点
+
+| 站点 | 地址 | 源码目录 | 技术栈 |
 |---|---|---|---|
-| Company | `apps/company` | https://heydusk.com | Vinext / Vite (React) |
-| Product · Mimi 小咪 | `apps/mimi` | https://mimi.heydusk.com | Static HTML (Node build) |
+| 官网（中英双语） | [heydusk.com](https://heydusk.com) · 中文 [heydusk.com/zh](https://heydusk.com/zh) | `apps/company` | Vinext / Vite（React） |
+| 小咪产品站 | [mimi.heydusk.com](https://mimi.heydusk.com) | `apps/mimi` | 静态 HTML（Node 构建） |
 
-Company and product brands stay visually distinct. Shared tooling is only the monorepo layout and Vercel pointing at different root directories.
+产品目录入口：[中文](https://heydusk.com/zh/products) · [English](https://heydusk.com/products)。
 
-## Positioning (keep them different)
+官网与产品站视觉上保持区分：访客不应分不清自己在哪一座站点。品牌关系与目录维护说明见 [docs/brand-product-system.md](docs/brand-product-system.md)。
 
-[Brand, directions and product directory](docs/brand-product-system.md) is the maintenance entry for the parent brand. HeyDusk is an independent AI product studio building focused products across family & life, learning & growth, and creation & expression: Mimi, Momo, and FrameForge / 小片场. Product capabilities and acceptance remain authoritative in each product repository. The public bilingual catalog is a dated summary in `apps/company/app/product-catalog.ts`.
+## 产品
 
-| | Company · heydusk.com | Product · mimi.heydusk.com |
-|---|---|---|
-| Whose site | 理想三旬 / HeyDusk **studio / parent brand** | **Mimi / 小咪** product |
-| Tone | Editorial / company catalog | Full product marketing |
-| Logo | HeyDusk mark | Orange-cream cat series |
-| Primary CTA | Contact / products list | Product enquiries (existing email) |
-| Cross-link | Independent product entries and documented stages | Badge → heydusk.com 「理想三旬出品」 |
+- **小咪 / Mimi**：面向家庭育儿的 iOS 助理。「先你一步，把事办妥。」拍一张、说一句，它整理成待你确认的卡片。源码版本 [v1.2.0](https://github.com/Yankj/mimi/releases/tag/v1.2.0) 已发布，产品介绍见 [mimi.heydusk.com](https://mimi.heydusk.com)。目前没有 App Store、TestFlight 或可公开下载的安装包；如需了解体验方式，请发信 [hello@heydusk.com](mailto:hello@heydusk.com)。
+- **Momo**：家长陪伴的英语学习，开发中。
+- **FrameForge / 小片场**：面向创作者的视频创作工具，开发中。
+- **Ferry Dock / 渡口**：早期 alpha 的日常小工具。
 
-A visitor should never wonder which site they are on.
+产品能力与验收以各产品仓库为准。本仓库只维护营销站点。小咪的产品仓是 [Yankj/mimi](https://github.com/Yankj/mimi)。
 
-## Local development
+## 本地预览
 
-Requires Node.js `>=22.13.0` for the company site; Node.js `>=20` for mimi.
+官网需要 Node.js `>=22.13.0`；小咪产品站需要 Node.js `>=20`。
 
 ```bash
-# Company (heydusk.com)
+# 官网（heydusk.com）
 cd apps/company
 npm install
 npm run dev
 
-# Product (mimi.heydusk.com)
+# 小咪产品站（mimi.heydusk.com）
 cd apps/mimi
 npm run dev          # http://localhost:4173
 ```
 
-Validate:
+检查：
 
 ```bash
 cd apps/company && npm run build && npm test
 cd apps/mimi && npm run build && npm run check
 ```
 
-## Vercel (two projects, one repo)
+访客路径与本地检查说明见 [docs/website-visitor-journeys.md](docs/website-visitor-journeys.md)。分支与贡献约定见 [CONTRIBUTING.md](CONTRIBUTING.md)。Vercel 项目名、DNS 与部署注意事项见 [docs/vercel-and-dns.md](docs/vercel-and-dns.md)。
 
-Import `Yankj/heydusk-site` twice. Do **not** attach production domains until the PR is reviewed and merged.
+## 许可证
 
-### Project A — company (`heydusk.com`)
+站点源码版权归属 Yankj / HeyDusk，未声明开源许可。
 
-| Setting | Value |
-|---|---|
-| Git repository | `Yankj/heydusk-site` |
-| Project name | `heydusk-site` (or `heydusk-company`) |
-| Root Directory | `apps/company` |
-| Framework Preset | Other |
-| Build Command | `npm run build:vercel` (see `apps/company/vercel.json`) |
-| Output Directory | (Nitro / Vercel adapter; leave default from build) |
-| Production Branch | `main` |
-
-### Project B — product (`mimi.heydusk.com`)
-
-| Setting | Value |
-|---|---|
-| Git repository | `Yankj/heydusk-site` |
-| Project name | `mimi-site` |
-| Root Directory | `apps/mimi` |
-| Framework Preset | Other |
-| Build Command | `npm run build` |
-| Output Directory | `dist` |
-| Production Branch | `main` |
-
-Preview URLs are generated per branch. Production deploys only after merge to `main` and domain attach.
-
-## DNS (Cloudflare · heydusk.com)
-
-| Type | Name | Target | Proxy |
-|---|---|---|---|
-| CNAME / apex | `@` / `www` | per existing heydusk.com Vercel setup | as today |
-| CNAME | `mimi` | `cname.vercel-dns.com` | DNS only (grey cloud) |
-
-Then add `mimi.heydusk.com` in the mimi Vercel project Domains.
-
-## Branch and PR conventions
-
-- Branch from the latest `main`, named `feat|fix|docs|chore|refactor/<topic>`; one topic per branch. Never commit to `main` directly; never force-push.
-- Small commits, one change each, with a message that says what and why.
-- Everything lands through a PR into `main`. Default to **merge commits** (no squash) so history stays traceable. Delete the branch after merge.
-- **Commit author must be** `Yankj <hello@heydusk.com>`. Turn on *Keep my email addresses private* and *Block command line pushes that expose my email* in GitHub, set `git config user.email hello@heydusk.com` locally, and use the same for web merges.
-- **Merging to `main` deploys production** (both Vercel projects build from `main`), so it needs the owner's explicit approval. Use the per-branch Vercel preview to review first, and keep preview URLs that contain a personal name private.
-- Keep the company and product sites separate: a change to one app's `apps/<site>/` directory should not touch the other's, unless it is repo-level tooling or docs.
-- Product behaviour and the product's brand kit live in [`Yankj/mimi`](https://github.com/Yankj/mimi); this repo only holds the marketing sites.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the short checklist.
-
-## Brand homes
-
-- **Company (HeyDusk):** `apps/company/design-system/` — monochrome mark + Last Light. Do not replace with the mimi cat.
-- **Product (mimi 小咪):** marketing assets used by the site live in `apps/mimi/brand/` and `apps/mimi/public/assets/`. Canonical product brand kit (source of truth for app icons and guidelines) remains in the app repo: [`Yankj/mimi/docs/brand`](https://github.com/Yankj/mimi/tree/main/docs/brand).
-
-## Cross-links
-
-- Company `/products` → https://mimi.heydusk.com
-- Product footer → https://heydusk.com
-- Contact: `hello@heydusk.com`
-
-## Visitor journeys
-
-The company site uses standard document links for dependable navigation, including without JavaScript. `/products/mimi`, `/products/momo`, `/products/frameforge`, `/products/ferry-dock` and their `/zh` equivalents are product introductions, followed by the existing email contact. Public presentation is **HeyDusk / 理想三旬, independent AI product studio**; the studio is not registered as a company. Display names use **HeyDusk, Mimi, Momo, FrameForge**; engineering identifiers and domains keep their existing spelling.
-
-Run the production browser journey checks with `python3 scripts/check-visitor-journeys.py --base-url http://127.0.0.1:4180 --output-dir /tmp/heydusk-visitor-checks` after starting the local production server. This requires an existing Python Playwright / Chromium setup; it does not deploy or install dependencies. Website navigation validation does not establish product availability, mailbox delivery or legal/commercial readiness.
+联系：hello@heydusk.com · GitHub：[Yankj](https://github.com/Yankj) · 博客：[blog.heydusk.com](https://blog.heydusk.com)

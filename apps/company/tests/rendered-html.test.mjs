@@ -212,3 +212,46 @@ for (const locale of ["en", "zh"]) {
     assert.doesNotMatch(html, /yusheng-leaf|yusheng-smoke|<canvas/);
   });
 }
+
+async function followRedirects(pathname, hops = 4) {
+  let current = pathname;
+  for (let i = 0; i < hops; i++) {
+    const response = await render(current);
+    if (![301, 302, 307, 308].includes(response.status)) return { response, pathname: current };
+    const location = response.headers.get("location");
+    assert.ok(location, `${pathname} hop ${current} needs a Location header`);
+    current = new URL(location, "https://heydusk.com").pathname;
+    if (current === "/") return { response, pathname: current };
+  }
+  return { response: await render(current), pathname: current };
+}
+
+for (const path of ["/en", "/en/"]) {
+  test(`${path} redirects to the English home`, async () => {
+    const arrived = await followRedirects(path);
+    assert.equal(arrived.pathname, "/", `${path} should resolve to /`);
+  });
+}
+
+for (const locale of ["en", "zh"]) {
+  test(`${locale} Mimi catalog copy matches the public GitHub wording`, async () => {
+    const home = visibleHTML(await (await render(localize(locale, "/"))).text());
+    const detail = visibleHTML(await (await render(localize(locale, "/products/mimi"))).text());
+    const catalog = visibleHTML(await (await render(localize(locale, "/products"))).text());
+    if (locale === "zh") {
+      for (const html of [home, detail, catalog]) {
+        assert.match(html, /源码版本 v1\.2\.0 已发布/);
+        assert.doesNotMatch(html, /iOS 开发中|从文字开始|图片与语音[^。]{0,20}尚未开放/);
+      }
+      assert.match(detail, /拍一张、说一句/);
+      assert.match(detail, /先你一步，把事办妥。/);
+    } else {
+      for (const html of [home, detail, catalog]) {
+        assert.match(html, /iOS source release v1\.2\.0/);
+        assert.doesNotMatch(html, /iOS in development/i);
+      }
+      assert.match(detail, /Snap a photo or say a sentence|Snap a photo, say a sentence/);
+    }
+    assert.doesNotMatch(detail, /href="https:\/\/(?:apps\.apple\.com|testflight\.apple\.com)/i);
+  });
+}

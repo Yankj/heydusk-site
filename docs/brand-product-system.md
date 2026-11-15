@@ -1,6 +1,6 @@
 # HeyDusk / 理想三旬：品牌、方向与独立产品
 
-本文件维护品牌关系和轻量产品目录；核对日期 **2026-10-26**。产品合同、能力状态与验收证据继续由各产品仓维护。这里的摘要不是上线公告、真实家庭验收或共同法律政策。
+本文件维护品牌关系和轻量产品目录；核对日期 **2026-11-15**。产品合同、能力状态与验收证据继续由各产品仓维护。这里的摘要不是上线公告、真实家庭验收或共同法律政策。
 
 ## 层级
 
@@ -18,7 +18,7 @@
 
 | 产品 / 方向 | 本轮核对的摘要 | 已有入口 | 产品事实源（保留各仓权威） |
 |---|---|---|---|
-| Mimi / 小咪 · 家庭与生活 | iOS 开发中；今日安排 + 长期成长双核心。本机文字输入当前使用中文规则，家长确认后保存；图片/语音育儿提取、长期记忆、多设备与周期能力仍需后续推进。同版真机/真实家庭验收未完成 | [产品站](https://mimi.heydusk.com)；保留联系入口，不许诺测试名额 | mimi 主干 `db41ad3`（含 #126/#128/#130）：`docs/design/family-companion/parenting-core.md`、`docs/acceptance/family-companion/interaction-natural-input-v0.5.md`、`docs/acceptance/family-companion/ios-parenting-usable-gaps-2026-10-25.md`；较早日期记录不覆盖较新主路径 |
+| Mimi / 小咪 · 家庭与生活 | 面向家庭育儿的 iOS 助理。「先你一步，把事办妥。」拍一张、说一句，它整理成待你确认的卡片；今天要办的一目了然，你点头之前什么都不改。源码版本 v1.2.0 已发布。没有 App Store、TestFlight 或可公开下载的安装包 | [产品站](https://mimi.heydusk.com)；[v1.2.0 源码版本](https://github.com/Yankj/mimi/releases/tag/v1.2.0)；保留邮件咨询，不提供应用商店或安装包入口 | 公开仓 [Yankj/mimi](https://github.com/Yankj/mimi) 与 [v1.2.0](https://github.com/Yankj/mimi/releases/tag/v1.2.0)（2026-10-18）。本条核对于 2026-11-15，对外口径与 GitHub 公开表述对齐 |
 | Momo · 学习与成长 | 开发探索中；ChatGPT + MCP + 持久课堂画布为 36 节课程设计，独立网页为 48 节活动。宿主、评测和服务范围分别验收 | [独立网页（48 节活动）](https://word-island.kunjie-yan.chatgpt.site/)；不代表 36 节 MCP 课堂已发布 | 私有项目 README 与课程/网页说明，由有权限的维护者核对；不在公共仓或营销站暴露私有源码链接 |
 | FrameForge / 小片场 · 创作与表达 | 同一视频创作产品；当前 Codex 插件 v0.2.2、持久工程、宿主浏览器主线。使用者是创作者，默认 3–8 岁儿童科普是内容配置。Web 实验另列 | [既有联系入口](mailto:hello@heydusk.com)（源码私有，不作公开安装入口） | agent-frameforge 私有主干 `88f2456` 的插件 README 与 manifest（由有权限维护者核对）；未合草稿 PR #2 不作主线事实 |
 | Ferry Dock / 渡口 · 日常工具 | 早期 alpha 的本地中转服务：电脑启动、手机扫码，把纯文本发到临时收件箱。目前仅支持手机到电脑的纯文本；文件传输与 Agent 任务输入在规划中。仅在可信局域网内用 HTTP，会话 15 分钟、文本 64 KiB、收件箱 1 MiB，MIT 许可。无二进制发布或 npm 包；浏览器流程验证与真机局域网验收尚未完成 | [公开源码仓库](https://github.com/Yankj/ferry-dock)（仅源码，不提供下载入口） | ferry-dock 公开仓 `13e5b27` 的 `README.md`、`docs/verification.md`、`brand/README.md`；不是业务方向之一，仅作目录中的小工具；该条核对于 2026-10-29，其余条目日期不变 |
@@ -35,4 +35,4 @@
 
 ## 当前网站访客行动
 
-用户已确认：英文展示名为 HeyDusk、Mimi、Momo、FrameForge；路径、域名、仓库与工程标识不改。三款产品当前对外提供介绍与 `hello@heydusk.com` 邮件咨询，不承诺直接体验、开放内测或试用名额。既有 Momo 教学网址保留为产品资产，不作为母站默认开放入口。
+用户已确认：英文展示名为 HeyDusk、Mimi、Momo、FrameForge；路径、域名、仓库与工程标识不改。小咪可说明源码版本 v1.2.0 已发布，并指向产品站与 GitHub Release；体验方式仍是介绍加邮件咨询，不提供 App Store、TestFlight 或公开安装包。Momo、FrameForge / 小片场仍为开发中，对外提供介绍与 `hello@heydusk.com` 邮件咨询。既有 Momo 教学网址保留为产品资产，不作为母站默认开放入口。

@@ -1013,6 +1013,13 @@ a:focus-visible {
   letter-spacing: 0.04em;
 }
 
+.footer-elsewhere {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
 /* Interior pages */
 .page-hero {
   width: min(calc(100% - (var(--page-padding) * 2)), var(--content-width));
