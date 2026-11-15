@@ -73,9 +73,9 @@ const content = {
 };
 
 const featured = [
-  { id: "mimi" as const, path: "/products/mimi", en: "Mimi / 小咪", zh: "小咪 / Mimi", category: { en: "Family & life", zh: "家庭与生活" }, description: { en: "A place for the day's arrangements and the small steps of growing up.", zh: "把今日安排和成长中的小事，放进一家人的日常。" } },
-  { id: "momo" as const, path: "/products/momo", en: "Momo", zh: "Momo", category: { en: "Learning & growth", zh: "学习与成长" }, description: { en: "English activities for children, with a parent learning alongside.", zh: "家长陪在身边，在看、听、说的互动中一起学英语。" } },
-  { id: "frameforge" as const, path: "/products/frameforge", en: "FrameForge / 小片场", zh: "小片场 / FrameForge", category: { en: "Creation & expression", zh: "创作与表达" }, description: { en: "Video-making tools for creators, from the first idea to the work taking shape.", zh: "面向创作者的视频创作工具，让想法一步步成为作品。" } },
+  { id: "mimi" as const, path: "/products/mimi", en: "Mimi / 小咪", zh: "小咪 / Mimi", category: { en: "Family & life", zh: "家庭与生活" }, stage: { en: "iOS source release v1.2.0", zh: "iOS 源码版本 v1.2.0 已发布" }, description: { en: "A family parenting iOS assistant. Snap a photo or say a sentence, and it turns that into a card for you to confirm.", zh: "面向家庭育儿的 iOS 助理。拍一张、说一句，它整理成待你确认的卡片。" } },
+  { id: "momo" as const, path: "/products/momo", en: "Momo", zh: "Momo", category: { en: "Learning & growth", zh: "学习与成长" }, stage: { en: "In development", zh: "开发中" }, description: { en: "English activities for children, with a parent learning alongside.", zh: "家长陪在身边，在看、听、说的互动中一起学英语。" } },
+  { id: "frameforge" as const, path: "/products/frameforge", en: "FrameForge / 小片场", zh: "小片场 / FrameForge", category: { en: "Creation & expression", zh: "创作与表达" }, stage: { en: "In development", zh: "开发中" }, description: { en: "Video-making tools for creators, from the first idea to the work taking shape.", zh: "面向创作者的视频创作工具，让想法一步步成为作品。" } },
 ];
 // Brand tokens kept as literals for catalog/home/strategy consistency checks: Momo, FrameForge, Ferry Dock.
 
@@ -128,7 +128,7 @@ export function HomePageView({ locale }: { locale: Locale }) {
                 <ProductCover product={item.id} locale={locale} />
               </div>
               <div className="studio-product-body">
-                <div className="studio-product-meta"><span>{item.category[locale]}</span><span className="studio-stage">{locale === "zh" ? "开发中" : "In development"}</span></div>
+                <div className="studio-product-meta"><span>{item.category[locale]}</span><span className="studio-stage">{item.stage[locale]}</span></div>
                 <h3>{item[locale]} <span aria-hidden="true">↗</span></h3>
                 <p>{item.description[locale]}</p>
                 <span className="studio-product-action">{locale === "zh" ? "了解产品与当前进展" : "Explore the product and its progress"} <span aria-hidden="true">→</span></span>

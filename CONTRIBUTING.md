@@ -1,6 +1,6 @@
 # Contributing
 
-This repo holds two sites: `apps/company` (heydusk.com) and `apps/mimi` (mimi.heydusk.com). See [README.md](README.md) for Vercel settings and local development.
+This repo holds two sites: `apps/company` (heydusk.com) and `apps/mimi` (mimi.heydusk.com). See [README.md](README.md) for local development, and [docs/vercel-and-dns.md](docs/vercel-and-dns.md) for Vercel settings.
 
 ## Checklist
 
